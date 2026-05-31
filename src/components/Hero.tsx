@@ -5,7 +5,7 @@ import { siteData } from "@/data/site";
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden pt-20">
-      <div className="absolute inset-0 bg-[url('/images/hero-truck.jpg')] bg-cover bg-center" />
+      <div className="absolute inset-0 bg-[url('/images/truck2.png')] bg-cover bg-center" />
 
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,10,.96)_0%,rgba(24,16,13,.86)_45%,rgba(107,38,27,.54)_100%)]" />
 
@@ -15,7 +15,7 @@ export default function Hero() {
         <img
           src="/images/logo2.png"
           alt=""
-          className="h-[520px] w-[520px] object-contain"
+          className="h-[340px] w-[340px] object-contain"
         />
       </div>
 
