@@ -5,17 +5,17 @@ import { siteData } from "@/data/site";
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden pt-20">
-      <div className="absolute inset-0 bg-[url('/images/truck2.png')] bg-cover bg-center" />
+      <div className="absolute inset-0 bg-[url('/images/hero.jpg')] bg-cover bg-center" />
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,12,10,.96)_0%,rgba(24,16,13,.86)_45%,rgba(107,38,27,.54)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,13,12,.95)_0%,rgba(16,14,13,.82)_44%,rgba(80,28,20,.42)_100%)]" />
 
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(159,58,42,.36),transparent_34rem)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_35%,rgba(159,58,42,.32),transparent_34rem)]" />
 
-      <div className="pointer-events-none absolute right-[-4rem] top-1/2 hidden -translate-y-1/2 opacity-[0.06] md:block">
+      <div className="pointer-events-none absolute right-[-4rem] top-1/2 hidden -translate-y-1/2 opacity-[0.06] lg:block">
         <img
           src="/images/logo2.png"
           alt=""
-          className="h-[340px] w-[340px] object-contain"
+          className="h-[520px] w-[520px] object-contain"
         />
       </div>
 
@@ -26,15 +26,14 @@ export default function Hero() {
           </p>
 
           <h1 className="text-6xl font-bold leading-[0.88] text-white sm:text-7xl lg:text-8xl">
-            Property Cleanup, Hauling & Light Demolition Done Right.
+            Property Problems Don&apos;t Fix Themselves.
           </h1>
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
-            From old sheds and brush piles to rental cleanouts, storm debris,
-            unwanted junk, and small demolition projects, Red Dirt Property
-            Services helps Arkansas property owners clear the mess and move
-            forward. We show up with the truck, trailer, tools, and work ethic to
-            get the job done.
+            From overgrown brush and storm debris to rental cleanouts, hauling,
+            old sheds, and property messes that have gotten out of hand, Red Dirt
+            Property Services helps Arkansas property owners get things cleaned
+            up and moving forward.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -43,25 +42,25 @@ export default function Hero() {
             </Link>
 
             <Link href={`tel:${siteData.phone}`} className="btn btn-secondary">
-              Call or Text Today
+              Call or Text Photos
             </Link>
           </div>
 
-          <div className="mt-10 grid max-w-3xl grid-cols-2 gap-3 text-sm font-bold uppercase tracking-wide text-white/84 sm:grid-cols-4">
-            <span className="rounded-xl border border-white/12 bg-black/25 px-4 py-3 backdrop-blur-sm">
+          <div className="mt-10 grid max-w-4xl grid-cols-2 gap-3 text-sm font-bold uppercase tracking-wide text-white/84 md:grid-cols-5">
+            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
               Property Cleanup
             </span>
-
-            <span className="rounded-xl border border-white/12 bg-black/25 px-4 py-3 backdrop-blur-sm">
+            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
               Hauling
             </span>
-
-            <span className="rounded-xl border border-white/12 bg-black/25 px-4 py-3 backdrop-blur-sm">
-              Light Demo
+            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
+              Cleanouts
             </span>
-
-            <span className="rounded-xl border border-white/12 bg-black/25 px-4 py-3 backdrop-blur-sm">
+            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
               Storm Cleanup
+            </span>
+            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm md:col-span-1">
+              Light Demo
             </span>
           </div>
         </FadeIn>

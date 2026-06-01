@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
 import ServicesSection from "@/components/ServicesSection";
+import VideoProofSection from "@/components/VideoProofSection";
 import PricingNote from "@/components/PricingNote";
 import HowItWorks from "@/components/HowItWorks";
 import WhoWeHelp from "@/components/WhoWeHelp";
@@ -19,12 +20,13 @@ export default function Home() {
       <Hero />
       <TrustStrip />
       <ServicesSection />
+      <VideoProofSection />
+      <GalleryPreview />
       <PricingNote />
       <HowItWorks />
       <WhoWeHelp />
       <ServiceArea />
       <AboutSection />
-     
       <FAQSection />
       <FinalCTA />
       <Footer />
