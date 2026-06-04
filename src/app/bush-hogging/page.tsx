@@ -181,7 +181,7 @@ export default function BushHoggingPage() {
 
               <p>
                 As a starting point, hourly bush hogging work commonly begins
-                around $100/hr depending on property conditions, access, travel,
+                around $125/hr depending on property conditions, access, travel,
                 and equipment time. Larger jobs may be quoted by the job or by
                 acreage after we see the property.
               </p>
