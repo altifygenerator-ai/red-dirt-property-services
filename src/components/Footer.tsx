@@ -2,11 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { siteData } from "@/data/site";
 
+const serviceLinks = [
+  { label: "Bush Hogging", href: "/bush-hogging" },
+  { label: "Cleanouts", href: "/cleanouts" },
+  { label: "Light Demolition", href: "/light-demolition" },
+];
+
+const areaLinks = [
+  { label: "Glenwood Area", href: "/glenwood-ar" },
+  { label: "Hot Springs Area", href: "/hot-springs-ar" },
+  { label: "Arkadelphia Area", href: "/arkadelphia-ar" },
+];
+
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111] py-10">
       <div className="container">
-        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+        <div className="grid gap-10 md:grid-cols-[1.25fr_0.75fr_0.75fr_1fr]">
           <div className="flex items-center gap-5">
             <Image
               src="/images/logo2.png"
@@ -29,6 +41,42 @@ export default function Footer() {
             </div>
           </div>
 
+          <div>
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#d8c2a5]">
+              Services
+            </p>
+
+            <div className="flex flex-col gap-2 text-sm text-white/62">
+              {serviceLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#d8c2a5]">
+              Areas
+            </p>
+
+            <div className="flex flex-col gap-2 text-sm text-white/62">
+              {areaLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <div className="flex flex-col gap-2 text-sm text-white/62 md:text-right">
             <Link href={`tel:${siteData.phone}`} className="hover:text-white">
               {siteData.phone}
@@ -39,6 +87,10 @@ export default function Footer() {
             </Link>
 
             <p>Based around Amity & Glenwood, Arkansas</p>
+
+            <Link href="/#quote" className="pt-2 hover:text-white">
+              Get a Free Quote
+            </Link>
 
             <Link
               href="https://hometownwebservicesar.cc"
