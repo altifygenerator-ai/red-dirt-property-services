@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -21,34 +21,95 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Red Dirt Property Services | Property Cleanup, Hauling & Light Demolition",
+      "Red Dirt Property Services | Junk Removal, Brush Hogging & Property Cleanup in Arkansas",
     template: "%s | Red Dirt Property Services",
   },
   description:
-    "Red Dirt Property Services provides property cleanup, hauling, junk removal, storm cleanup, and light demolition around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
+    "Red Dirt Property Services provides junk removal, brush hogging, bush hogging, property cleanup, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas communities.",
   keywords: [
     "Red Dirt Property Services",
-    "property cleanup Glenwood AR",
-    "hauling Glenwood AR",
-    "junk removal Glenwood AR",
-    "light demolition Glenwood AR",
     "property cleanup Amity AR",
     "junk removal Amity AR",
-    "property cleanup Mount Ida AR",
-    "junk removal Mount Ida AR",
-    "storm cleanup Arkansas",
-    "shed removal Arkansas",
-    "brush removal Arkansas",
-    "rental cleanout Arkansas",
-    "estate cleanout Arkansas",
-    "property cleanup Hot Springs AR",
+    "hauling Amity AR",
+    "brush hogging Amity AR",
+    "bush hogging Amity AR",
+    "cleanouts Amity AR",
+    "light demolition Amity AR",
+
+    "property cleanup Glenwood AR",
+    "junk removal Glenwood AR",
+    "hauling Glenwood AR",
+    "brush hogging Glenwood AR",
+    "bush hogging Glenwood AR",
+    "cleanouts Glenwood AR",
+    "light demolition Glenwood AR",
+
     "junk removal Hot Springs AR",
+    "property cleanup Hot Springs AR",
+    "hauling Hot Springs AR",
+    "brush hogging Hot Springs AR",
+    "bush hogging Hot Springs AR",
+    "cleanouts Hot Springs AR",
+    "storm cleanup Hot Springs AR",
+    "light demolition Hot Springs AR",
+
+    "junk removal Arkadelphia AR",
     "property cleanup Arkadelphia AR",
     "hauling Arkadelphia AR",
+    "brush hogging Arkadelphia AR",
+    "bush hogging Arkadelphia AR",
+    "cleanouts Arkadelphia AR",
+    "storm cleanup Arkadelphia AR",
+
+    "property cleanup Mount Ida AR",
+    "junk removal Mount Ida AR",
+    "brush hogging Mount Ida AR",
+    "bush hogging Mount Ida AR",
+    "property cleanup Kirby AR",
+    "brush hogging Kirby AR",
+    "property cleanup Norman AR",
+    "junk removal Caddo Valley AR",
+    "property cleanup Caddo Valley AR",
+    "junk removal Bismarck AR",
+    "brush hogging Bismarck AR",
+    "property cleanup Malvern AR",
+    "junk removal Malvern AR",
+    "property cleanup Murfreesboro AR",
+
+    "junk removal near me",
+    "brush hogging near me",
+    "bush hogging near me",
+    "property cleanup near me",
+    "hauling near me",
+    "cleanout service near me",
+    "rural property cleanup Arkansas",
+    "land cleanup Arkansas",
+    "brush removal Arkansas",
+    "storm debris cleanup Arkansas",
+    "rental cleanout Arkansas",
+    "estate cleanout Arkansas",
+    "garage cleanout Arkansas",
+    "shed removal Arkansas",
+    "small demolition Arkansas",
+    "light demolition Arkansas",
   ],
   authors: [{ name: "Red Dirt Property Services" }],
   creator: "Red Dirt Property Services",
   publisher: "Red Dirt Property Services",
+  applicationName: "Red Dirt Property Services",
+  category: "Property Services",
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   alternates: {
     canonical: siteUrl,
   },
@@ -58,12 +119,12 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Red Dirt Property Services",
     title:
-      "Red Dirt Property Services | Property Cleanup, Hauling & Light Demolition",
+      "Red Dirt Property Services | Junk Removal, Brush Hogging & Property Cleanup",
     description:
-      "Local property cleanup, hauling, junk removal, storm cleanup, and light demolition serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and nearby rural Arkansas communities.",
+      "Local junk removal, brush hogging, bush hogging, property cleanup, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Hot Springs, Arkadelphia, Mount Ida, and nearby Arkansas communities.",
     images: [
       {
-        url: "/images/logo.png",
+        url: "/images/logo2.png",
         width: 1200,
         height: 1200,
         alt: "Red Dirt Property Services logo",
@@ -73,10 +134,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Red Dirt Property Services | Property Cleanup, Hauling & Light Demolition",
+      "Red Dirt Property Services | Junk Removal, Brush Hogging & Property Cleanup",
     description:
-      "Local property cleanup, hauling, junk removal, storm cleanup, and light demolition around Amity, Glenwood, and surrounding Arkansas communities.",
-    images: ["/images/logo.png"],
+      "Local property cleanup, hauling, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
+    images: ["/images/logo2.png"],
   },
   robots: {
     index: true,
@@ -91,6 +152,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#9f3a2a",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -98,12 +163,12 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Red Dirt Property Services",
-    image: `${siteUrl}/images/logo.png`,
+    image: `${siteUrl}/images/logo2.png`,
     url: siteUrl,
     telephone: "870-260-4880",
     email: "reddirtpropertyservicesar@gmail.com",
     description:
-      "Property cleanup, hauling, junk removal, storm cleanup, and light demolition serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
+      "Junk removal, brush hogging, bush hogging, property cleanup, cleanouts, hauling, storm cleanup, and light demolition serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
     areaServed: [
       "Amity AR",
       "Glenwood AR",
@@ -115,6 +180,8 @@ export default function RootLayout({
       "Caddo Valley AR",
       "Arkadelphia AR",
       "Hot Springs AR",
+      "Hot Springs Village AR",
+      "Lake Hamilton AR",
       "Murfreesboro AR",
       "Malvern AR",
     ],
@@ -130,7 +197,35 @@ export default function RootLayout({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
+          name: "Junk Removal",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Brush Hogging",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Bush Hogging",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
           name: "Property Cleanup",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Cleanouts",
         },
       },
       {

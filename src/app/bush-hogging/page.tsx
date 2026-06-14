@@ -7,16 +7,16 @@ import FadeIn from "@/components/FadeIn";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Bush Hogging & Brush Cutting | Red Dirt Property Services",
+  title: "Brush Hogging, Bush Hogging & Brush Cutting | Red Dirt Property Services",
   description:
-    "Bush hogging and brush cutting around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and nearby rural Arkansas communities. Red Dirt Property Services helps clear overgrown fields, brush, trails, and rural properties.",
+    "Brush hogging, bush hogging, rough mowing, and brush cutting around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and nearby rural Arkansas communities. Red Dirt Property Services helps clear overgrown fields, brush, trails, fence lines, and rural properties.",
   alternates: {
     canonical: "/bush-hogging",
   },
   openGraph: {
-    title: "Bush Hogging & Brush Cutting | Red Dirt Property Services",
+    title: "Brush Hogging, Bush Hogging & Brush Cutting | Red Dirt Property Services",
     description:
-      "Rural Arkansas bush hogging, brush cutting, field mowing, and property cleanup around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, and Arkadelphia.",
+      "Rural Arkansas brush hogging, bush hogging, brush cutting, field mowing, and property cleanup around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, and Arkadelphia.",
     url: "https://reddirtpropertyservicesar.com/bush-hogging",
     images: ["/images/tractor-bush-hog.jpg"],
   },
@@ -28,7 +28,7 @@ export default function BushHoggingPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Bush Hogging and Brush Cutting",
+    name: "Brush Hogging, Bush Hogging and Brush Cutting",
     provider: {
       "@type": "LocalBusiness",
       name: "Red Dirt Property Services",
@@ -49,7 +49,7 @@ export default function BushHoggingPage() {
       "Hot Springs AR",
     ],
     description:
-      "Bush hogging, brush cutting, field mowing, and rural property cleanup for overgrown land, trails, fence lines, small acreage, and neglected properties around Amity and Glenwood, Arkansas.",
+      "Brush hogging, bush hogging, brush cutting, field mowing, rough mowing, and rural property cleanup for overgrown land, trails, fence lines, small acreage, and neglected properties around Amity, Glenwood, Hot Springs, Arkadelphia, and nearby Arkansas communities.",
   };
 
   return (

@@ -9,16 +9,16 @@ import { siteData } from "@/data/site";
 const siteUrl = "https://reddirtpropertyservicesar.com";
 
 export const metadata: Metadata = {
-  title: "Junk Removal, Cleanouts & Hauling in Hot Springs AR",
+  title: "Junk Removal, Brush Hogging & Property Cleanup in Hot Springs AR",
   description:
-    "Red Dirt Property Services provides junk removal, hauling, rental cleanouts, estate cleanouts, storm cleanup, brush removal, and light demolition around Hot Springs, Hot Springs Village, Lake Hamilton, Bismarck, and nearby areas.",
+    "Red Dirt Property Services provides junk removal, brush hogging, bush hogging, property cleanup, hauling, rental cleanouts, estate cleanouts, storm cleanup, brush removal, and light demolition around Hot Springs, Lake Hamilton, Bismarck, Royal, Pearcy, and nearby areas.",
   alternates: {
     canonical: "/hot-springs-ar",
   },
   openGraph: {
-    title: "Junk Removal, Cleanouts & Hauling in Hot Springs AR",
+    title: "Junk Removal, Brush Hogging & Property Cleanup in Hot Springs AR",
     description:
-      "Local junk removal, cleanouts, hauling, storm cleanup, brush removal, and light demolition around Hot Springs, Lake Hamilton, Bismarck, and nearby Arkansas communities.",
+      "Local junk removal, brush hogging, bush hogging, cleanouts, hauling, storm cleanup, brush removal, property cleanup, and light demolition around Hot Springs, Lake Hamilton, Bismarck, Royal, Pearcy, and nearby Arkansas communities.",
     url: `${siteUrl}/hot-springs-ar`,
     images: ["/images/dump.jpg"],
   },
@@ -28,7 +28,7 @@ export default function HotSpringsPage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Junk Removal and Cleanouts in Hot Springs AR",
+    name: "Junk Removal, Brush Hogging and Property Cleanup in Hot Springs AR",
     provider: {
       "@type": "LocalBusiness",
       name: "Red Dirt Property Services",
@@ -47,6 +47,9 @@ export default function HotSpringsPage() {
     ],
     serviceType: [
       "Junk removal",
+      "Brush hogging",
+      "Bush hogging",
+      "Property cleanup",
       "Property cleanouts",
       "Rental cleanouts",
       "Estate cleanouts",
@@ -55,7 +58,7 @@ export default function HotSpringsPage() {
       "Light demolition",
     ],
     description:
-      "Junk removal, property cleanouts, rental cleanouts, estate cleanouts, hauling, storm cleanup, brush removal, and light demolition around Hot Springs, Arkansas.",
+      "Junk removal, brush hogging, bush hogging, property cleanup, property cleanouts, rental cleanouts, estate cleanouts, hauling, storm cleanup, brush removal, and light demolition around Hot Springs, Arkansas.",
   };
 
   return (
@@ -85,14 +88,14 @@ export default function HotSpringsPage() {
             </p>
 
             <h1 className="text-6xl font-bold leading-[0.88] text-white sm:text-7xl lg:text-8xl">
-              Junk Removal And Cleanouts Around Hot Springs.
+              Junk Removal, Brush Hogging, And Cleanup Around Hot Springs.
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
               Red Dirt Property Services helps Hot Springs area homeowners,
               landlords, cabin owners, and property owners with junk removal,
-              hauling, cleanouts, storm debris, brush cleanup, and light demo
-              work.
+              brush hogging, hauling, cleanouts, storm debris, property cleanup,
+              and light demo work.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -120,14 +123,16 @@ export default function HotSpringsPage() {
           <FadeIn className="space-y-5 text-lg leading-8 text-white/70">
             <p>
               Hot Springs has a mix of homes, rentals, lake properties, cabins,
-              remodels, and rural spots just outside town. That means there is
-              always something that needs hauled off, cleaned out, or cleared up.
+              remodels, wooded lots, fence lines, and rural spots just outside
+              town. That means there is always something that needs hauled off,
+              cut back, cleaned out, or cleared up.
             </p>
 
             <p>
               We help with trailer loads of junk, garage cleanouts, rental
-              cleanouts, estate cleanouts, brush and storm debris, old furniture,
-              appliances, and small structures that need removed and hauled away.
+              cleanouts, estate cleanouts, brush hogging, rough mowing, storm
+              debris, old furniture, appliances, and small structures that need
+              removed and hauled away.
             </p>
           </FadeIn>
         </div>
@@ -138,9 +143,11 @@ export default function HotSpringsPage() {
           <div className="grid gap-5 md:grid-cols-3">
             {[
               "Junk removal and hauling",
+              "Brush hogging and rough mowing",
               "Rental property cleanouts",
               "Estate and garage cleanouts",
               "Cabin and lake property cleanup",
+              "Fence lines, overgrown edges, and brush removal",
               "Storm debris and brush removal",
               "Shed, fence, and light demo cleanup",
             ].map((item) => (
@@ -174,8 +181,9 @@ export default function HotSpringsPage() {
 
             <div className="mt-6 space-y-5 text-lg leading-8 text-white/70">
               <p>
-                A small pickup is different than a full rental cleanout or a
-                property with mixed junk, brush, appliances, and debris.
+                A small pickup is different than a full rental cleanout, a
+                brush hogging job, or a property with mixed junk, brush,
+                appliances, and debris.
               </p>
 
               <p>

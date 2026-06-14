@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description:
       "Local junk removal, property cleanouts, rental cleanouts, estate cleanouts, hauling, storm cleanup, and light demolition around Arkadelphia and Caddo Valley.",
     url: `${siteUrl}/arkadelphia-ar`,
-    images: ["/images/truck-1.jpg"],
+    images: ["/images/truck-1.png"],
   },
 };
 

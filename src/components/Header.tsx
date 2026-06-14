@@ -9,7 +9,7 @@ const serviceLinks = [
     description: "Property cleanup, hauling, cleanouts, and light demo",
   },
   {
-    label: "Bush Hogging",
+    label: "Brush Hogging",
     href: "/bush-hogging",
     description: "Brush cutting, rough mowing, and rural property cleanup",
   },
@@ -29,7 +29,7 @@ const areaLinks = [
   {
     label: "Glenwood Area",
     href: "/glenwood-ar",
-    description: "Property cleanup, bush hogging, hauling, and rural cleanup",
+    description: "Property cleanup, brush hogging, hauling, and rural cleanup",
   },
   {
     label: "Hot Springs Area",

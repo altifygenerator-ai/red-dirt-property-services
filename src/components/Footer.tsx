@@ -3,7 +3,7 @@ import Link from "next/link";
 import { siteData } from "@/data/site";
 
 const serviceLinks = [
-  { label: "Bush Hogging", href: "/bush-hogging" },
+  { label: "Brush Hogging", href: "/bush-hogging" },
   { label: "Cleanouts", href: "/cleanouts" },
   { label: "Light Demolition", href: "/light-demolition" },
 ];
