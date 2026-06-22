@@ -12,7 +12,7 @@ import GalleryPreview from "@/components/GalleryPreview";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-
+import BeforeAfterSection from "@/components/BeforeAfterSection";
 export default function Home() {
   return (
     <main>
@@ -21,6 +21,7 @@ export default function Home() {
       <TrustStrip />
       <ServicesSection />
       <VideoProofSection />
+      <BeforeAfterSection />
       <GalleryPreview />
       <PricingNote />
       <HowItWorks />

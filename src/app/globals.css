@@ -151,7 +151,169 @@ h4 {
   background: rgba(244, 241, 236, 0.1);
   transform: translateY(-1px);
 }
+.before-after-section {
+  overflow: hidden;
+}
 
+.before-after-head {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 36px;
+  align-items: end;
+  margin-bottom: 34px;
+}
+
+.before-after-head h2 {
+  margin: 10px 0 0;
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  line-height: 0.88;
+}
+
+.before-after-head p.text-muted {
+  max-width: 620px;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.before-after-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.before-after-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(244, 241, 236, 0.075), rgba(244, 241, 236, 0.035)),
+    var(--card);
+  box-shadow: var(--shadow);
+}
+
+.before-after-image {
+  position: relative;
+  height: 390px;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+.before-after-image img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.before-after-card:hover .before-after-image img {
+  transform: scale(1.045);
+}
+
+.before-after-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.58), transparent 48%),
+    radial-gradient(circle at top left, rgba(159, 58, 42, 0.22), transparent 42%);
+  pointer-events: none;
+}
+
+.photo-badge {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  top: 18px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  border-radius: 999px;
+  padding: 0 14px;
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: white;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
+}
+
+.badge-before {
+  background: rgba(16, 16, 16, 0.86);
+  border: 1px solid rgba(244, 241, 236, 0.18);
+}
+
+.badge-after {
+  background: var(--red-dirt);
+  border: 1px solid rgba(244, 241, 236, 0.18);
+}
+
+.before-after-content {
+  padding: 24px;
+}
+
+.before-after-content h3 {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.before-after-content p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.before-after-cta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px solid rgba(159, 58, 42, 0.36);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top left, rgba(159, 58, 42, 0.24), transparent 34rem),
+    rgba(244, 241, 236, 0.055);
+  box-shadow: var(--shadow);
+}
+
+.before-after-cta h3 {
+  margin: 8px 0 0;
+  font-size: clamp(1.8rem, 4vw, 3.1rem);
+  line-height: 0.95;
+}
+
+.before-after-cta p:last-child {
+  max-width: 720px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.before-after-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 850px) {
+  .before-after-head,
+  .before-after-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .before-after-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .before-after-image {
+    height: 330px;
+  }
+
+  .before-after-actions {
+    justify-content: stretch;
+  }
+}
 @media (max-width: 768px) {
   .section {
     padding: 72px 0;
