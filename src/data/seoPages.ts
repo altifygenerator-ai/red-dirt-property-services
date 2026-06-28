@@ -356,6 +356,202 @@ export const servicePages: Record<string, ServicePageData> = {
       areaLinks.find((item) => item.href === "/mount-ida-ar")!,
     ],
   },
+
+  "dirt-work": {
+    slug: "dirt-work",
+    title: "Dirt Work, Driveways, Ditches & Culverts",
+    description:
+      "Red Dirt Property Services handles small dirt work, driveway touch-ups, rough grading, drainage ditches, culvert help, washouts, and rural property work around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas towns.",
+    ogTitle: "Dirt Work, Driveways, Ditches & Culverts | Red Dirt",
+    ogDescription:
+      "Small dirt work, driveway help, drainage ditches, culverts, washouts, and rough grading for rural Arkansas properties.",
+    heroImage: "/images/equipment-1.jpg",
+    heroAlt: "Equipment for dirt work, driveway repair, and rural property cleanup in Arkansas",
+    eyebrow: "Dirt Work • Driveways • Ditches • Culverts",
+    h1: "Driveways, Ditches, Culverts, And Small Dirt Work That Needs Done Right.",
+    intro:
+      "Red Dirt can help with practical dirt work around rural places, cabins, driveways, field entrances, and properties that need water moving the right direction. Driveway touch-ups, drainage ditches, culvert help, washouts, and rough grading are quoted by the job, access, material needs, and what the property is doing now.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get a Dirt Work Quote",
+    overviewEyebrow: "Practical Dirt Work",
+    overviewTitle: "Water, access, and dirt problems do not fix themselves.",
+    overviewText: [
+      "A driveway washing out, a ditch not draining, or a culvert that needs cleaned up or set right can turn into a bigger problem every time it rains. Rural Arkansas properties need practical fixes that match the land, not a fancy sales pitch.",
+      "We can look at small dirt work, driveway touch-ups, drainage ditches, culvert help, rough grading, washout repair, and cleanup work tied to access roads, cabins, shops, and country places.",
+      "Some dirt work needs material, equipment time, and an in-person look before it can be quoted firm. Send photos first if you can, especially pictures of the access, slope, water flow, and problem area."
+    ],
+    cards: [
+      "Driveway touch-ups",
+      "Drainage ditches",
+      "Culvert help",
+      "Washout repair",
+      "Rough grading",
+      "Rural access cleanup"
+    ],
+    detailImage: "/images/tractor-pov.jpg",
+    detailAlt: "Rural Arkansas equipment work for driveways and property access",
+    detailEyebrow: "Quoted By The Job",
+    detailTitle: "Dirt work depends on access, water, material, and what the ground is doing.",
+    detailText: [
+      "A short driveway touch-up is not the same job as rebuilding a washed-out entrance, cutting a ditch, or helping with a culvert. Grade, slope, water flow, rock, material, and room to work all change the quote.",
+      "We are a good fit for small rural dirt work and property access jobs that match our equipment and crew. If a job needs engineering, major excavation, or heavy commercial equipment, we will tell you straight.",
+      "Photos help, but bigger drainage or driveway jobs may need a property look before we give a firm number."
+    ],
+    areaTitle: "Dirt work around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby rural areas.",
+    areaText:
+      "Red Dirt quotes driveway help, ditches, culverts, washouts, rough grading, and small dirt work around the Amity and Glenwood area, with surrounding towns quoted when the job fits the route and scope.",
+    schemaName: "Dirt Work Service",
+    schemaDescription:
+      "Small dirt work, driveway touch-ups, drainage ditches, culvert help, washout repair, rough grading, and rural property access work around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas towns.",
+    serviceType: [
+      "Dirt work",
+      "Driveway repair",
+      "Driveway grading",
+      "Drainage ditches",
+      "Culvert work",
+      "Washout repair",
+      "Rough grading"
+    ],
+    areaServed: coreAreaServed,
+    related: [
+      serviceLinks.find((item) => item.href === "/property-cleanup")!,
+      serviceLinks.find((item) => item.href === "/bush-hogging")!,
+      serviceLinks.find((item) => item.href === "/stump-grinding")!,
+      areaLinks.find((item) => item.href === "/amity-ar")!,
+      areaLinks.find((item) => item.href === "/glenwood-ar")!,
+      areaLinks.find((item) => item.href === "/mount-ida-ar")!,
+    ],
+  },
+
+  "tree-work": {
+    slug: "tree-work",
+    title: "Tree Work, Limb Cleanup & Small Acreage Clearing",
+    description:
+      "Red Dirt Property Services handles small tree work, limb cleanup, brush removal, light clearing, small acreage cleanup, and tree debris hauling around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas towns. Tree work depends on the job and location.",
+    ogTitle: "Tree Work & Small Acreage Clearing | Red Dirt",
+    ogDescription:
+      "Small tree work, limb cleanup, brush removal, light clearing, and tree debris hauling for rural Arkansas properties when the job fits.",
+    heroImage: "/images/work-3.jpg",
+    heroAlt: "Tree limbs and brush cleanup on a rural Arkansas property",
+    eyebrow: "Tree Work • Limbs • Brush • Light Clearing",
+    h1: "Tree Work Depends On The Job, And We Look At It That Way.",
+    intro:
+      "Red Dirt can help with small tree work, limb cleanup, brush removal, tree debris, and light clearing when the job fits our crew, equipment, and access. We are not the crew for dangerous removals over houses, power lines, or tight overhead hazards, but we can look at practical rural tree and clearing work.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Ask About Tree Work",
+    overviewEyebrow: "Look First, Quote Fair",
+    overviewTitle: "Some tree jobs are a fit. Some need a specialized tree crew.",
+    overviewText: [
+      "Tree work can be simple, or it can be dangerous. Limbs already on the ground, brush piles, small trees, fence-line growth, and light clearing are often practical jobs. Trees leaning over a house, close to power lines, or tied up in overhead hazards are a different story.",
+      "We would rather look at the job and be honest than take on something that should be handled by a specialized tree service. Send photos from a safe distance and show what is near the tree, not just the tree itself.",
+      "We are also open to light clearing and small acreage cleanup when the job fits, such as opening up an acre or two, knocking back brush, cleaning up small trees, or hauling debris after cutting."
+    ],
+    cards: [
+      "Small tree work",
+      "Downed limb cleanup",
+      "Brush removal",
+      "Tree debris hauling",
+      "Fence-line cleanup",
+      "Light acreage clearing"
+    ],
+    detailImage: "/images/work-4.jpg",
+    detailAlt: "Rural property opened up after tree and brush cleanup",
+    detailEyebrow: "Safety Matters",
+    detailTitle: "We avoid power lines, houses, and dangerous overhead work.",
+    detailText: [
+      "The first question with tree work is not price. It is whether the job can be done safely with the right equipment and crew. Power lines, houses, tight drops, heavy lean, dead tops, and hanging limbs all matter.",
+      "For the jobs that fit, we can help cut, drag, load, haul, grind stumps separately, and clean up the mess so the property is more usable again.",
+      "For jobs that do not fit, we will tell you straight instead of pretending every tree is the same."
+    ],
+    areaTitle: "Tree work and light clearing around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby rural areas.",
+    areaText:
+      "Red Dirt quotes small tree work, limb cleanup, brush removal, tree debris hauling, and light acreage clearing around the Amity and Glenwood area, with larger rural jobs quoted by photos, access, and safety.",
+    schemaName: "Tree Work and Light Clearing Service",
+    schemaDescription:
+      "Small tree work, limb cleanup, brush removal, tree debris hauling, light acreage clearing, and rural property cleanup around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas towns.",
+    serviceType: [
+      "Tree work",
+      "Limb cleanup",
+      "Brush removal",
+      "Tree debris hauling",
+      "Small acreage clearing",
+      "Light clearing"
+    ],
+    areaServed: coreAreaServed,
+    related: [
+      serviceLinks.find((item) => item.href === "/stump-grinding")!,
+      serviceLinks.find((item) => item.href === "/storm-cleanup")!,
+      serviceLinks.find((item) => item.href === "/bush-hogging")!,
+      areaLinks.find((item) => item.href === "/amity-ar")!,
+      areaLinks.find((item) => item.href === "/glenwood-ar")!,
+      areaLinks.find((item) => item.href === "/mountain-pine-ar")!,
+    ],
+  },
+
+  "stump-grinding": {
+    slug: "stump-grinding",
+    title: "Stump Grinding in Rural Arkansas",
+    description:
+      "Red Dirt Property Services handles stump grinding for yards, driveways, fence lines, cleanup areas, and rural properties around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas towns.",
+    ogTitle: "Stump Grinding | Red Dirt Property Services",
+    ogDescription:
+      "Stump grinding for rural Arkansas yards, driveways, fence lines, cleanup areas, and properties around Amity, Glenwood, Mount Ida, Hot Springs, and Arkadelphia.",
+    heroImage: "/images/tractor-pov.jpg",
+    heroAlt: "Equipment work on rural Arkansas property for stump grinding and cleanup",
+    eyebrow: "Stump Grinding • Cleanup • Rural Properties",
+    h1: "Old Stumps Do Not Have To Sit In The Way Forever.",
+    intro:
+      "Stumps can make mowing harder, get in the way of driveways and cleanup work, or leave a property looking unfinished after trees come down. Red Dirt can quote stump grinding by size, location, access, and how much cleanup needs done after the grind.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get a Stump Quote",
+    overviewEyebrow: "Stump Grinding",
+    overviewTitle: "Size, access, roots, rocks, and cleanup all matter.",
+    overviewText: [
+      "A stump out in the open is a different job than one next to a fence, driveway, structure, buried metal, rocks, or tight landscaping. The size of the stump, the root flare, and room to get equipment in all affect the quote.",
+      "We can look at single stumps, multiple stumps, stumps tied to cleanup work, and stumps left after small tree or storm jobs. Photos help us see the stump and the access around it.",
+      "Stump grinding is usually about getting the stump down and out of the way. If you need hauling, dirt work, or cleanup after, we can quote that with it."
+    ],
+    cards: [
+      "Single stump grinding",
+      "Multiple stumps",
+      "Fence-line stumps",
+      "Driveway edge stumps",
+      "Storm cleanup stumps",
+      "Cleanup after grinding"
+    ],
+    detailImage: "/images/equipment-1.jpg",
+    detailAlt: "Equipment for stump grinding and property cleanup in Arkansas",
+    detailEyebrow: "Before We Grind",
+    detailTitle: "Show the stump, the access, and anything close to it.",
+    detailText: [
+      "For a stump quote, send photos of the stump from a few angles, something for size if you can, and a wider photo showing how we get to it. Let us know if there are rocks, fencing, utilities, concrete, or buried material nearby.",
+      "Stumps near underground utilities, tight structures, or unknown buried material need to be treated carefully. We quote based on what can be done safely and practically.",
+      "If the stump is part of a bigger cleanup, tree debris, dirt work, or brush job, we can look at everything together."
+    ],
+    areaTitle: "Stump grinding around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby rural areas.",
+    areaText:
+      "Red Dirt quotes stump grinding around local homes, cabins, rural properties, driveways, fence lines, and cleanup areas when the job fits equipment access and travel.",
+    schemaName: "Stump Grinding Service",
+    schemaDescription:
+      "Stump grinding for yards, driveways, fence lines, cleanup areas, storm cleanup, and rural properties around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas towns.",
+    serviceType: [
+      "Stump grinding",
+      "Stump removal",
+      "Tree stump grinding",
+      "Fence-line stump grinding",
+      "Driveway stump grinding",
+      "Cleanup after stump grinding"
+    ],
+    areaServed: coreAreaServed,
+    related: [
+      serviceLinks.find((item) => item.href === "/tree-work")!,
+      serviceLinks.find((item) => item.href === "/property-cleanup")!,
+      serviceLinks.find((item) => item.href === "/dirt-work")!,
+      areaLinks.find((item) => item.href === "/amity-ar")!,
+      areaLinks.find((item) => item.href === "/glenwood-ar")!,
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+    ],
+  },
 };
 
 export const locationPages: Record<string, LocationPageData> = {
@@ -406,7 +602,7 @@ export const locationPages: Record<string, LocationPageData> = {
     schemaDescription:
       "Property cleanup, junk removal, hauling, bush hogging, cleanouts, storm cleanup, and light demolition around Amity, Arkansas.",
     areaServed: ["Amity AR", "Glenwood AR", "Alpine AR", "Rosboro AR", "Kirby AR"],
-    serviceType: ["Property cleanup", "Junk removal", "Bush hogging", "Hauling", "Cleanouts", "Light demolition"],
+    serviceType: ["Property cleanup", "Junk removal", "Bush hogging", "Hauling", "Cleanouts", "Light demolition", "Dirt work", "Tree work", "Stump grinding"],
     related: [
       serviceLinks.find((item) => item.href === "/property-cleanup")!,
       serviceLinks.find((item) => item.href === "/bush-hogging")!,
@@ -464,7 +660,7 @@ export const locationPages: Record<string, LocationPageData> = {
     schemaDescription:
       "Property cleanup, cabin cleanouts, brush hogging, junk removal, hauling, storm cleanup, and light demolition around Mount Ida, Arkansas.",
     areaServed: ["Mount Ida AR", "Norman AR", "Story AR", "Lake Ouachita AR", "Oden AR"],
-    serviceType: ["Property cleanup", "Cabin cleanouts", "Brush hogging", "Junk removal", "Hauling", "Storm cleanup"],
+    serviceType: ["Property cleanup", "Cabin cleanouts", "Brush hogging", "Junk removal", "Hauling", "Storm cleanup", "Dirt work", "Tree work", "Stump grinding"],
     related: [
       serviceLinks.find((item) => item.href === "/property-cleanup")!,
       serviceLinks.find((item) => item.href === "/bush-hogging")!,
@@ -522,7 +718,7 @@ export const locationPages: Record<string, LocationPageData> = {
     schemaDescription:
       "Brush hogging, property cleanup, junk removal, hauling, cleanouts, storm cleanup, and light demolition around Kirby, Arkansas.",
     areaServed: ["Kirby AR", "Daisy AR", "Amity AR", "Glenwood AR", "Murfreesboro AR"],
-    serviceType: ["Brush hogging", "Property cleanup", "Junk removal", "Hauling", "Cleanouts", "Light demolition"],
+    serviceType: ["Brush hogging", "Property cleanup", "Junk removal", "Hauling", "Cleanouts", "Light demolition", "Dirt work", "Tree work", "Stump grinding"],
     related: [
       serviceLinks.find((item) => item.href === "/bush-hogging")!,
       serviceLinks.find((item) => item.href === "/property-cleanup")!,
@@ -580,7 +776,7 @@ export const locationPages: Record<string, LocationPageData> = {
     schemaDescription:
       "Property cleanup, cabin cleanouts, brush hogging, junk removal, hauling, storm cleanup, and light demolition around Norman, Arkansas.",
     areaServed: ["Norman AR", "Caddo Gap AR", "Mount Ida AR", "Glenwood AR", "Black Springs AR"],
-    serviceType: ["Property cleanup", "Cleanouts", "Brush hogging", "Junk removal", "Hauling", "Storm cleanup"],
+    serviceType: ["Property cleanup", "Cleanouts", "Brush hogging", "Junk removal", "Hauling", "Storm cleanup", "Dirt work", "Tree work", "Stump grinding"],
     related: [
       serviceLinks.find((item) => item.href === "/cleanouts")!,
       serviceLinks.find((item) => item.href === "/property-cleanup")!,
@@ -638,7 +834,7 @@ export const locationPages: Record<string, LocationPageData> = {
     schemaDescription:
       "Property cleanup, junk hauling, brush cleanup, cleanouts, storm debris cleanup, and light demolition around Mountain Pine, Arkansas.",
     areaServed: ["Mountain Pine AR", "Hot Springs AR", "Lake Ouachita AR", "Royal AR", "Pearcy AR"],
-    serviceType: ["Property cleanup", "Junk hauling", "Brush cleanup", "Cleanouts", "Storm cleanup", "Light demolition"],
+    serviceType: ["Property cleanup", "Junk hauling", "Brush cleanup", "Cleanouts", "Storm cleanup", "Light demolition", "Dirt work", "Tree work", "Stump grinding"],
     related: [
       serviceLinks.find((item) => item.href === "/property-cleanup")!,
       serviceLinks.find((item) => item.href === "/junk-removal")!,
@@ -696,7 +892,7 @@ export const locationPages: Record<string, LocationPageData> = {
     schemaDescription:
       "Junk removal, cleanouts, hauling, property cleanup, storm cleanup, shed removal, and light demolition around Malvern, Arkansas.",
     areaServed: ["Malvern AR", "Rockport AR", "Donaldson AR", "Bismarck AR", "Hot Springs AR"],
-    serviceType: ["Junk removal", "Cleanouts", "Hauling", "Property cleanup", "Storm cleanup", "Shed removal"],
+    serviceType: ["Junk removal", "Cleanouts", "Hauling", "Property cleanup", "Storm cleanup", "Shed removal", "Dirt work", "Tree work", "Stump grinding"],
     related: [
       serviceLinks.find((item) => item.href === "/junk-removal")!,
       serviceLinks.find((item) => item.href === "/cleanouts")!,
@@ -754,7 +950,7 @@ export const locationPages: Record<string, LocationPageData> = {
     schemaDescription:
       "Property cleanup, brush hogging, junk removal, hauling, cleanouts, storm cleanup, and shed removal around Murfreesboro, Arkansas.",
     areaServed: ["Murfreesboro AR", "Kirby AR", "Daisy AR", "Delight AR", "Glenwood AR"],
-    serviceType: ["Property cleanup", "Brush hogging", "Junk removal", "Hauling", "Cleanouts", "Shed removal"],
+    serviceType: ["Property cleanup", "Brush hogging", "Junk removal", "Hauling", "Cleanouts", "Shed removal", "Dirt work", "Tree work", "Stump grinding"],
     related: [
       serviceLinks.find((item) => item.href === "/bush-hogging")!,
       serviceLinks.find((item) => item.href === "/property-cleanup")!,

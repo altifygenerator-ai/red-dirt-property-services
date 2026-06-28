@@ -4,13 +4,12 @@ import {
   FaHouseChimney,
   FaTruckPickup,
   FaTree,
-  FaPeopleCarryBox,
 } from "react-icons/fa6";
 import type { FAQ, Service, Step } from "@/types/site";
 
 export const siteData = {
   name: "Red Dirt Property Services",
-  tagline: "Property Cleanup • Hauling • Light Demolition",
+  tagline: "Property Cleanup • Dirt Work • Hauling",
   siteUrl: "https://www.reddirtpropertyservicesar.com",
   phone: "870-260-4880",
   phoneHref: "8702604880",
@@ -21,6 +20,21 @@ export const siteData = {
       title: "Property Cleanup",
       text: "Old junk, brush piles, storm mess, rental cleanouts, and the kind of cleanup jobs that get pushed off because they are too much for one person and a pickup bed.",
       icon: FaHouseChimney,
+    },
+    {
+      title: "Dirt Work",
+      text: "Driveway touch-ups, rough grading, drainage ditches, culvert help, washouts, and small dirt work jobs that need looked at with the property, access, and equipment in mind.",
+      icon: FaTruckPickup,
+    },
+    {
+      title: "Tree Work",
+      text: "Small tree work, limb cleanup, brush removal, and light clearing when the job fits. We look at tree jobs first and avoid dangerous work around power lines, houses, and tight hazards.",
+      icon: FaTree,
+    },
+    {
+      title: "Stump Grinding",
+      text: "Stumps in yards, edges, driveways, and cleanup areas can be quoted by size, access, rocks, roots, and what needs cleaned up after the grinding is done.",
+      icon: FaHammer,
     },
     {
       title: "Hauling",
@@ -41,11 +55,6 @@ export const siteData = {
       title: "Cleanouts",
       text: "Garages, outbuildings, storage spaces, inherited properties, rentals, cabins, and places that need cleared out so the owner can move forward.",
       icon: FaDumpster,
-    },
-    {
-      title: "Local Help",
-      text: "Sometimes you just need a couple local guys with a truck, trailer, tools, and common sense. That is exactly what Red Dirt was built for.",
-      icon: FaPeopleCarryBox,
     },
   ] satisfies Service[],
 
@@ -92,6 +101,7 @@ export const siteData = {
     "Property Managers",
     "Families Handling Estates",
     "Folks Cleaning Up Acreage",
+    "Landowners With Driveway Or Drainage Issues",
     "Small Contractors",
   ],
 
@@ -112,6 +122,16 @@ export const siteData = {
         "We focus on property cleanup, hauling, and light demolition. Old sheds, fences, decks, small structures, and cleanout work are a better fit than full house demolition.",
     },
     {
+      question: "Do you take tree jobs?",
+      answer:
+        "It depends on the tree and where it sits. We can look at small tree work, limb cleanup, brush removal, and light clearing, but we avoid dangerous removals around power lines, houses, and overhead hazards.",
+    },
+    {
+      question: "Can you help with driveways, ditches, culverts, or stump grinding?",
+      answer:
+        "Yes, when the job fits our equipment and access. Dirt work, drainage work, culverts, driveway touch-ups, and stump grinding are quoted after photos or an in-person look.",
+    },
+    {
       question: "Do you serve rural properties?",
       answer:
         "Yes. Red Dirt is built for rural Arkansas property work. If you are outside town, reach out and we can quote the job with mileage included.",
@@ -124,6 +144,21 @@ export const serviceNavLinks = [
     label: "Bush Hogging",
     href: "/bush-hogging",
     description: "Brush cutting, rough mowing, trails, and rural acreage cleanup",
+  },
+  {
+    label: "Dirt Work",
+    href: "/dirt-work",
+    description: "Driveway work, ditches, culverts, washouts, and rough grading",
+  },
+  {
+    label: "Tree Work",
+    href: "/tree-work",
+    description: "Small tree work, limb cleanup, brush removal, and light clearing",
+  },
+  {
+    label: "Stump Grinding",
+    href: "/stump-grinding",
+    description: "Stump grinding quoted by size, access, cleanup, and location",
   },
   {
     label: "Property Cleanup",
@@ -161,51 +196,51 @@ export const areaNavLinks = [
   {
     label: "Amity",
     href: "/amity-ar",
-    description: "Local property cleanup, hauling, brush hogging, and cleanouts",
+    description: "Local cleanup, hauling, brush hogging, dirt work, and cleanouts",
   },
   {
     label: "Glenwood",
     href: "/glenwood-ar",
-    description: "Rural cleanup, junk removal, brush hogging, and light demo",
+    description: "Rural cleanup, dirt work, brush hogging, tree work, and light demo",
   },
   {
     label: "Mount Ida",
     href: "/mount-ida-ar",
-    description: "Cabin, lake-area, and rural property cleanup work",
+    description: "Cabin, lake-area, dirt work, and rural property cleanup work",
   },
   {
     label: "Kirby",
     href: "/kirby-ar",
-    description: "Brush hogging, acreage cleanup, hauling, and cleanouts",
+    description: "Brush hogging, acreage cleanup, hauling, dirt work, and cleanouts",
   },
   {
     label: "Norman",
     href: "/norman-ar",
-    description: "Rural property cleanup, cleanouts, hauling, and brush work",
+    description: "Rural property cleanup, cleanouts, hauling, dirt work, and brush work",
   },
   {
     label: "Mountain Pine",
     href: "/mountain-pine-ar",
-    description: "Property cleanup, brush cutting, junk hauling, and storm cleanup",
+    description: "Property cleanup, brush cutting, tree cleanup, hauling, and storm cleanup",
   },
   {
     label: "Hot Springs",
     href: "/hot-springs-ar",
-    description: "Junk removal, cleanouts, hauling, and property cleanup",
+    description: "Junk removal, cleanouts, hauling, dirt work, and property cleanup",
   },
   {
     label: "Arkadelphia",
     href: "/arkadelphia-ar",
-    description: "Rental cleanouts, haul-offs, junk removal, and storm debris",
+    description: "Rental cleanouts, haul-offs, dirt work, junk removal, and storm debris",
   },
   {
     label: "Malvern",
     href: "/malvern-ar",
-    description: "Cleanouts, junk removal, hauling, and property cleanup",
+    description: "Cleanouts, junk removal, dirt work, hauling, and property cleanup",
   },
   {
     label: "Murfreesboro",
     href: "/murfreesboro-ar",
-    description: "Rural cleanup, cabin cleanouts, hauling, and brush work",
+    description: "Rural cleanup, cabin cleanouts, dirt work, hauling, and brush work",
   },
 ];

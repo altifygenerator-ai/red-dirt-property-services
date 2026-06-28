@@ -33,10 +33,10 @@ export default function Hero() {
           </h1>
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
-            From overgrown brush and storm debris to rental cleanouts, hauling,
-            old sheds, and property messes that have gotten out of hand, Red Dirt
-            Property Services helps Arkansas property owners get things cleaned
-            up and moving forward.
+            From overgrown brush and storm debris to rental cleanouts, dirt
+            work, tree cleanup, stump grinding, hauling, old sheds, and property
+            messes that have gotten out of hand, Red Dirt Property Services helps
+            Arkansas property owners get things cleaned up and moving forward.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -49,20 +49,23 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="mt-10 grid max-w-4xl grid-cols-2 gap-3 text-sm font-bold uppercase tracking-wide text-white/84 md:grid-cols-5">
+          <div className="mt-10 grid max-w-5xl grid-cols-2 gap-3 text-sm font-bold uppercase tracking-wide text-white/84 md:grid-cols-3 lg:grid-cols-6">
             <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
               Property Cleanup
+            </span>
+            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
+              Dirt Work
+            </span>
+            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
+              Tree Work
+            </span>
+            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
+              Stump Grinding
             </span>
             <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
               Hauling
             </span>
             <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
-              Cleanouts
-            </span>
-            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
-              Storm Cleanup
-            </span>
-            <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm md:col-span-1">
               Light Demo
             </span>
           </div>

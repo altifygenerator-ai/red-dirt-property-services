@@ -8,6 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: "", priority: 1, changeFrequency: "weekly" as const },
     { path: "/bush-hogging", priority: 0.96, changeFrequency: "monthly" as const },
+    { path: "/dirt-work", priority: 0.95, changeFrequency: "monthly" as const },
+    { path: "/tree-work", priority: 0.94, changeFrequency: "monthly" as const },
+    { path: "/stump-grinding", priority: 0.93, changeFrequency: "monthly" as const },
     { path: "/property-cleanup", priority: 0.95, changeFrequency: "monthly" as const },
     { path: "/junk-removal", priority: 0.94, changeFrequency: "monthly" as const },
     { path: "/cleanouts", priority: 0.93, changeFrequency: "monthly" as const },

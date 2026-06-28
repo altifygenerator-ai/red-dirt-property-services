@@ -8,8 +8,8 @@ export default function ServicesSection() {
       <div className="container">
         <SectionHeading
           eyebrow="What We Do"
-          title="Cleanup and hauling for the jobs that need more than a pickup bed."
-          text="Red Dirt focuses on practical property work for homeowners, landlords, cabin owners, and country folks who need the mess handled without a bunch of runaround."
+          title="Property work for jobs that need more than a pickup bed."
+          text="Red Dirt focuses on practical cleanup, dirt work, hauling, tree cleanup, stump grinding, and rural property work for folks who need the job handled without a bunch of runaround."
         />
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

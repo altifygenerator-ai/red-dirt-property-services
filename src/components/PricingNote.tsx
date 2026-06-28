@@ -14,14 +14,16 @@ export default function PricingNote() {
 
           <div className="space-y-5 text-lg leading-8 text-white/70">
             <p>
-              Most cleanup, hauling, and light demolition jobs need to be quoted
-              after we know the load size, labor involved, travel distance, dump
-              fees, and access to the property.
+              Most cleanup, hauling, dirt work, tree work, stump grinding, and
+              light demolition jobs need to be quoted after we know the load
+              size, labor involved, travel distance, material or dump fees, and
+              access to the property.
             </p>
             <p>
               The easiest way to start is to send a few photos and your location.
-              We can usually give a rough estimate quickly, then schedule a time
-              to look at larger projects if needed.
+              For tree work, ditches, culverts, driveways, or larger clearing
+              jobs, we may need to look first so we can quote it safely and
+              fairly.
             </p>
           </div>
         </FadeIn>
