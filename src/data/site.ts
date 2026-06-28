@@ -11,7 +11,9 @@ import type { FAQ, Service, Step } from "@/types/site";
 export const siteData = {
   name: "Red Dirt Property Services",
   tagline: "Property Cleanup • Hauling • Light Demolition",
+  siteUrl: "https://www.reddirtpropertyservicesar.com",
   phone: "870-260-4880",
+  phoneHref: "8702604880",
   email: "reddirtpropertyservicesar@gmail.com",
 
   services: [
@@ -79,6 +81,7 @@ export const siteData = {
     "Hot Springs",
     "Murfreesboro",
     "Malvern",
+    "Mountain Pine",
   ],
 
   whoWeHelp: [
@@ -115,3 +118,94 @@ export const siteData = {
     },
   ] satisfies FAQ[],
 };
+
+export const serviceNavLinks = [
+  {
+    label: "Bush Hogging",
+    href: "/bush-hogging",
+    description: "Brush cutting, rough mowing, trails, and rural acreage cleanup",
+  },
+  {
+    label: "Property Cleanup",
+    href: "/property-cleanup",
+    description: "Brush, junk, debris, neglected yards, and rough property cleanup",
+  },
+  {
+    label: "Junk Removal",
+    href: "/junk-removal",
+    description: "Furniture, appliances, debris, garage junk, and haul-off work",
+  },
+  {
+    label: "Cleanouts",
+    href: "/cleanouts",
+    description: "Rental, estate, garage, cabin, and outbuilding cleanouts",
+  },
+  {
+    label: "Shed Removal",
+    href: "/shed-removal",
+    description: "Old sheds, small structures, teardown cleanup, and debris hauling",
+  },
+  {
+    label: "Storm Cleanup",
+    href: "/storm-cleanup",
+    description: "Downed limbs, scattered debris, brush piles, and storm mess",
+  },
+  {
+    label: "Light Demolition",
+    href: "/light-demolition",
+    description: "Fences, small decks, damaged structures, and demo debris",
+  },
+];
+
+export const areaNavLinks = [
+  {
+    label: "Amity",
+    href: "/amity-ar",
+    description: "Local property cleanup, hauling, brush hogging, and cleanouts",
+  },
+  {
+    label: "Glenwood",
+    href: "/glenwood-ar",
+    description: "Rural cleanup, junk removal, brush hogging, and light demo",
+  },
+  {
+    label: "Mount Ida",
+    href: "/mount-ida-ar",
+    description: "Cabin, lake-area, and rural property cleanup work",
+  },
+  {
+    label: "Kirby",
+    href: "/kirby-ar",
+    description: "Brush hogging, acreage cleanup, hauling, and cleanouts",
+  },
+  {
+    label: "Norman",
+    href: "/norman-ar",
+    description: "Rural property cleanup, cleanouts, hauling, and brush work",
+  },
+  {
+    label: "Mountain Pine",
+    href: "/mountain-pine-ar",
+    description: "Property cleanup, brush cutting, junk hauling, and storm cleanup",
+  },
+  {
+    label: "Hot Springs",
+    href: "/hot-springs-ar",
+    description: "Junk removal, cleanouts, hauling, and property cleanup",
+  },
+  {
+    label: "Arkadelphia",
+    href: "/arkadelphia-ar",
+    description: "Rental cleanouts, haul-offs, junk removal, and storm debris",
+  },
+  {
+    label: "Malvern",
+    href: "/malvern-ar",
+    description: "Cleanouts, junk removal, hauling, and property cleanup",
+  },
+  {
+    label: "Murfreesboro",
+    href: "/murfreesboro-ar",
+    description: "Rural cleanup, cabin cleanouts, hauling, and brush work",
+  },
+];

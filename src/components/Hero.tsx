@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import { siteData } from "@/data/site";
@@ -11,11 +12,13 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_35%,rgba(159,58,42,.32),transparent_34rem)]" />
 
-      <div className="pointer-events-none absolute right-[-4rem] top-1/2 hidden -translate-y-1/2 opacity-[0.06] lg:block">
-        <img
+      <div className="pointer-events-none absolute right-[-4rem] top-1/2 hidden h-[520px] w-[520px] -translate-y-1/2 opacity-[0.06] lg:block">
+        <Image
           src="/images/logo2.png"
           alt=""
-          className="h-[520px] w-[520px] object-contain"
+          fill
+          className="object-contain"
+          sizes="520px"
         />
       </div>
 
@@ -41,7 +44,7 @@ export default function Hero() {
               Get a Free Quote
             </Link>
 
-            <Link href={`tel:${siteData.phone}`} className="btn btn-secondary">
+            <Link href={`tel:${siteData.phoneHref}`} className="btn btn-secondary">
               Call or Text Photos
             </Link>
           </div>

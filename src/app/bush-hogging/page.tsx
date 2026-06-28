@@ -4,25 +4,26 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Brush Hogging, Bush Hogging & Brush Cutting | Red Dirt Property Services",
+  title: "Brush Hogging, Bush Hogging & Brush Cutting",
   description:
     "Brush hogging, bush hogging, rough mowing, and brush cutting around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and nearby rural Arkansas communities. Red Dirt Property Services helps clear overgrown fields, brush, trails, fence lines, and rural properties.",
   alternates: {
     canonical: "/bush-hogging",
   },
   openGraph: {
-    title: "Brush Hogging, Bush Hogging & Brush Cutting | Red Dirt Property Services",
+    title: "Brush Hogging, Bush Hogging & Brush Cutting",
     description:
       "Rural Arkansas brush hogging, bush hogging, brush cutting, field mowing, and property cleanup around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, and Arkadelphia.",
-    url: "https://reddirtpropertyservicesar.com/bush-hogging",
+    url: "https://www.reddirtpropertyservicesar.com/bush-hogging",
     images: ["/images/tractor-bush-hog.jpg"],
   },
 };
 
-const siteUrl = "https://reddirtpropertyservicesar.com";
+const siteUrl = "https://www.reddirtpropertyservicesar.com";
 
 export default function BushHoggingPage() {
   const serviceSchema = {
@@ -91,7 +92,7 @@ export default function BushHoggingPage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href={`tel:${siteData.phone}`} className="btn btn-primary">
+              <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
                 Call or Text Photos
               </Link>
               <Link href="/#contact" className="btn btn-secondary">
@@ -212,6 +213,17 @@ export default function BushHoggingPage() {
           </FadeIn>
         </div>
       </section>
+
+      <RelatedLinksSection
+        title="Other cleanup help for overgrown rural places."
+        text="Brush work often ties into hauling, storm cleanup, and getting a whole property usable again."
+        links={[
+          { label: "Property Cleanup", href: "/property-cleanup", text: "Brush, junk, debris, and neglected areas cleaned up around rural Arkansas properties." },
+          { label: "Storm Cleanup", href: "/storm-cleanup", text: "Downed limbs, brush piles, and storm debris cleaned up after Arkansas weather." },
+          { label: "Glenwood Area", href: "/glenwood-ar", text: "Brush hogging, hauling, and rural cleanup around Glenwood and nearby places." },
+          { label: "Mount Ida Area", href: "/mount-ida-ar", text: "Cabin, lake-area, and rural property cleanup around Mount Ida." },
+        ]}
+      />
 
       <Footer />
     </main>

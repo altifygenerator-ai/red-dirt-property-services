@@ -20,7 +20,7 @@ export default function FinalCTA() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href={`tel:${siteData.phone}`} className="btn btn-primary">
+            <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
               Call or Text {siteData.phone}
             </Link>
             <Link href={`mailto:${siteData.email}`} className="btn btn-secondary">

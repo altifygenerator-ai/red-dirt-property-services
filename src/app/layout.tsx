@@ -1,21 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow_Condensed, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { siteData } from "@/data/site";
 import "./globals.css";
 
-const heading = Barlow_Condensed({
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-heading",
-});
-
-const body = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-body",
-});
-
-const siteUrl = "https://reddirtpropertyservicesar.com";
+const siteUrl = siteData.siteUrl;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -165,8 +153,8 @@ export default function RootLayout({
     name: "Red Dirt Property Services",
     image: `${siteUrl}/images/logo2.png`,
     url: siteUrl,
-    telephone: "870-260-4880",
-    email: "reddirtpropertyservicesar@gmail.com",
+    telephone: siteData.phone,
+    email: siteData.email,
     description:
       "Junk removal, brush hogging, bush hogging, property cleanup, cleanouts, hauling, storm cleanup, and light demolition serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
     areaServed: [
@@ -184,6 +172,7 @@ export default function RootLayout({
       "Lake Hamilton AR",
       "Murfreesboro AR",
       "Malvern AR",
+      "Mountain Pine AR",
     ],
     address: {
       "@type": "PostalAddress",
@@ -249,12 +238,19 @@ export default function RootLayout({
           name: "Storm Cleanup",
         },
       },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Shed Removal",
+        },
+      },
     ],
   };
 
   return (
     <html lang="en">
-      <body className={`${heading.variable} ${body.variable}`}>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -4,9 +4,10 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
 
-const siteUrl = "https://reddirtpropertyservicesar.com";
+const siteUrl = "https://www.reddirtpropertyservicesar.com";
 
 export const metadata: Metadata = {
   title: "Property Cleanup & Bush Hogging in Glenwood AR",
@@ -95,7 +96,7 @@ export default function GlenwoodPage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href={`tel:${siteData.phone}`} className="btn btn-primary">
+              <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
                 Call or Text Photos
               </Link>
               <Link href="/#contact" className="btn btn-secondary">
@@ -188,6 +189,17 @@ export default function GlenwoodPage() {
           </FadeIn>
         </div>
       </section>
+
+      <RelatedLinksSection
+        title="Glenwood services and nearby areas."
+        text="A lot of Glenwood jobs start as one pile and turn into brush work, hauling, cleanouts, or light demo."
+        links={[
+          { label: "Bush Hogging", href: "/bush-hogging", text: "Brush cutting, rough mowing, field edges, trails, and rural property cleanup." },
+          { label: "Property Cleanup", href: "/property-cleanup", text: "Brush, junk, storm mess, debris, and rough areas cleaned up." },
+          { label: "Amity Area", href: "/amity-ar", text: "Local cleanup, hauling, brush hogging, and cleanouts around Amity." },
+          { label: "Norman Area", href: "/norman-ar", text: "Cabin cleanouts, hauling, brush work, and rural cleanup around Norman." },
+        ]}
+      />
 
       <Footer />
     </main>

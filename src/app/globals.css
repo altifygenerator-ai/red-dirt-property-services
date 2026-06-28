@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
+  --font-heading: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --font-body: Manrope, Inter, system-ui, sans-serif;
   --bg: #171717;
   --bg-deep: #101010;
   --bg-soft: #211915;

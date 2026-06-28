@@ -1,53 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteData } from "@/data/site";
-
-const serviceLinks = [
-  {
-    label: "Services Overview",
-    href: "/#services",
-    description: "Property cleanup, hauling, cleanouts, and light demo",
-  },
-  {
-    label: "Brush Hogging",
-    href: "/bush-hogging",
-    description: "Brush cutting, rough mowing, and rural property cleanup",
-  },
-  {
-    label: "Cleanouts",
-    href: "/cleanouts",
-    description: "Rental cleanouts, estate cleanouts, junk removal, and hauling",
-  },
-  {
-    label: "Light Demolition",
-    href: "/light-demolition",
-    description: "Shed removal, fence removal, small structures, and debris hauling",
-  },
-];
-
-const areaLinks = [
-  {
-    label: "Glenwood Area",
-    href: "/glenwood-ar",
-    description: "Property cleanup, brush hogging, hauling, and rural cleanup",
-  },
-  {
-    label: "Hot Springs Area",
-    href: "/hot-springs-ar",
-    description: "Junk removal, cleanouts, hauling, and property cleanup",
-  },
-  {
-    label: "Arkadelphia Area",
-    href: "/arkadelphia-ar",
-    description: "Cleanouts, hauling, junk removal, and storm cleanup",
-  },
-];
+import { areaNavLinks, serviceNavLinks, siteData } from "@/data/site";
 
 export default function Header() {
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#171717]/86 backdrop-blur-xl">
       <div className="container flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3" aria-label="Red Dirt Property Services home">
           <Image
             src="/images/logo2.png"
             alt="Red Dirt Property Services logo"
@@ -70,21 +29,23 @@ export default function Header() {
               </span>
             </Link>
 
-            <div className="invisible absolute left-1/2 top-full w-[340px] -translate-x-1/2 translate-y-3 rounded-2xl border border-white/10 bg-[#171717]/96 p-3 opacity-0 shadow-2xl backdrop-blur-xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              {serviceLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block rounded-xl px-4 py-3 transition hover:bg-white/[0.06]"
-                >
-                  <span className="block text-sm font-black uppercase tracking-wide text-white">
-                    {item.label}
-                  </span>
-                  <span className="mt-1 block text-xs font-medium leading-5 text-white/52">
-                    {item.description}
-                  </span>
-                </Link>
-              ))}
+            <div className="invisible absolute left-1/2 top-full w-[580px] -translate-x-1/2 translate-y-3 rounded-2xl border border-white/10 bg-[#171717]/96 p-3 opacity-0 shadow-2xl backdrop-blur-xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="grid grid-cols-2 gap-1">
+                {serviceNavLinks.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block rounded-xl px-4 py-3 transition hover:bg-white/[0.06]"
+                  >
+                    <span className="block text-sm font-black uppercase tracking-wide text-white">
+                      {item.label}
+                    </span>
+                    <span className="mt-1 block text-xs font-medium leading-5 text-white/52">
+                      {item.description}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -99,21 +60,23 @@ export default function Header() {
               </span>
             </Link>
 
-            <div className="invisible absolute left-1/2 top-full w-[320px] -translate-x-1/2 translate-y-3 rounded-2xl border border-white/10 bg-[#171717]/96 p-3 opacity-0 shadow-2xl backdrop-blur-xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              {areaLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block rounded-xl px-4 py-3 transition hover:bg-white/[0.06]"
-                >
-                  <span className="block text-sm font-black uppercase tracking-wide text-white">
-                    {item.label}
-                  </span>
-                  <span className="mt-1 block text-xs font-medium leading-5 text-white/52">
-                    {item.description}
-                  </span>
-                </Link>
-              ))}
+            <div className="invisible absolute left-1/2 top-full w-[600px] -translate-x-1/2 translate-y-3 rounded-2xl border border-white/10 bg-[#171717]/96 p-3 opacity-0 shadow-2xl backdrop-blur-xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="grid grid-cols-2 gap-1">
+                {areaNavLinks.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block rounded-xl px-4 py-3 transition hover:bg-white/[0.06]"
+                  >
+                    <span className="block text-sm font-black uppercase tracking-wide text-white">
+                      {item.label}
+                    </span>
+                    <span className="mt-1 block text-xs font-medium leading-5 text-white/52">
+                      {item.description}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -127,7 +90,7 @@ export default function Header() {
         </nav>
 
         <Link
-          href={`tel:${siteData.phone}`}
+          href={`tel:${siteData.phoneHref}`}
           className="btn btn-primary hidden sm:inline-flex"
         >
           Call / Text

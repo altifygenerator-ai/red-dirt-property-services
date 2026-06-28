@@ -4,6 +4,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -17,12 +18,12 @@ export const metadata: Metadata = {
     title: "Light Demolition & Shed Removal | Red Dirt Property Services",
     description:
       "Light demolition, shed removal, fence removal, small structure removal, and debris hauling around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, and Arkadelphia.",
-    url: "https://reddirtpropertyservicesar.com/light-demolition",
+    url: "https://www.reddirtpropertyservicesar.com/light-demolition",
     images: ["/images/equipment-1.jpg"],
   },
 };
 
-const siteUrl = "https://reddirtpropertyservicesar.com";
+const siteUrl = "https://www.reddirtpropertyservicesar.com";
 
 export default function LightDemolitionPage() {
   const serviceSchema = {
@@ -88,7 +89,7 @@ export default function LightDemolitionPage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href={`tel:${siteData.phone}`} className="btn btn-primary">
+              <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
                 Call or Text Photos
               </Link>
               <Link href="/#contact" className="btn btn-secondary">
@@ -209,6 +210,17 @@ export default function LightDemolitionPage() {
           </FadeIn>
         </div>
       </section>
+
+      <RelatedLinksSection
+        title="Related demo and cleanup work."
+        text="Old structures usually leave debris, junk, and rough cleanup behind. These pages cover the work that often goes with light demo."
+        links={[
+          { label: "Shed Removal", href: "/shed-removal", text: "Old sheds, small outbuildings, fence lines, and demo debris handled by Red Dirt." },
+          { label: "Junk Removal", href: "/junk-removal", text: "Haul-off help for furniture, appliances, debris, and junk piles." },
+          { label: "Property Cleanup", href: "/property-cleanup", text: "Whole-property cleanup for brush, debris, junk, and rough rural spots." },
+          { label: "Malvern Area", href: "/malvern-ar", text: "Cleanouts, junk removal, shed removal, and hauling around Malvern." },
+        ]}
+      />
 
       <Footer />
     </main>

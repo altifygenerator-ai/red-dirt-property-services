@@ -4,25 +4,26 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Property Cleanouts & Junk Removal | Red Dirt Property Services",
+  title: "Property Cleanouts & Junk Removal",
   description:
     "Property cleanouts, junk removal, estate cleanouts, rental cleanouts, garage cleanouts, and hauling around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and rural Arkansas.",
   alternates: {
     canonical: "/cleanouts",
   },
   openGraph: {
-    title: "Property Cleanouts & Junk Removal | Red Dirt Property Services",
+    title: "Property Cleanouts & Junk Removal",
     description:
       "Local property cleanouts, junk removal, estate cleanouts, rental cleanouts, and hauling around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, and Arkadelphia.",
-    url: "https://reddirtpropertyservicesar.com/cleanouts",
+    url: "https://www.reddirtpropertyservicesar.com/cleanouts",
     images: ["/images/truck-trailers.jpg"],
   },
 };
 
-const siteUrl = "https://reddirtpropertyservicesar.com";
+const siteUrl = "https://www.reddirtpropertyservicesar.com";
 
 export default function CleanoutsPage() {
   const serviceSchema = {
@@ -87,7 +88,7 @@ export default function CleanoutsPage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href={`tel:${siteData.phone}`} className="btn btn-primary">
+              <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
                 Call or Text Photos
               </Link>
               <Link href="/#contact" className="btn btn-secondary">
@@ -207,6 +208,17 @@ export default function CleanoutsPage() {
           </FadeIn>
         </div>
       </section>
+
+      <RelatedLinksSection
+        title="More hauling and cleanout help."
+        text="Cleanouts often turn into junk removal, property cleanup, or light demolition once the real mess is uncovered."
+        links={[
+          { label: "Junk Removal", href: "/junk-removal", text: "Furniture, appliances, garage junk, and debris hauled off without the runaround." },
+          { label: "Property Cleanup", href: "/property-cleanup", text: "Brush, junk, debris, old materials, and rural cleanup work for rough properties." },
+          { label: "Hot Springs Area", href: "/hot-springs-ar", text: "Cleanouts, junk removal, hauling, and property cleanup around Hot Springs." },
+          { label: "Arkadelphia Area", href: "/arkadelphia-ar", text: "Rental cleanouts, estate cleanouts, junk hauling, and storm cleanup around Arkadelphia." },
+        ]}
+      />
 
       <Footer />
     </main>

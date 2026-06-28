@@ -4,9 +4,10 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
 
-const siteUrl = "https://reddirtpropertyservicesar.com";
+const siteUrl = "https://www.reddirtpropertyservicesar.com";
 
 export const metadata: Metadata = {
   title: "Junk Removal, Brush Hogging & Property Cleanup in Hot Springs AR",
@@ -99,7 +100,7 @@ export default function HotSpringsPage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href={`tel:${siteData.phone}`} className="btn btn-primary">
+              <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
                 Call or Text Photos
               </Link>
               <Link href="/#contact" className="btn btn-secondary">
@@ -195,6 +196,17 @@ export default function HotSpringsPage() {
           </FadeIn>
         </div>
       </section>
+
+      <RelatedLinksSection
+        title="Hot Springs cleanup services."
+        text="Hot Springs jobs can be simple junk removal, rental cleanouts, storm cleanup, or rural property work outside town."
+        links={[
+          { label: "Junk Removal", href: "/junk-removal", text: "Furniture, appliances, debris, garage junk, and haul-off work around Southwest Arkansas." },
+          { label: "Cleanouts", href: "/cleanouts", text: "Rental, estate, garage, cabin, and outbuilding cleanouts." },
+          { label: "Storm Cleanup", href: "/storm-cleanup", text: "Downed limbs, brush piles, scattered debris, and cleanup after Arkansas weather." },
+          { label: "Mountain Pine Area", href: "/mountain-pine-ar", text: "Property cleanup, brush cleanup, junk hauling, and storm debris around Mountain Pine." },
+        ]}
+      />
 
       <Footer />
     </main>

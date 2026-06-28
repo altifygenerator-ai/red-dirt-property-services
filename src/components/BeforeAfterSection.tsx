@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const cleanupPhotos = [
   {
@@ -86,12 +87,12 @@ export default function BeforeAfterSection() {
           </div>
 
           <div className="before-after-actions">
-            <a className="btn btn-primary" href="tel:8702604536">
+            <a className="btn btn-primary" href="tel:8702604880">
               Call for a Quote
             </a>
-            <a className="btn btn-secondary" href="#contact">
+            <Link className="btn btn-secondary" href="/#contact">
               Send Photos
-            </a>
+            </Link>
           </div>
         </div>
       </div>

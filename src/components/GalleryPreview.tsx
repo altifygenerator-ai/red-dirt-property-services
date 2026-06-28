@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
-import SectionHeading from "@/components/SectionHeading";
 
 const galleryImages = [
   {

@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { siteData } from "@/data/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://reddirtpropertyservicesar.com";
+  const baseUrl = siteData.siteUrl;
 
   return {
     rules: {

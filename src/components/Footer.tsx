@@ -1,24 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteData } from "@/data/site";
-
-const serviceLinks = [
-  { label: "Brush Hogging", href: "/bush-hogging" },
-  { label: "Cleanouts", href: "/cleanouts" },
-  { label: "Light Demolition", href: "/light-demolition" },
-];
-
-const areaLinks = [
-  { label: "Glenwood Area", href: "/glenwood-ar" },
-  { label: "Hot Springs Area", href: "/hot-springs-ar" },
-  { label: "Arkadelphia Area", href: "/arkadelphia-ar" },
-];
+import { areaNavLinks, serviceNavLinks, siteData } from "@/data/site";
 
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111] py-10">
       <div className="container">
-        <div className="grid gap-10 md:grid-cols-[1.25fr_0.75fr_0.75fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.15fr_1fr_1fr_1fr]">
           <div className="flex items-center gap-5">
             <Image
               src="/images/logo2.png"
@@ -46,8 +34,8 @@ export default function Footer() {
               Services
             </p>
 
-            <div className="flex flex-col gap-2 text-sm text-white/62">
-              {serviceLinks.map((item) => (
+            <div className="grid gap-2 text-sm text-white/62 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+              {serviceNavLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -64,8 +52,8 @@ export default function Footer() {
               Areas
             </p>
 
-            <div className="flex flex-col gap-2 text-sm text-white/62">
-              {areaLinks.map((item) => (
+            <div className="grid gap-2 text-sm text-white/62 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+              {areaNavLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -78,7 +66,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-2 text-sm text-white/62 md:text-right">
-            <Link href={`tel:${siteData.phone}`} className="hover:text-white">
+            <Link href={`tel:${siteData.phoneHref}`} className="hover:text-white">
               {siteData.phone}
             </Link>
 
@@ -93,7 +81,7 @@ export default function Footer() {
             </Link>
 
             <Link
-              href="https://hometownwebservicesar.cc"
+              href="https://hometownwebservicesar.com"
               target="_blank"
               rel="noreferrer"
               className="pt-2 text-white/36 hover:text-white/70"

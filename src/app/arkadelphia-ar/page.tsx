@@ -4,9 +4,10 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
 
-const siteUrl = "https://reddirtpropertyservicesar.com";
+const siteUrl = "https://www.reddirtpropertyservicesar.com";
 
 export const metadata: Metadata = {
   title: "Junk Removal, Cleanouts & Hauling in Arkadelphia AR",
@@ -96,7 +97,7 @@ export default function ArkadelphiaPage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href={`tel:${siteData.phone}`} className="btn btn-primary">
+              <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
                 Call or Text Photos
               </Link>
               <Link href="/#contact" className="btn btn-secondary">
@@ -188,6 +189,17 @@ export default function ArkadelphiaPage() {
           </FadeIn>
         </div>
       </section>
+
+      <RelatedLinksSection
+        title="Arkadelphia cleanup services."
+        text="Arkadelphia area work often centers on rentals, haul-offs, storm debris, and property cleanups that need a trailer and a steady crew."
+        links={[
+          { label: "Cleanouts", href: "/cleanouts", text: "Rental, estate, garage, cabin, and outbuilding cleanouts around rural Arkansas." },
+          { label: "Junk Removal", href: "/junk-removal", text: "Furniture, appliances, debris, garage junk, and haul-off work." },
+          { label: "Shed Removal", href: "/shed-removal", text: "Old sheds, small structures, fences, and demo debris cleaned up and hauled off." },
+          { label: "Amity Area", href: "/amity-ar", text: "Local Red Dirt cleanup, hauling, brush hogging, and light demo around Amity." },
+        ]}
+      />
 
       <Footer />
     </main>
