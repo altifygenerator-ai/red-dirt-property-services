@@ -36,7 +36,7 @@ export default function VideoProofSection() {
               See Our Work
             </Link>
 
-            <Link href="#contact" className="btn btn-secondary">
+            <Link href="#quote-form" className="btn btn-secondary">
               Get A Quote
             </Link>
           </div>

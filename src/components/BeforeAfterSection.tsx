@@ -88,9 +88,9 @@ export default function BeforeAfterSection() {
 
           <div className="before-after-actions">
             <a className="btn btn-primary" href="tel:8702604880">
-              Call for a Quote
+              Call or Text
             </a>
-            <Link className="btn btn-secondary" href="/#contact">
+            <Link className="btn btn-secondary" href="/#quote-form">
               Send Photos
             </Link>
           </div>

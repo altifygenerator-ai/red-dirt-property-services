@@ -76,7 +76,7 @@ export default function Footer() {
 
             <p>Based around Amity & Glenwood, Arkansas</p>
 
-            <Link href="/#quote" className="pt-2 hover:text-white">
+            <Link href="/#quote-form" className="pt-2 hover:text-white">
               Get a Free Quote
             </Link>
 

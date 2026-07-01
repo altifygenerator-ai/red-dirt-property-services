@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Red Dirt Property Services
 
-## Getting Started
+Next.js site for Red Dirt Property Services.
 
-First, run the development server:
+## Local setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quote form / Resend setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The hero quote form posts to:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```txt
+/api/quote
+```
 
-## Learn More
+The route sends quote requests through Resend to:
 
-To learn more about Next.js, take a look at the following resources:
+```txt
+reddirtpropertyservicesar@gmail.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Use `.env.local.example` as the template. Create or edit `.env.local` with the real Resend key:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+RESEND_API_KEY=your_resend_key_here
+QUOTE_TO_EMAIL=reddirtpropertyservicesar@gmail.com
+QUOTE_FROM_EMAIL="Red Dirt Property Services <quotes@hometownwebservicesar.cc>"
+QUOTE_REPLY_TO_EMAIL=reddirtpropertyservicesar@gmail.com
+```
 
-## Deploy on Vercel
+The sending domain/address is set to `hometownwebservicesar.cc`, so that domain or sender should be verified in Resend before the form is used live.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Checks
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run build
+```

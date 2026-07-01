@@ -61,7 +61,7 @@ export default function ServiceLandingPage({ page }: ServiceLandingPageProps) {
               <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
                 {page.primaryCta}
               </Link>
-              <Link href="/#contact" className="btn btn-secondary">
+              <Link href="/#quote-form" className="btn btn-secondary">
                 {page.secondaryCta}
               </Link>
             </div>

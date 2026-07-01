@@ -299,6 +299,53 @@ h4 {
   justify-content: flex-end;
 }
 
+
+.quote-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.quote-field span {
+  color: rgba(244, 241, 236, 0.74);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.quote-field input,
+.quote-field select,
+.quote-field textarea {
+  width: 100%;
+  border: 1px solid rgba(244, 241, 236, 0.16);
+  border-radius: 1rem;
+  background: rgba(16, 16, 16, 0.72);
+  color: var(--paper);
+  outline: none;
+  padding: 0.9rem 1rem;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.quote-field input::placeholder,
+.quote-field textarea::placeholder {
+  color: rgba(244, 241, 236, 0.36);
+}
+
+.quote-field select {
+  appearance: auto;
+}
+
+.quote-field input:focus,
+.quote-field select:focus,
+.quote-field textarea:focus {
+  border-color: rgba(216, 194, 165, 0.55);
+  background: rgba(16, 16, 16, 0.9);
+  box-shadow: 0 0 0 4px rgba(159, 58, 42, 0.18);
+}
+
 @media (max-width: 850px) {
   .before-after-head,
   .before-after-cta {

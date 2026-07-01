@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
+import QuoteForm from "@/components/QuoteForm";
 import { siteData } from "@/data/site";
 
 export default function Hero() {
@@ -8,7 +9,7 @@ export default function Hero() {
     <section className="relative min-h-screen overflow-hidden pt-20">
       <div className="absolute inset-0 bg-[url('/images/hero.jpg')] bg-cover bg-center" />
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,13,12,.95)_0%,rgba(16,14,13,.82)_44%,rgba(80,28,20,.42)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,13,12,.96)_0%,rgba(16,14,13,.87)_45%,rgba(80,28,20,.52)_100%)]" />
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_35%,rgba(159,58,42,.32),transparent_34rem)]" />
 
@@ -22,8 +23,8 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container relative z-10 flex min-h-[calc(100vh-80px)] items-center py-20">
-        <FadeIn className="max-w-4xl">
+      <div className="container relative z-10 grid min-h-[calc(100vh-80px)] items-center gap-10 py-16 lg:grid-cols-[1.02fr_0.88fr] lg:py-20">
+        <FadeIn>
           <p className="eyebrow mb-5">
             Based in the Amity & Glenwood Area • Serving Rural Arkansas
           </p>
@@ -40,7 +41,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link href="#contact" className="btn btn-primary">
+            <Link href="#quote-form" className="btn btn-primary">
               Get a Free Quote
             </Link>
 
@@ -49,7 +50,7 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="mt-10 grid max-w-5xl grid-cols-2 gap-3 text-sm font-bold uppercase tracking-wide text-white/84 md:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-10 grid max-w-5xl grid-cols-2 gap-3 text-sm font-bold uppercase tracking-wide text-white/84 md:grid-cols-3">
             <span className="rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur-sm">
               Property Cleanup
             </span>
@@ -69,6 +70,10 @@ export default function Hero() {
               Light Demo
             </span>
           </div>
+        </FadeIn>
+
+        <FadeIn delay={0.08}>
+          <QuoteForm />
         </FadeIn>
       </div>
     </section>

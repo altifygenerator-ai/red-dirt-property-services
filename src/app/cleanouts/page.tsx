@@ -91,7 +91,7 @@ export default function CleanoutsPage() {
               <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
                 Call or Text Photos
               </Link>
-              <Link href="/#contact" className="btn btn-secondary">
+              <Link href="/#quote-form" className="btn btn-secondary">
                 Get a Quote
               </Link>
             </div>
