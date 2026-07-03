@@ -60,8 +60,8 @@ export default function Header() {
               </span>
             </Link>
 
-            <div className="invisible absolute left-1/2 top-full w-[600px] -translate-x-1/2 translate-y-3 rounded-2xl border border-white/10 bg-[#171717]/96 p-3 opacity-0 shadow-2xl backdrop-blur-xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <div className="grid grid-cols-2 gap-1">
+            <div className="invisible absolute left-1/2 top-full w-[820px] -translate-x-1/2 translate-y-3 rounded-2xl border border-white/10 bg-[#171717]/96 p-3 opacity-0 shadow-2xl backdrop-blur-xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="grid grid-cols-3 gap-1">
                 {areaNavLinks.map((item) => (
                   <Link
                     key={item.href}

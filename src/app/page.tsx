@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
@@ -13,6 +14,16 @@ import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import BeforeAfterSection from "@/components/BeforeAfterSection";
+import HotSpringsSeoSection from "@/components/HotSpringsSeoSection";
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    url: "/",
+  },
+};
+
 export default function Home() {
   return (
     <main>
@@ -27,6 +38,7 @@ export default function Home() {
       <HowItWorks />
       <WhoWeHelp />
       <ServiceArea />
+      <HotSpringsSeoSection compact />
       <AboutSection />
       <FAQSection />
       <FinalCTA />

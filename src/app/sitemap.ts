@@ -1,38 +1,42 @@
 import type { MetadataRoute } from "next";
+import { allSeoPageSlugs } from "@/data/seoPages";
 import { siteData } from "@/data/site";
+
+const lastModified = new Date("2026-07-03");
+
+const priorityBySlug: Record<string, number> = {
+  "hot-springs-ar": 0.96,
+  "hot-springs-junk-removal": 0.95,
+  "hot-springs-property-cleanup": 0.95,
+  "hot-springs-brush-hogging": 0.94,
+  "hot-springs-cleanouts": 0.94,
+  "hot-springs-shed-removal": 0.92,
+  "hot-springs-storm-cleanup": 0.92,
+  "hot-springs-dirt-work": 0.92,
+  "hot-springs-stump-grinding": 0.9,
+  "lake-hamilton-ar": 0.9,
+  "hot-springs-village-ar": 0.9,
+  "royal-ar": 0.88,
+  "pearcy-ar": 0.88,
+  "bismarck-ar": 0.88,
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteData.siteUrl;
-  const lastModified = new Date();
+  const uniqueSlugs = Array.from(new Set(allSeoPageSlugs)).sort();
 
-  const routes = [
-    { path: "", priority: 1, changeFrequency: "weekly" as const },
-    { path: "/bush-hogging", priority: 0.96, changeFrequency: "monthly" as const },
-    { path: "/dirt-work", priority: 0.95, changeFrequency: "monthly" as const },
-    { path: "/tree-work", priority: 0.94, changeFrequency: "monthly" as const },
-    { path: "/stump-grinding", priority: 0.93, changeFrequency: "monthly" as const },
-    { path: "/property-cleanup", priority: 0.95, changeFrequency: "monthly" as const },
-    { path: "/junk-removal", priority: 0.94, changeFrequency: "monthly" as const },
-    { path: "/cleanouts", priority: 0.93, changeFrequency: "monthly" as const },
-    { path: "/shed-removal", priority: 0.91, changeFrequency: "monthly" as const },
-    { path: "/storm-cleanup", priority: 0.9, changeFrequency: "monthly" as const },
-    { path: "/light-demolition", priority: 0.89, changeFrequency: "monthly" as const },
-    { path: "/amity-ar", priority: 0.92, changeFrequency: "monthly" as const },
-    { path: "/glenwood-ar", priority: 0.92, changeFrequency: "monthly" as const },
-    { path: "/mount-ida-ar", priority: 0.9, changeFrequency: "monthly" as const },
-    { path: "/kirby-ar", priority: 0.88, changeFrequency: "monthly" as const },
-    { path: "/norman-ar", priority: 0.87, changeFrequency: "monthly" as const },
-    { path: "/mountain-pine-ar", priority: 0.87, changeFrequency: "monthly" as const },
-    { path: "/hot-springs-ar", priority: 0.9, changeFrequency: "monthly" as const },
-    { path: "/arkadelphia-ar", priority: 0.89, changeFrequency: "monthly" as const },
-    { path: "/malvern-ar", priority: 0.86, changeFrequency: "monthly" as const },
-    { path: "/murfreesboro-ar", priority: 0.85, changeFrequency: "monthly" as const },
+  return [
+    {
+      url: `${baseUrl}/`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 1,
+    },
+    ...uniqueSlugs.map((slug) => ({
+      url: `${baseUrl}/${slug}`,
+      lastModified,
+      changeFrequency: slug.includes("hot-springs") ? ("monthly" as const) : ("monthly" as const),
+      priority: priorityBySlug[slug] ?? (slug.includes("hot-springs") ? 0.88 : 0.82),
+    })),
   ];
-
-  return routes.map((route) => ({
-    url: `${baseUrl}${route.path}`,
-    lastModified,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
 }

@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
+import HotSpringsSeoSection from "@/components/HotSpringsSeoSection";
 import { siteData } from "@/data/site";
 
 const siteUrl = "https://www.reddirtpropertyservicesar.com";
@@ -196,6 +197,12 @@ export default function HotSpringsPage() {
           </FadeIn>
         </div>
       </section>
+
+      <HotSpringsSeoSection
+        eyebrow="Hot Springs Cleanup Services"
+        title="Specific cleanup and hauling pages for Hot Springs searches."
+        text="These pages break out the work people actually search for around Hot Springs, from junk removal and cleanouts to brush hogging, storm cleanup, shed removal, dirt work, and stump grinding."
+      />
 
       <RelatedLinksSection
         title="Hot Springs cleanup services."

@@ -119,9 +119,6 @@ export const metadata: Metadata = {
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
-  alternates: {
-    canonical: siteUrl,
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -133,10 +130,10 @@ export const metadata: Metadata = {
       "Local property cleanup, dirt work, driveway help, stump grinding, tree cleanup, hauling, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
     images: [
       {
-        url: "/images/logo2.png",
+        url: "/images/cover.png",
         width: 1200,
-        height: 1200,
-        alt: "Red Dirt Property Services logo",
+        height: 630,
+        alt: "Red Dirt Property Services truck and property cleanup work",
       },
     ],
   },
@@ -146,7 +143,16 @@ export const metadata: Metadata = {
       "Red Dirt Property Services | Property Cleanup, Dirt Work & Hauling",
     description:
       "Local property cleanup, dirt work, hauling, tree cleanup, stump grinding, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
-    images: ["/images/logo2.png"],
+    images: ["/images/cover.png"],
+  },
+  other: {
+    "geo.region": "US-AR",
+    "geo.placename": "Amity, Glenwood, Hot Springs, Arkansas",
+    "geo.position": "34.264;-93.462",
+    ICBM: "34.264, -93.462",
+    "business:contact_data:locality": "Amity",
+    "business:contact_data:region": "Arkansas",
+    "business:contact_data:country_name": "United States",
   },
   robots: {
     index: true,
@@ -171,6 +177,7 @@ export default function RootLayout({
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": `${siteUrl}/#localbusiness`,
     name: "Red Dirt Property Services",
     image: `${siteUrl}/images/logo2.png`,
     url: siteUrl,
@@ -191,6 +198,8 @@ export default function RootLayout({
       "Hot Springs AR",
       "Hot Springs Village AR",
       "Lake Hamilton AR",
+      "Royal AR",
+      "Pearcy AR",
       "Murfreesboro AR",
       "Malvern AR",
       "Mountain Pine AR",

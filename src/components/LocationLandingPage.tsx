@@ -12,9 +12,10 @@ type LocationLandingPageProps = {
 };
 
 export default function LocationLandingPage({ page }: LocationLandingPageProps) {
-  const schema = {
+  const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${siteData.siteUrl}/${page.slug}#service`,
     name: page.schemaName,
     provider: organizationSchemaBase,
     areaServed: page.areaServed,
@@ -22,6 +23,27 @@ export default function LocationLandingPage({ page }: LocationLandingPageProps) 
     description: page.schemaDescription,
     url: `${siteData.siteUrl}/${page.slug}`,
   };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteData.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: page.h1,
+        item: `${siteData.siteUrl}/${page.slug}`,
+      },
+    ],
+  };
+
+  const schema = [serviceSchema, breadcrumbSchema];
 
   return (
     <main>

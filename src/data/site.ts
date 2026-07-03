@@ -88,9 +88,13 @@ export const siteData = {
     "Caddo Valley",
     "Arkadelphia",
     "Hot Springs",
+    "Lake Hamilton",
+    "Hot Springs Village",
+    "Royal",
+    "Pearcy",
+    "Mountain Pine",
     "Murfreesboro",
     "Malvern",
-    "Mountain Pine",
   ],
 
   whoWeHelp: [
@@ -229,6 +233,31 @@ export const areaNavLinks = [
     description: "Junk removal, cleanouts, hauling, dirt work, and property cleanup",
   },
   {
+    label: "Lake Hamilton",
+    href: "/lake-hamilton-ar",
+    description: "Lake-area cleanouts, junk hauling, storm cleanup, and property cleanup",
+  },
+  {
+    label: "Hot Springs Village",
+    href: "/hot-springs-village-ar",
+    description: "Cleanouts, hauling, storm debris, brush cleanup, and property cleanup",
+  },
+  {
+    label: "Royal",
+    href: "/royal-ar",
+    description: "Rural cleanup, hauling, brush hogging, tree cleanup, and cleanouts",
+  },
+  {
+    label: "Pearcy",
+    href: "/pearcy-ar",
+    description: "Property cleanup, junk hauling, dirt work, brush cleanup, and cleanouts",
+  },
+  {
+    label: "Bismarck",
+    href: "/bismarck-ar",
+    description: "Rural cleanup, bush hogging, cleanouts, hauling, and dirt work",
+  },
+  {
     label: "Arkadelphia",
     href: "/arkadelphia-ar",
     description: "Rental cleanouts, haul-offs, dirt work, junk removal, and storm debris",
@@ -244,3 +273,47 @@ export const areaNavLinks = [
     description: "Rural cleanup, cabin cleanouts, dirt work, hauling, and brush work",
   },
 ];
+
+
+export const hotSpringsServiceLinks = [
+  {
+    label: "Hot Springs Junk Removal",
+    href: "/hot-springs-junk-removal",
+    description: "Furniture, appliances, debris, garage junk, rental junk, and haul-off work around Hot Springs",
+  },
+  {
+    label: "Hot Springs Property Cleanup",
+    href: "/hot-springs-property-cleanup",
+    description: "Whole-property cleanup for yards, wooded edges, cabins, rentals, and rough spots around Hot Springs",
+  },
+  {
+    label: "Hot Springs Brush Hogging",
+    href: "/hot-springs-brush-hogging",
+    description: "Brush hogging, bush hogging, rough mowing, field edges, trails, and overgrown areas",
+  },
+  {
+    label: "Hot Springs Cleanouts",
+    href: "/hot-springs-cleanouts",
+    description: "Rental, estate, garage, cabin, shed, and outbuilding cleanouts around Hot Springs",
+  },
+  {
+    label: "Hot Springs Shed Removal",
+    href: "/hot-springs-shed-removal",
+    description: "Old shed teardown, small structure removal, debris cleanup, and hauling",
+  },
+  {
+    label: "Hot Springs Storm Cleanup",
+    href: "/hot-springs-storm-cleanup",
+    description: "Downed limbs, brush piles, storm debris, and cleanup after rough Arkansas weather",
+  },
+  {
+    label: "Hot Springs Dirt Work",
+    href: "/hot-springs-dirt-work",
+    description: "Driveway touch-ups, drainage help, ditches, culverts, washouts, and small dirt work",
+  },
+  {
+    label: "Hot Springs Stump Grinding",
+    href: "/hot-springs-stump-grinding",
+    description: "Stump grinding around yards, drives, lake places, fence lines, and cleanup areas",
+  },
+] as const;

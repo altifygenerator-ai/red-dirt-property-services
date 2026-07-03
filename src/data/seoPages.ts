@@ -552,6 +552,471 @@ export const servicePages: Record<string, ServicePageData> = {
       areaLinks.find((item) => item.href === "/hot-springs-ar")!,
     ],
   },
+
+  "hot-springs-junk-removal": {
+    slug: "hot-springs-junk-removal",
+    title: "Junk Removal in Hot Springs AR | Hauling & Cleanouts",
+    description:
+      "Junk removal in Hot Springs AR for furniture, appliances, garage junk, rental cleanouts, cabin cleanouts, debris piles, and haul-off work around Lake Hamilton, Royal, Pearcy, and nearby areas.",
+    ogTitle: "Hot Springs Junk Removal & Hauling | Red Dirt Property Services",
+    ogDescription:
+      "Local junk removal, hauling, garage cleanouts, rental junk, cabin junk, and debris pickup around Hot Springs, Lake Hamilton, Royal, Pearcy, and nearby Arkansas properties.",
+    heroImage: "/images/truck-trailers.jpg",
+    heroAlt: "Truck and trailers for junk removal around Hot Springs Arkansas",
+    eyebrow: "Hot Springs Junk Removal • Hauling • Cleanouts",
+    h1: "Junk Removal Around Hot Springs Without Making It A Bigger Mess.",
+    intro:
+      "Red Dirt helps Hot Springs area homeowners, landlords, cabin owners, and property managers get rid of old furniture, appliances, garage junk, remodel debris, rental junk, and mixed piles that need loaded and hauled off.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get A Hot Springs Quote",
+    overviewEyebrow: "Junk Hauling In Hot Springs",
+    overviewTitle: "For the stuff that will not fit in a trash can or the back of a car.",
+    overviewText: [
+      "Hot Springs junk jobs can be a single heavy item, a full garage, a rental left behind by a tenant, or a cabin cleanup after a busy season. The load size, access, stairs, weight, and dump fees all matter.",
+      "We quote the work from photos when we can, then show up with the trailer and tools needed to get the junk moved without leaving the property worse than it started.",
+      "This page is focused on junk removal and hauling around Hot Springs. If the job is more like a full property cleanup, cleanout, storm cleanup, or light demolition, Red Dirt can still look at it and point the quote the right way."
+    ],
+    cards: [
+      "Furniture and appliance removal",
+      "Garage and carport junk",
+      "Rental junk left behind",
+      "Cabin and lake house junk",
+      "Debris piles and mixed loads",
+      "Trailer load haul-offs"
+    ],
+    detailImage: "/images/dump.jpg",
+    detailAlt: "Dump trailer used for Hot Springs junk removal and debris hauling",
+    detailEyebrow: "Quote Details",
+    detailTitle: "Photos help separate a quick pickup from a full cleanout.",
+    detailText: [
+      "A couch and a washer is a different job than a garage full of boxes, lumber, trash bags, and heavy items. Photos let us see the volume, weight, and how close the trailer can get.",
+      "Hot Springs properties can also have tight driveways, hills, lake-area access, decks, stairs, or rental units with limited parking. Those details affect labor and scheduling.",
+      "Send the location, a few wide photos, and close shots of anything heavy. We will price the job as fair as we can before anyone wastes a trip."
+    ],
+    areaTitle: "Junk removal around Hot Springs, Lake Hamilton, Royal, Pearcy, Mountain Pine, Bismarck, and nearby areas.",
+    areaText:
+      "Red Dirt can quote Hot Springs junk removal, haul-offs, garage cleanouts, rental junk, cabin junk, appliances, furniture, and debris removal when the job fits the route and scope.",
+    schemaName: "Junk Removal Services in Hot Springs AR",
+    schemaDescription:
+      "Junk removal, hauling, garage junk removal, rental junk removal, cabin junk removal, appliance removal, furniture removal, and debris hauling around Hot Springs, Arkansas.",
+    areaServed: ["Hot Springs AR", "Lake Hamilton AR", "Royal AR", "Pearcy AR", "Mountain Pine AR", "Bismarck AR"],
+    serviceType: ["Junk removal", "Hauling", "Furniture removal", "Appliance removal", "Rental cleanouts", "Garage cleanouts", "Debris hauling"],
+    related: [
+      { label: "Hot Springs Cleanouts", href: "/hot-springs-cleanouts", text: "Rental, estate, garage, cabin, shed, and outbuilding cleanouts around Hot Springs." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Wider cleanup help for junk, brush, debris, rough yards, and neglected spots." },
+      { label: "Hot Springs Shed Removal", href: "/hot-springs-shed-removal", text: "Old sheds, small structures, teardown debris, and haul-off work." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/lake-hamilton-ar")!,
+      serviceLinks.find((item) => item.href === "/junk-removal")!,
+    ],
+  },
+
+  "hot-springs-property-cleanup": {
+    slug: "hot-springs-property-cleanup",
+    title: "Property Cleanup in Hot Springs AR | Brush, Junk & Debris",
+    description:
+      "Property cleanup in Hot Springs AR for overgrown yards, brush piles, junk, debris, cabin cleanup, rental cleanup, storm mess, and rough property cleanup around Lake Hamilton, Royal, Pearcy, and nearby areas.",
+    ogTitle: "Hot Springs Property Cleanup | Red Dirt Property Services",
+    ogDescription:
+      "Property cleanup around Hot Springs for junk, brush, debris, rough yards, cabin areas, rental properties, storm mess, and rural spots outside town.",
+    heroImage: "/images/work-1.jpg",
+    heroAlt: "Property cleanup work around Hot Springs Arkansas",
+    eyebrow: "Hot Springs Property Cleanup • Brush • Junk • Debris",
+    h1: "Property Cleanup Around Hot Springs For The Mess That Has Gotten Out Of Hand.",
+    intro:
+      "Red Dirt handles hands-on property cleanup around Hot Springs when there is junk, brush, debris, storm mess, old materials, neglected yard areas, or rental and cabin cleanup work that needs a trailer and steady labor.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get A Cleanup Quote",
+    overviewEyebrow: "Whole-Property Cleanup",
+    overviewTitle: "Not every cleanup job fits one simple category.",
+    overviewText: [
+      "A lot of Hot Springs property cleanup jobs are mixed. There may be brush along the fence line, junk by an outbuilding, storm limbs in the yard, old materials under a deck, and a pile that has been there too long.",
+      "That is where Red Dirt fits better than a curbside pickup. We can look at the whole property, quote the labor and hauling, and figure out what needs cleaned up first.",
+      "We work with homeowners, landlords, cabin owners, families handling property, and folks trying to get a place ready to use, rent, list, or enjoy again."
+    ],
+    cards: [
+      "Brush piles and yard debris",
+      "Old junk and mixed materials",
+      "Cabin and lake property cleanup",
+      "Rental and move-out messes",
+      "Storm debris and limbs",
+      "Outbuilding and fence-line cleanup"
+    ],
+    detailImage: "/images/work-3.jpg",
+    detailAlt: "Rough property cleanup and debris removal near Hot Springs Arkansas",
+    detailEyebrow: "Property Details Matter",
+    detailTitle: "Access, distance, and load size change the price fast.",
+    detailText: [
+      "A cleanup near the driveway is different than a pile behind a shed, down a hill, or across soft ground. Hot Springs area properties can have narrow drives, steep lots, trees, and lake-area access issues.",
+      "Photos help show what is junk, what is brush, what needs cut, what needs hauled, and what may need looked at in person before quoting firm.",
+      "If the job includes dirt work, stump grinding, shed removal, or brush hogging, we can quote those parts separately so the price makes sense."
+    ],
+    areaTitle: "Property cleanup around Hot Springs, Lake Hamilton, Royal, Pearcy, Bismarck, Mountain Pine, and nearby properties.",
+    areaText:
+      "Red Dirt can quote Hot Springs property cleanup, brush cleanup, junk hauling, storm debris, rental cleanup, cabin cleanup, and light demo cleanup when the work fits the route and equipment.",
+    schemaName: "Property Cleanup Services in Hot Springs AR",
+    schemaDescription:
+      "Property cleanup, brush cleanup, junk hauling, debris removal, cabin cleanup, rental cleanup, storm cleanup, and rough property cleanup around Hot Springs, Arkansas.",
+    areaServed: ["Hot Springs AR", "Lake Hamilton AR", "Royal AR", "Pearcy AR", "Bismarck AR", "Mountain Pine AR"],
+    serviceType: ["Property cleanup", "Brush cleanup", "Junk removal", "Debris hauling", "Storm cleanup", "Cabin cleanup", "Rental cleanup"],
+    related: [
+      { label: "Hot Springs Junk Removal", href: "/hot-springs-junk-removal", text: "Furniture, appliances, garage junk, rental junk, and trailer load hauling." },
+      { label: "Hot Springs Brush Hogging", href: "/hot-springs-brush-hogging", text: "Bush hogging, brush cutting, rough mowing, trails, and overgrown areas." },
+      { label: "Hot Springs Storm Cleanup", href: "/hot-springs-storm-cleanup", text: "Downed limbs, storm debris, scattered brush, and yard cleanup after bad weather." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/royal-ar")!,
+      serviceLinks.find((item) => item.href === "/property-cleanup")!,
+    ],
+  },
+
+  "hot-springs-brush-hogging": {
+    slug: "hot-springs-brush-hogging",
+    title: "Brush Hogging in Hot Springs AR | Bush Hogging & Rough Mowing",
+    description:
+      "Brush hogging and bush hogging in Hot Springs AR for overgrown lots, field edges, trails, fence lines, rough mowing, brush cutting, and rural property cleanup around Royal, Pearcy, Bismarck, and Lake Hamilton.",
+    ogTitle: "Hot Springs Brush Hogging & Bush Hogging | Red Dirt",
+    ogDescription:
+      "Brush hogging, bush hogging, rough mowing, field edges, trails, fence lines, and overgrown property cleanup around Hot Springs and nearby rural areas.",
+    heroImage: "/images/tractor-bush-hog.jpg",
+    heroAlt: "Brush hogging and rough mowing around Hot Springs Arkansas",
+    eyebrow: "Hot Springs Brush Hogging • Bush Hogging • Rough Mowing",
+    h1: "Brush Hogging Around Hot Springs For Overgrown Lots, Trails, And Rough Areas.",
+    intro:
+      "Red Dirt quotes brush hogging and bush hogging around Hot Springs for rural properties, field edges, trails, fence lines, cabin land, and overgrown spots that need cut back before they get worse.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get A Brush Hogging Quote",
+    overviewEyebrow: "Brush Cutting Around Hot Springs",
+    overviewTitle: "Rough mowing is not the same as a lawn service.",
+    overviewText: [
+      "Brush hogging is for areas that are too rough, tall, uneven, or grown up for regular mowing. Around Hot Springs, that often means lots outside town, lake property edges, trails, fence lines, old yards, and acreage that has been left alone for a while.",
+      "We need to know what is hiding in the growth before we quote too tight. Rocks, stumps, scrap metal, holes, steep slopes, wet ground, and hidden debris can change what is safe and what equipment fits.",
+      "Send wide photos, a rough size, and where the property is located. If it is hard to tell from photos, we may want to look first."
+    ],
+    cards: [
+      "Overgrown lots and fields",
+      "Fence lines and edges",
+      "Trails and access paths",
+      "Rough mowing outside town",
+      "Cabin and lake property brush",
+      "Before-cleanup cutting"
+    ],
+    detailImage: "/images/tractor-pov.jpg",
+    detailAlt: "Tractor view during bush hogging near Hot Springs Arkansas",
+    detailEyebrow: "Before We Cut",
+    detailTitle: "The safer the area is to inspect, the better the quote will be.",
+    detailText: [
+      "Brush hogging prices depend on acreage, thickness, slope, access, travel, and what the area looks like before cutting. A clean field edge is not the same as a grown-up spot full of hidden debris.",
+      "If there are known hazards like old wire, metal, holes, stumps, or wet areas, tell us before we get there. That helps keep the equipment and property safe.",
+      "For larger Hot Springs area brush jobs, it may make sense to combine cutting with hauling, limb cleanup, or property cleanup."
+    ],
+    areaTitle: "Brush hogging around Hot Springs, Royal, Pearcy, Bismarck, Lake Hamilton, Mountain Pine, and rural nearby properties.",
+    areaText:
+      "Red Dirt can quote Hot Springs brush hogging, bush hogging, rough mowing, trail cutting, fence-line cutting, and overgrown property cleanup when access and terrain fit the equipment.",
+    schemaName: "Brush Hogging Services in Hot Springs AR",
+    schemaDescription:
+      "Brush hogging, bush hogging, rough mowing, brush cutting, fence-line cutting, trail cutting, and overgrown property cleanup around Hot Springs, Arkansas.",
+    areaServed: ["Hot Springs AR", "Royal AR", "Pearcy AR", "Bismarck AR", "Lake Hamilton AR", "Mountain Pine AR"],
+    serviceType: ["Brush hogging", "Bush hogging", "Rough mowing", "Brush cutting", "Fence-line cutting", "Trail cutting", "Property cleanup"],
+    related: [
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Cleanup help for junk, brush, storm debris, rough yards, and property messes." },
+      { label: "Hot Springs Storm Cleanup", href: "/hot-springs-storm-cleanup", text: "Downed limbs, brush piles, storm mess, and hauling after Arkansas weather." },
+      { label: "Hot Springs Dirt Work", href: "/hot-springs-dirt-work", text: "Driveway touch-ups, ditches, culverts, washouts, and rough grading help." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/bismarck-ar")!,
+      serviceLinks.find((item) => item.href === "/bush-hogging")!,
+    ],
+  },
+
+  "hot-springs-cleanouts": {
+    slug: "hot-springs-cleanouts",
+    title: "Cleanouts in Hot Springs AR | Rental, Estate, Garage & Cabin Cleanouts",
+    description:
+      "Cleanout help in Hot Springs AR for rentals, estates, garages, cabins, sheds, outbuildings, storage spaces, and junk left behind around Lake Hamilton, Royal, Pearcy, Mountain Pine, and nearby areas.",
+    ogTitle: "Hot Springs Cleanouts | Rentals, Estates, Garages & Cabins",
+    ogDescription:
+      "Rental cleanouts, estate cleanouts, garage cleanouts, cabin cleanouts, shed cleanouts, and hauling around Hot Springs and nearby Arkansas communities.",
+    heroImage: "/images/flatbed.jpg",
+    heroAlt: "Trailer used for rental and garage cleanouts around Hot Springs Arkansas",
+    eyebrow: "Hot Springs Cleanouts • Rentals • Estates • Garages",
+    h1: "Cleanouts Around Hot Springs When A Place Needs Cleared Out And Moved Forward.",
+    intro:
+      "Red Dirt helps with rental cleanouts, estate cleanouts, garage cleanouts, cabin cleanouts, outbuilding cleanouts, and shed cleanouts around Hot Springs when there is too much junk for a simple pickup.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get A Cleanout Quote",
+    overviewEyebrow: "Cleanout Work",
+    overviewTitle: "Some cleanouts are emotional. Some are just plain heavy.",
+    overviewText: [
+      "Hot Springs cleanouts can come from a tenant move-out, family property, a garage that has filled up, a cabin that needs reset, or an outbuilding that has been catching everything for years.",
+      "We quote cleanouts based on volume, labor, stairs, sorting needs, heavy items, dump fees, access, and how much has to be loaded by hand.",
+      "Photos help us know whether the job is one trailer load, several loads, or something that needs a walk-through before a firm price."
+    ],
+    cards: [
+      "Rental cleanouts",
+      "Estate cleanouts",
+      "Garage cleanouts",
+      "Cabin cleanouts",
+      "Shed and outbuilding cleanouts",
+      "Storage and debris cleanouts"
+    ],
+    detailImage: "/images/work-2.jpg",
+    detailAlt: "Property cleanout and hauling work around Hot Springs Arkansas",
+    detailEyebrow: "What To Send",
+    detailTitle: "Wide photos are better than close-ups alone.",
+    detailText: [
+      "For cleanouts, we need to see the amount of stuff, not just a few individual items. Wide photos of each room, garage bay, shed, porch, or pile make the estimate much more useful.",
+      "Let us know if there are appliances, mattresses, tires, paint, chemicals, loose trash, stairs, locked gates, or anything that may change disposal or labor.",
+      "If the property is around Hot Springs but outside town, include the nearest area so mileage and scheduling are quoted honestly."
+    ],
+    areaTitle: "Cleanouts around Hot Springs, Lake Hamilton, Royal, Pearcy, Mountain Pine, Bismarck, and nearby communities.",
+    areaText:
+      "Red Dirt can quote rental cleanouts, estate cleanouts, garage cleanouts, cabin cleanouts, shed cleanouts, outbuilding cleanouts, and junk hauling around Hot Springs when the job fits.",
+    schemaName: "Cleanout Services in Hot Springs AR",
+    schemaDescription:
+      "Rental cleanouts, estate cleanouts, garage cleanouts, cabin cleanouts, shed cleanouts, outbuilding cleanouts, storage cleanouts, and hauling around Hot Springs, Arkansas.",
+    areaServed: ["Hot Springs AR", "Lake Hamilton AR", "Royal AR", "Pearcy AR", "Mountain Pine AR", "Bismarck AR"],
+    serviceType: ["Cleanouts", "Rental cleanouts", "Estate cleanouts", "Garage cleanouts", "Cabin cleanouts", "Shed cleanouts", "Hauling"],
+    related: [
+      { label: "Hot Springs Junk Removal", href: "/hot-springs-junk-removal", text: "Furniture, appliances, old junk, mixed piles, and trailer load hauling." },
+      { label: "Hot Springs Shed Removal", href: "/hot-springs-shed-removal", text: "Old sheds, small structures, teardown debris, and haul-off work." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Brush, junk, debris, storm mess, and larger rough cleanup projects." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/lake-hamilton-ar")!,
+      serviceLinks.find((item) => item.href === "/cleanouts")!,
+    ],
+  },
+
+  "hot-springs-shed-removal": {
+    slug: "hot-springs-shed-removal",
+    title: "Shed Removal in Hot Springs AR | Small Structure Tear Down & Hauling",
+    description:
+      "Shed removal in Hot Springs AR for old sheds, small outbuildings, playsets, fence sections, small structures, teardown debris, and hauling around Lake Hamilton, Royal, Pearcy, and nearby areas.",
+    ogTitle: "Hot Springs Shed Removal & Light Demo Cleanup | Red Dirt",
+    ogDescription:
+      "Old shed removal, small structure teardown, outbuilding cleanup, fence removal, playset removal, debris hauling, and light demo cleanup around Hot Springs.",
+    heroImage: "/images/work-2.jpg",
+    heroAlt: "Shed removal and light demolition cleanup around Hot Springs Arkansas",
+    eyebrow: "Hot Springs Shed Removal • Light Demo • Hauling",
+    h1: "Shed Removal Around Hot Springs For Old Structures That Need To Go.",
+    intro:
+      "Red Dirt can look at old sheds, small outbuildings, playsets, fence sections, damaged small structures, and demo debris around Hot Springs when the work fits our equipment, access, and safety limits.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get A Shed Removal Quote",
+    overviewEyebrow: "Shed And Small Structure Removal",
+    overviewTitle: "Old sheds can be simple, or they can be full of surprises.",
+    overviewText: [
+      "A small empty shed beside the driveway is not the same as an old outbuilding full of junk, shingles, wire, rotten flooring, or hidden debris. That is why shed removal gets quoted after photos and details.",
+      "Around Hot Springs, shed removal often comes with hauling, cleanout work, brush cleanup, or light demolition debris that has to be handled after the structure is down.",
+      "We focus on light demolition and small structures, not full house demolition. If a structure looks unsafe or too large, we will be upfront about whether it is a fit."
+    ],
+    cards: [
+      "Old shed removal",
+      "Small outbuilding cleanup",
+      "Playset removal",
+      "Fence section removal",
+      "Demo debris hauling",
+      "Cleanout work before teardown"
+    ],
+    detailImage: "/images/dump.jpg",
+    detailAlt: "Dump trailer for shed removal debris around Hot Springs Arkansas",
+    detailEyebrow: "Safety And Access",
+    detailTitle: "We need to see the shed before we price the tear-down.",
+    detailText: [
+      "Send photos from all sides, inside if possible, and the path from the shed to where a trailer can park. Access changes the labor more than most people expect.",
+      "Tell us if the shed has power, glass, shingles, heavy contents, rotten flooring, animals, or anything hazardous. That helps avoid surprises after we arrive.",
+      "If the shed is part of a bigger Hot Springs property cleanup, we can quote the teardown and haul-off along with junk, brush, or cleanout work."
+    ],
+    areaTitle: "Shed removal around Hot Springs, Lake Hamilton, Royal, Pearcy, Bismarck, Mountain Pine, and nearby properties.",
+    areaText:
+      "Red Dirt can quote Hot Springs shed removal, old outbuilding cleanup, light demolition debris, fence removal, playset removal, and hauling when the job fits safely.",
+    schemaName: "Shed Removal Services in Hot Springs AR",
+    schemaDescription:
+      "Shed removal, small outbuilding removal, playset removal, fence removal, light demolition cleanup, teardown debris, and hauling around Hot Springs, Arkansas.",
+    areaServed: ["Hot Springs AR", "Lake Hamilton AR", "Royal AR", "Pearcy AR", "Bismarck AR", "Mountain Pine AR"],
+    serviceType: ["Shed removal", "Light demolition", "Small structure removal", "Outbuilding removal", "Debris hauling", "Fence removal", "Playset removal"],
+    related: [
+      { label: "Hot Springs Cleanouts", href: "/hot-springs-cleanouts", text: "Cleanout help before or after old shed and outbuilding removal." },
+      { label: "Hot Springs Junk Removal", href: "/hot-springs-junk-removal", text: "Old junk, furniture, appliances, debris piles, and haul-off work." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Wider cleanup for brush, junk, debris, rough yards, and property messes." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      serviceLinks.find((item) => item.href === "/shed-removal")!,
+      serviceLinks.find((item) => item.href === "/light-demolition")!,
+    ],
+  },
+
+  "hot-springs-storm-cleanup": {
+    slug: "hot-springs-storm-cleanup",
+    title: "Storm Cleanup in Hot Springs AR | Limbs, Brush & Debris Hauling",
+    description:
+      "Storm cleanup in Hot Springs AR for downed limbs, brush piles, yard debris, scattered storm mess, small tree cleanup, and hauling after Arkansas weather around Lake Hamilton, Royal, Pearcy, and nearby areas.",
+    ogTitle: "Hot Springs Storm Cleanup & Debris Hauling | Red Dirt",
+    ogDescription:
+      "Storm cleanup around Hot Springs for downed limbs, brush piles, small tree cleanup, yard debris, scattered mess, and hauling after rough weather.",
+    heroImage: "/images/work-3.jpg",
+    heroAlt: "Storm cleanup and limb hauling around Hot Springs Arkansas",
+    eyebrow: "Hot Springs Storm Cleanup • Limbs • Brush • Debris",
+    h1: "Storm Cleanup Around Hot Springs After The Weather Leaves A Mess Behind.",
+    intro:
+      "Red Dirt helps Hot Springs area property owners clean up downed limbs, brush piles, scattered debris, small tree mess, and storm cleanup jobs that need loaded, cut up, hauled, or moved out of the way.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get A Storm Cleanup Quote",
+    overviewEyebrow: "After-Storm Cleanup",
+    overviewTitle: "When the storm is over, the cleanup still has to happen.",
+    overviewText: [
+      "Storm cleanup around Hot Springs can mean limbs across a yard, brush stacked by the driveway, debris scattered around a rental, or a mess near cabins, lake places, and rural properties outside town.",
+      "We can look at small tree cleanup, limb loading, brush hauling, debris pickup, and cleanup work when it is safe and fits our equipment.",
+      "We avoid dangerous removals around power lines, houses, overhead hazards, or situations that need a specialized tree crew. If it is not a fit, we will say so."
+    ],
+    cards: [
+      "Downed limb cleanup",
+      "Brush pile hauling",
+      "Yard debris removal",
+      "Small tree cleanup",
+      "Storm debris hauling",
+      "Property cleanup after weather"
+    ],
+    detailImage: "/images/work-4.jpg",
+    detailAlt: "Brush and storm debris cleanup near Hot Springs Arkansas",
+    detailEyebrow: "What We Need To Know",
+    detailTitle: "Safety comes first on storm jobs.",
+    detailText: [
+      "Send photos that show the limbs, where they fell, and what is around them. We need to see nearby structures, fences, wires, driveways, vehicles, and access for the trailer.",
+      "If anything is on a roof, against a house, tangled in a power line, or still under tension, say that clearly. Some jobs need a tree specialist before cleanup can happen safely.",
+      "For safe jobs, we can quote cutting, dragging, loading, hauling, and cleanup based on the amount of debris and how easy it is to reach."
+    ],
+    areaTitle: "Storm cleanup around Hot Springs, Lake Hamilton, Royal, Pearcy, Mountain Pine, Bismarck, and nearby Arkansas properties.",
+    areaText:
+      "Red Dirt can quote Hot Springs storm cleanup, limb cleanup, brush pile hauling, yard debris removal, small tree cleanup, and storm debris hauling when the work is safe and fits.",
+    schemaName: "Storm Cleanup Services in Hot Springs AR",
+    schemaDescription:
+      "Storm cleanup, downed limb cleanup, brush pile hauling, yard debris removal, small tree cleanup, and storm debris hauling around Hot Springs, Arkansas.",
+    areaServed: ["Hot Springs AR", "Lake Hamilton AR", "Royal AR", "Pearcy AR", "Mountain Pine AR", "Bismarck AR"],
+    serviceType: ["Storm cleanup", "Limb cleanup", "Brush hauling", "Yard debris removal", "Small tree cleanup", "Storm debris hauling"],
+    related: [
+      { label: "Hot Springs Tree Work", href: "/tree-work", text: "Small tree work, limb cleanup, brush removal, and light clearing when the job fits." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Larger cleanup help for brush, debris, junk, and rough property areas." },
+      { label: "Hot Springs Brush Hogging", href: "/hot-springs-brush-hogging", text: "Brush cutting, rough mowing, field edges, and overgrown areas after cleanup." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/mountain-pine-ar")!,
+      serviceLinks.find((item) => item.href === "/storm-cleanup")!,
+    ],
+  },
+
+  "hot-springs-dirt-work": {
+    slug: "hot-springs-dirt-work",
+    title: "Dirt Work in Hot Springs AR | Driveways, Ditches, Culverts & Washouts",
+    description:
+      "Small dirt work in Hot Springs AR for driveway touch-ups, washouts, drainage ditches, culvert help, rough grading, gravel areas, and rural property access around Lake Hamilton, Royal, Pearcy, and Bismarck.",
+    ogTitle: "Hot Springs Dirt Work, Driveway Work & Drainage Help | Red Dirt",
+    ogDescription:
+      "Small dirt work around Hot Springs for driveways, washouts, ditches, culverts, drainage issues, rough grading, and rural property access.",
+    heroImage: "/images/equipment-1.jpg",
+    heroAlt: "Equipment for small dirt work around Hot Springs Arkansas",
+    eyebrow: "Hot Springs Dirt Work • Driveways • Ditches • Culverts",
+    h1: "Small Dirt Work Around Hot Springs For Driveways, Ditches, Culverts, And Washouts.",
+    intro:
+      "Red Dirt can look at small dirt work around Hot Springs including driveway touch-ups, drainage ditches, culvert help, washouts, rough grading, gravel areas, and property access issues when the job fits our equipment.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get A Dirt Work Quote",
+    overviewEyebrow: "Small Dirt Work",
+    overviewTitle: "Dirt work needs looked at with the property, slope, and water in mind.",
+    overviewText: [
+      "Hot Springs area properties can have steep drives, washed-out spots, drainage issues, ditches that need cleaned up, culverts that need attention, or rough areas that need shaped enough to use again.",
+      "We are not trying to be a heavy civil crew. We focus on smaller property-level dirt work, driveway help, drainage fixes, culvert-related work, and rough grading when it fits the equipment and access.",
+      "Photos are helpful, but water and slope are hard to judge from one picture. Bigger or more complicated dirt work may need an in-person look before a firm quote."
+    ],
+    cards: [
+      "Driveway touch-ups",
+      "Washout repair help",
+      "Drainage ditches",
+      "Culvert help",
+      "Rough grading",
+      "Gravel and access areas"
+    ],
+    detailImage: "/images/tractor-pov.jpg",
+    detailAlt: "Tractor and property access work near Hot Springs Arkansas",
+    detailEyebrow: "Quote Details",
+    detailTitle: "Tell us what the water is doing, not just where the dirt is.",
+    detailText: [
+      "For ditches, culverts, and washouts, the quote depends on what caused the issue, where water needs to go, what material is there now, and how equipment can reach it.",
+      "For driveway work, include photos from the road looking in, from the top or bottom of the problem area, and close-ups of ruts, holes, gravel, or washout spots.",
+      "If the job also needs brush cleared, junk hauled, or limbs moved before dirt work can happen, we can look at those pieces together."
+    ],
+    areaTitle: "Dirt work around Hot Springs, Royal, Pearcy, Bismarck, Lake Hamilton, Mountain Pine, and nearby rural properties.",
+    areaText:
+      "Red Dirt can quote Hot Springs driveway work, drainage help, ditches, culverts, washouts, rough grading, and small dirt work when the access and scope fit.",
+    schemaName: "Dirt Work Services in Hot Springs AR",
+    schemaDescription:
+      "Small dirt work, driveway work, drainage help, ditches, culverts, washouts, rough grading, gravel areas, and property access help around Hot Springs, Arkansas.",
+    areaServed: ["Hot Springs AR", "Royal AR", "Pearcy AR", "Bismarck AR", "Lake Hamilton AR", "Mountain Pine AR"],
+    serviceType: ["Dirt work", "Driveway work", "Drainage ditches", "Culvert help", "Washout repair", "Rough grading", "Gravel work"],
+    related: [
+      { label: "Hot Springs Brush Hogging", href: "/hot-springs-brush-hogging", text: "Brush cutting and rough mowing when a dirt work area needs opened up first." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Cleanup work for debris, junk, brush, and rough areas around the property." },
+      { label: "Hot Springs Stump Grinding", href: "/hot-springs-stump-grinding", text: "Stump grinding when stumps are in the way of mowing, cleanup, or access." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/pearcy-ar")!,
+      serviceLinks.find((item) => item.href === "/dirt-work")!,
+    ],
+  },
+
+  "hot-springs-stump-grinding": {
+    slug: "hot-springs-stump-grinding",
+    title: "Stump Grinding in Hot Springs AR | Yard, Driveway & Cleanup Areas",
+    description:
+      "Stump grinding in Hot Springs AR for yards, driveway edges, fence lines, lake places, cleanup areas, rental properties, and rural properties around Lake Hamilton, Royal, Pearcy, and nearby areas.",
+    ogTitle: "Hot Springs Stump Grinding | Red Dirt Property Services",
+    ogDescription:
+      "Stump grinding around Hot Springs for yards, driveway edges, fence lines, rental properties, lake places, cleanup areas, and rural properties.",
+    heroImage: "/images/work-4.jpg",
+    heroAlt: "Stump grinding and yard cleanup around Hot Springs Arkansas",
+    eyebrow: "Hot Springs Stump Grinding • Yards • Fence Lines • Cleanup Areas",
+    h1: "Stump Grinding Around Hot Springs When A Stump Is In The Way.",
+    intro:
+      "Red Dirt can quote stump grinding around Hot Springs for yards, fence lines, driveway edges, lake properties, rental properties, and cleanup areas when the stump, access, and surrounding ground are a fit.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get A Stump Grinding Quote",
+    overviewEyebrow: "Stumps And Access",
+    overviewTitle: "Stump grinding depends on more than the stump size.",
+    overviewText: [
+      "A stump in an open yard is different than one against a fence, near rocks, on a slope, beside a driveway, or surrounded by roots and debris. Access around Hot Springs properties can change the job quickly.",
+      "We quote stump grinding by size, location, access, cleanup expectations, and what is around the stump. Photos from several angles help more than one close-up picture.",
+      "If the stump is part of a bigger cleanup, brush job, or storm cleanup, we can look at it with the rest of the property work."
+    ],
+    cards: [
+      "Yard stump grinding",
+      "Driveway edge stumps",
+      "Fence-line stumps",
+      "Lake property stumps",
+      "Rental property cleanup",
+      "Storm cleanup stumps"
+    ],
+    detailImage: "/images/work-1.jpg",
+    detailAlt: "Property cleanup area with stump and debris around Hot Springs Arkansas",
+    detailEyebrow: "What To Send",
+    detailTitle: "Measure the stump if you can, then show the area around it.",
+    detailText: [
+      "A tape measure across the widest part of the stump helps. Photos should also show the path to the stump, fences, rocks, roots, structures, slopes, and anything else nearby.",
+      "Tell us whether you want chips left in place, spread out, or cleaned up as part of the job. Cleanup affects labor and price.",
+      "If the property is outside Hot Springs, include the nearest town or area so travel can be figured into the quote."
+    ],
+    areaTitle: "Stump grinding around Hot Springs, Lake Hamilton, Royal, Pearcy, Bismarck, Mountain Pine, and nearby properties.",
+    areaText:
+      "Red Dirt can quote Hot Springs stump grinding for yards, driveways, fence lines, lake properties, cleanup areas, storm cleanup jobs, and rural properties when access fits.",
+    schemaName: "Stump Grinding Services in Hot Springs AR",
+    schemaDescription:
+      "Stump grinding for yards, driveways, fence lines, lake properties, rental properties, cleanup areas, storm cleanup work, and rural properties around Hot Springs, Arkansas.",
+    areaServed: ["Hot Springs AR", "Lake Hamilton AR", "Royal AR", "Pearcy AR", "Bismarck AR", "Mountain Pine AR"],
+    serviceType: ["Stump grinding", "Yard stump grinding", "Fence-line stump grinding", "Driveway edge stump grinding", "Cleanup area stump grinding"],
+    related: [
+      { label: "Hot Springs Tree Work", href: "/tree-work", text: "Small tree work, limb cleanup, brush removal, and light clearing when the job fits." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Cleanup help for rough yards, brush, debris, junk, and property messes." },
+      { label: "Hot Springs Dirt Work", href: "/hot-springs-dirt-work", text: "Driveway touch-ups, rough grading, ditches, culverts, and washout help." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/lake-hamilton-ar")!,
+      serviceLinks.find((item) => item.href === "/stump-grinding")!,
+    ],
+  },
+
 };
 
 export const locationPages: Record<string, LocationPageData> = {
@@ -960,6 +1425,297 @@ export const locationPages: Record<string, LocationPageData> = {
       areaLinks.find((item) => item.href === "/mount-ida-ar")!,
     ],
   },
+
+  "lake-hamilton-ar": {
+    slug: "lake-hamilton-ar",
+    title: "Property Cleanup, Junk Removal & Cleanouts in Lake Hamilton AR",
+    description:
+      "Property cleanup, junk removal, cabin cleanouts, lake house cleanouts, storm cleanup, brush cleanup, shed removal, hauling, and light demolition around Lake Hamilton and Hot Springs AR.",
+    ogTitle: "Lake Hamilton Property Cleanup & Junk Removal | Red Dirt",
+    ogDescription:
+      "Lake-area cleanup, junk hauling, cabin cleanouts, storm cleanup, shed removal, brush cleanup, and property cleanup around Lake Hamilton and Hot Springs.",
+    heroImage: "/images/dump.jpg",
+    heroAlt: "Junk removal and property cleanup near Lake Hamilton Arkansas",
+    eyebrow: "Lake Hamilton • Hot Springs • Lake-Area Cleanup",
+    h1: "Lake Hamilton Cleanup Help For Cabins, Homes, Rentals, And Rough Property Messes.",
+    intro:
+      "Red Dirt helps around Lake Hamilton with junk removal, cabin cleanouts, lake house cleanouts, storm debris, brush cleanup, shed removal, hauling, and property cleanup that needs more than a trash pickup.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get a Lake Hamilton Quote",
+    overviewEyebrow: "Lake-Area Property Work",
+    overviewTitle: "Lake properties can collect a little bit of everything.",
+    overviewText: [
+      "Around Lake Hamilton, cleanup work can mean old furniture from a cabin, storm limbs near the water, junk under a deck, a shed that needs cleaned out, or rental debris after guests and projects pile up.",
+      "We quote jobs by looking at photos, location, access, parking, load size, labor, and disposal needs. Lake-area access can matter just as much as the amount of junk.",
+      "If the work is more than hauling, we can also look at property cleanup, shed removal, storm cleanup, and light demolition cleanup when the job fits."
+    ],
+    cards: [
+      "Lake house junk removal",
+      "Cabin and rental cleanouts",
+      "Storm limb cleanup",
+      "Shed and outbuilding cleanup",
+      "Brush and yard debris",
+      "Hauling and property cleanup"
+    ],
+    detailImage: "/images/flatbed.jpg",
+    detailAlt: "Trailer used for Lake Hamilton cleanouts and hauling",
+    detailEyebrow: "Access Matters",
+    detailTitle: "Tell us how close the trailer can get.",
+    detailText: [
+      "Lake Hamilton properties can have narrow drives, steep access, decks, stairs, tight parking, and limited room to turn around. Those details affect labor and how the job gets scheduled.",
+      "Photos should show the junk or debris and the path from the mess to the trailer. Wide photos usually help more than close-ups alone.",
+      "For larger cleanouts or mixed cleanup projects, we may need to look at the property before giving a firm quote."
+    ],
+    localTitle: "Serving Lake Hamilton, Hot Springs, Royal, Pearcy, Mountain Pine, and nearby lake-area properties.",
+    localText:
+      "Red Dirt can quote Lake Hamilton junk removal, cabin cleanouts, lake house cleanup, storm cleanup, shed removal, hauling, and property cleanup when the work fits the route and access.",
+    schemaName: "Property Cleanup Services in Lake Hamilton AR",
+    schemaDescription:
+      "Property cleanup, junk removal, cabin cleanouts, lake house cleanouts, storm cleanup, brush cleanup, shed removal, hauling, and light demolition cleanup around Lake Hamilton, Arkansas.",
+    areaServed: ["Lake Hamilton AR", "Hot Springs AR", "Royal AR", "Pearcy AR", "Mountain Pine AR"],
+    serviceType: ["Property cleanup", "Junk removal", "Cleanouts", "Cabin cleanouts", "Storm cleanup", "Shed removal", "Hauling"],
+    related: [
+      { label: "Hot Springs Junk Removal", href: "/hot-springs-junk-removal", text: "Furniture, appliances, rental junk, cabin junk, and haul-off work around Hot Springs." },
+      { label: "Hot Springs Cleanouts", href: "/hot-springs-cleanouts", text: "Rental, estate, garage, cabin, shed, and outbuilding cleanouts around Hot Springs." },
+      { label: "Hot Springs Storm Cleanup", href: "/hot-springs-storm-cleanup", text: "Downed limbs, brush piles, yard debris, and hauling after rough weather." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/royal-ar")!,
+      serviceLinks.find((item) => item.href === "/property-cleanup")!,
+    ],
+  },
+
+  "hot-springs-village-ar": {
+    slug: "hot-springs-village-ar",
+    title: "Property Cleanup, Junk Removal & Storm Cleanup in Hot Springs Village AR",
+    description:
+      "Property cleanup, junk removal, cleanouts, hauling, storm cleanup, brush cleanup, shed removal, stump grinding, and light demolition around Hot Springs Village and nearby Garland County areas.",
+    ogTitle: "Hot Springs Village Cleanup, Junk Removal & Hauling | Red Dirt",
+    ogDescription:
+      "Junk removal, cleanouts, storm cleanup, brush cleanup, shed removal, hauling, and property cleanup around Hot Springs Village and nearby areas.",
+    heroImage: "/images/work-3.jpg",
+    heroAlt: "Storm cleanup and property cleanup around Hot Springs Village Arkansas",
+    eyebrow: "Hot Springs Village • Garland County • Property Cleanup",
+    h1: "Cleanup And Hauling Around Hot Springs Village When The Job Needs Hands-On Help.",
+    intro:
+      "Red Dirt can look at Hot Springs Village area jobs for junk removal, property cleanup, cleanouts, storm debris, brush cleanup, shed removal, stump grinding, and light demolition cleanup when the route, access, and scope make sense.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get a Village Quote",
+    overviewEyebrow: "Hot Springs Village Cleanup Work",
+    overviewTitle: "Homes, wooded lots, and storm debris can pile up quick.",
+    overviewText: [
+      "Hot Springs Village area properties can have wooded edges, fallen limbs, old items in garages, debris near sheds, and cleanup needs that are too much for normal trash service.",
+      "We quote from photos first when possible and look at load size, labor, dump fees, travel, and access before giving a price.",
+      "Some smaller jobs may need to be grouped with route timing, but larger cleanouts, storm cleanup, and mixed property cleanup are often worth looking at."
+    ],
+    cards: [
+      "Storm debris cleanup",
+      "Garage and property cleanouts",
+      "Junk removal and hauling",
+      "Brush and limb cleanup",
+      "Shed removal and debris",
+      "Stump grinding when access fits"
+    ],
+    detailImage: "/images/truck-trailers.jpg",
+    detailAlt: "Truck and trailers for cleanup work near Hot Springs Village Arkansas",
+    detailEyebrow: "Quote Details",
+    detailTitle: "Location and scope matter for Village-area work.",
+    detailText: [
+      "For Hot Springs Village work, send the exact area, photos of the mess, and a note about driveway access, gates, stairs, and where a trailer can park.",
+      "If the job includes limbs or tree mess, tell us whether anything is near a roof, power line, fence, or structure. We avoid dangerous tree removals but can quote safe cleanup work.",
+      "Cleanouts, junk hauling, shed debris, and storm cleanup are usually easiest to quote with several wide photos."
+    ],
+    localTitle: "Serving Hot Springs Village, Hot Springs, Mountain Pine, Lake Hamilton, Jessieville, and nearby properties when the job fits.",
+    localText:
+      "Red Dirt can quote Hot Springs Village cleanup, junk removal, hauling, cleanouts, storm debris, brush cleanup, shed removal, and stump grinding based on photos, access, and route timing.",
+    schemaName: "Property Cleanup Services in Hot Springs Village AR",
+    schemaDescription:
+      "Property cleanup, junk removal, cleanouts, storm cleanup, brush cleanup, shed removal, stump grinding, hauling, and light demolition cleanup around Hot Springs Village, Arkansas.",
+    areaServed: ["Hot Springs Village AR", "Hot Springs AR", "Mountain Pine AR", "Lake Hamilton AR", "Jessieville AR"],
+    serviceType: ["Property cleanup", "Junk removal", "Cleanouts", "Storm cleanup", "Brush cleanup", "Shed removal", "Stump grinding", "Hauling"],
+    related: [
+      { label: "Hot Springs Storm Cleanup", href: "/hot-springs-storm-cleanup", text: "Limb cleanup, brush piles, scattered debris, and hauling after storms." },
+      { label: "Hot Springs Junk Removal", href: "/hot-springs-junk-removal", text: "Furniture, appliances, garage junk, rental junk, and haul-off work." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Wider cleanup for brush, junk, debris, rough yards, and property messes." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/mountain-pine-ar")!,
+      serviceLinks.find((item) => item.href === "/storm-cleanup")!,
+    ],
+  },
+
+  "royal-ar": {
+    slug: "royal-ar",
+    title: "Property Cleanup, Brush Hogging & Junk Removal in Royal AR",
+    description:
+      "Property cleanup, brush hogging, junk removal, hauling, cleanouts, storm cleanup, shed removal, dirt work, and rural cleanup around Royal, Hot Springs, Lake Hamilton, and nearby Arkansas areas.",
+    ogTitle: "Royal AR Property Cleanup, Brush Hogging & Hauling | Red Dirt",
+    ogDescription:
+      "Rural property cleanup, brush hogging, junk removal, hauling, cleanouts, storm cleanup, shed removal, and dirt work around Royal and Hot Springs.",
+    heroImage: "/images/tractor-bush-hog.jpg",
+    heroAlt: "Brush hogging and rural property cleanup around Royal Arkansas",
+    eyebrow: "Royal • Hot Springs • Rural Property Cleanup",
+    h1: "Royal Area Cleanup For Brush, Junk, Dirt Work, And Country Property Messes.",
+    intro:
+      "Red Dirt can quote Royal area property cleanup, brush hogging, junk removal, cleanouts, hauling, storm cleanup, shed removal, dirt work, and small tree cleanup for rural properties near Hot Springs.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get a Royal Quote",
+    overviewEyebrow: "Royal Area Work",
+    overviewTitle: "Rural properties usually need more than one kind of cleanup.",
+    overviewText: [
+      "Around Royal, a job may start as brush hogging but also need limbs moved, junk hauled, a driveway touched up, or an old shed cleaned out.",
+      "We look at the whole property and quote based on what needs cut, hauled, cleaned, or shaped up, along with mileage, access, dump fees, and labor.",
+      "Photos and a short description are the easiest way to start before we decide if it can be quoted from pictures or needs looked at in person."
+    ],
+    cards: [
+      "Brush hogging and rough mowing",
+      "Rural junk hauling",
+      "Cleanouts and debris",
+      "Storm limb cleanup",
+      "Shed removal and hauling",
+      "Driveway and drainage help"
+    ],
+    detailImage: "/images/equipment-1.jpg",
+    detailAlt: "Equipment for rural cleanup and dirt work around Royal Arkansas",
+    detailEyebrow: "Rural Access",
+    detailTitle: "Good directions and wide photos save time.",
+    detailText: [
+      "Royal area jobs can be outside easy map pins or down drives that are hard to spot. Send the nearest road or landmark, driveway details, and photos of where equipment or a trailer can get in.",
+      "For brush hogging, let us know if there are hidden hazards like wire, rocks, holes, stumps, or old debris in the grass.",
+      "For dirt work or cleanup jobs, show the problem area and the access path from more than one angle."
+    ],
+    localTitle: "Serving Royal, Hot Springs, Lake Hamilton, Pearcy, Mountain Pine, and nearby rural properties.",
+    localText:
+      "Red Dirt can quote Royal area brush hogging, junk removal, property cleanup, cleanouts, hauling, shed removal, storm cleanup, stump grinding, and dirt work when the job fits.",
+    schemaName: "Property Cleanup Services in Royal AR",
+    schemaDescription:
+      "Property cleanup, brush hogging, junk removal, cleanouts, hauling, storm cleanup, shed removal, dirt work, and rural cleanup around Royal, Arkansas.",
+    areaServed: ["Royal AR", "Hot Springs AR", "Lake Hamilton AR", "Pearcy AR", "Mountain Pine AR"],
+    serviceType: ["Property cleanup", "Brush hogging", "Junk removal", "Cleanouts", "Hauling", "Storm cleanup", "Shed removal", "Dirt work"],
+    related: [
+      { label: "Hot Springs Brush Hogging", href: "/hot-springs-brush-hogging", text: "Brush hogging, bush hogging, rough mowing, trails, and overgrown areas." },
+      { label: "Hot Springs Dirt Work", href: "/hot-springs-dirt-work", text: "Driveways, ditches, culverts, washouts, rough grading, and drainage help." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Junk, brush, debris, storm mess, and whole-property cleanup around Hot Springs." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/lake-hamilton-ar")!,
+      serviceLinks.find((item) => item.href === "/bush-hogging")!,
+    ],
+  },
+
+  "pearcy-ar": {
+    slug: "pearcy-ar",
+    title: "Property Cleanup, Junk Removal & Dirt Work in Pearcy AR",
+    description:
+      "Property cleanup, junk removal, cleanouts, hauling, dirt work, driveway help, brush cleanup, storm cleanup, shed removal, and rural cleanup around Pearcy, Hot Springs, Royal, and nearby Arkansas areas.",
+    ogTitle: "Pearcy AR Property Cleanup, Junk Removal & Dirt Work | Red Dirt",
+    ogDescription:
+      "Junk removal, property cleanup, cleanouts, dirt work, driveway help, brush cleanup, storm cleanup, shed removal, and hauling around Pearcy and Hot Springs.",
+    heroImage: "/images/equipment-1.jpg",
+    heroAlt: "Dirt work and property cleanup around Pearcy Arkansas",
+    eyebrow: "Pearcy • Hot Springs • Property Cleanup And Dirt Work",
+    h1: "Pearcy Area Cleanup, Hauling, And Small Dirt Work For Rural Properties.",
+    intro:
+      "Red Dirt can look at Pearcy area junk removal, property cleanup, cleanouts, hauling, driveway help, ditches, culverts, brush cleanup, storm debris, shed removal, and light demolition cleanup.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get a Pearcy Quote",
+    overviewEyebrow: "Pearcy Area Services",
+    overviewTitle: "Cleanup and dirt work often go together on country properties.",
+    overviewText: [
+      "Around Pearcy, a property may need junk hauled off, brush cut back, a ditch cleaned up, a driveway touched up, or storm debris moved before it is usable again.",
+      "We quote based on photos, access, distance, load size, labor, disposal, and whether the job needs equipment, trailers, or a closer look in person.",
+      "If the work includes dirt, drainage, or a driveway problem, send photos that show where the water goes and how equipment can reach the area."
+    ],
+    cards: [
+      "Driveway touch-ups",
+      "Ditches and culvert help",
+      "Junk removal and hauling",
+      "Garage and property cleanouts",
+      "Brush and storm cleanup",
+      "Shed and light demo debris"
+    ],
+    detailImage: "/images/truck-1.png",
+    detailAlt: "Truck and trailer for cleanup and hauling around Pearcy Arkansas",
+    detailEyebrow: "Photos First",
+    detailTitle: "The more angles you send, the better the quote gets.",
+    detailText: [
+      "For cleanups and hauling, show the pile, room, shed, or property area from a wide view. For dirt work, show the drive, ditch, washout, and nearby access.",
+      "Tell us what town or road area the property is near so travel and scheduling are figured in before the quote is given.",
+      "Bigger Pearcy area jobs may need an in-person look, especially if they involve drainage, equipment access, or mixed debris."
+    ],
+    localTitle: "Serving Pearcy, Hot Springs, Royal, Lake Hamilton, Bismarck, and nearby rural properties.",
+    localText:
+      "Red Dirt can quote Pearcy area cleanup, junk removal, hauling, cleanouts, small dirt work, driveway help, brush cleanup, storm cleanup, shed removal, and stump grinding when the job fits.",
+    schemaName: "Property Cleanup and Dirt Work Services in Pearcy AR",
+    schemaDescription:
+      "Property cleanup, junk removal, cleanouts, hauling, dirt work, driveway help, ditches, culverts, brush cleanup, storm cleanup, and shed removal around Pearcy, Arkansas.",
+    areaServed: ["Pearcy AR", "Hot Springs AR", "Royal AR", "Lake Hamilton AR", "Bismarck AR"],
+    serviceType: ["Property cleanup", "Junk removal", "Cleanouts", "Hauling", "Dirt work", "Driveway work", "Brush cleanup", "Storm cleanup"],
+    related: [
+      { label: "Hot Springs Dirt Work", href: "/hot-springs-dirt-work", text: "Driveway touch-ups, ditches, culverts, washouts, rough grading, and drainage help." },
+      { label: "Hot Springs Junk Removal", href: "/hot-springs-junk-removal", text: "Furniture, appliances, rental junk, garage junk, and debris hauling." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Wider cleanup help for junk, brush, debris, storm mess, and rough areas." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/royal-ar")!,
+      serviceLinks.find((item) => item.href === "/dirt-work")!,
+    ],
+  },
+
+  "bismarck-ar": {
+    slug: "bismarck-ar",
+    title: "Property Cleanup, Brush Hogging & Dirt Work in Bismarck AR",
+    description:
+      "Property cleanup, brush hogging, bush hogging, junk removal, cleanouts, hauling, dirt work, driveway help, storm cleanup, and rural property cleanup around Bismarck, Hot Springs, DeGray, and nearby Arkansas areas.",
+    ogTitle: "Bismarck AR Property Cleanup, Brush Hogging & Dirt Work | Red Dirt",
+    ogDescription:
+      "Brush hogging, property cleanup, junk removal, cleanouts, hauling, dirt work, driveway help, storm cleanup, and rural cleanup around Bismarck and nearby areas.",
+    heroImage: "/images/tractor-pov.jpg",
+    heroAlt: "Bush hogging and dirt work around Bismarck Arkansas",
+    eyebrow: "Bismarck • DeGray Area • Rural Cleanup",
+    h1: "Bismarck Area Brush Hogging, Cleanup, Hauling, And Dirt Work.",
+    intro:
+      "Red Dirt can quote Bismarck area brush hogging, bush hogging, property cleanup, junk removal, cleanouts, hauling, dirt work, driveway help, storm cleanup, shed removal, and stump grinding for rural properties.",
+    primaryCta: "Call or Text Photos",
+    secondaryCta: "Get a Bismarck Quote",
+    overviewEyebrow: "Bismarck Area Work",
+    overviewTitle: "Acreage, drives, brush, and cleanup jobs need practical help.",
+    overviewText: [
+      "Around Bismarck and the DeGray area, cleanup work often means more than one trailer load. It can include brush hogging, old junk, a washed-out drive, storm limbs, an outbuilding, or a rough area that needs opened back up.",
+      "We price jobs by scope, distance, access, equipment needs, labor, dump fees, and whether it can be quoted from photos or needs a site look.",
+      "Bigger rural jobs usually make the most sense, especially when brush hogging, hauling, and property cleanup can be handled together."
+    ],
+    cards: [
+      "Brush hogging and rough mowing",
+      "Driveway and drainage help",
+      "Property cleanup and hauling",
+      "Junk and debris removal",
+      "Storm limb cleanup",
+      "Shed removal and stump grinding"
+    ],
+    detailImage: "/images/work-4.jpg",
+    detailAlt: "Rural property cleanup and brush work near Bismarck Arkansas",
+    detailEyebrow: "Rural Quotes",
+    detailTitle: "Send photos that show distance, terrain, and access.",
+    detailText: [
+      "A brush job in an open field is different than a sloped, wet, or debris-filled area. A driveway touch-up is different than a drainage problem that keeps washing out.",
+      "For Bismarck jobs, send the nearest location, a rough idea of acreage or load size, and wide photos of the work area and access path.",
+      "If the job includes both cutting and hauling, tell us what needs cut, what needs loaded, and what can stay on site."
+    ],
+    localTitle: "Serving Bismarck, Hot Springs, Arkadelphia, DeGray, Pearcy, and nearby rural properties.",
+    localText:
+      "Red Dirt can quote Bismarck area brush hogging, junk removal, property cleanup, dirt work, driveway help, cleanouts, shed removal, storm cleanup, and stump grinding when the job fits.",
+    schemaName: "Property Cleanup and Brush Hogging Services in Bismarck AR",
+    schemaDescription:
+      "Property cleanup, brush hogging, bush hogging, junk removal, cleanouts, hauling, dirt work, driveway help, storm cleanup, shed removal, and stump grinding around Bismarck, Arkansas.",
+    areaServed: ["Bismarck AR", "Hot Springs AR", "Arkadelphia AR", "Pearcy AR", "DeGray AR"],
+    serviceType: ["Property cleanup", "Brush hogging", "Bush hogging", "Junk removal", "Cleanouts", "Hauling", "Dirt work", "Driveway work", "Storm cleanup"],
+    related: [
+      { label: "Hot Springs Brush Hogging", href: "/hot-springs-brush-hogging", text: "Brush hogging, bush hogging, rough mowing, trails, and overgrown areas." },
+      { label: "Hot Springs Dirt Work", href: "/hot-springs-dirt-work", text: "Driveway touch-ups, ditches, culverts, washouts, rough grading, and drainage help." },
+      { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Junk, brush, debris, storm mess, and whole-property cleanup around Hot Springs." },
+      areaLinks.find((item) => item.href === "/hot-springs-ar")!,
+      areaLinks.find((item) => item.href === "/arkadelphia-ar")!,
+      serviceLinks.find((item) => item.href === "/bush-hogging")!,
+    ],
+  },
+
 };
 
 export const allSeoPageSlugs = [
@@ -975,6 +1731,7 @@ export const allSeoPageSlugs = [
 
 export const organizationSchemaBase = {
   "@type": "LocalBusiness",
+  "@id": `${siteData.siteUrl}/#localbusiness`,
   name: siteData.name,
   telephone: siteData.phone,
   email: siteData.email,
