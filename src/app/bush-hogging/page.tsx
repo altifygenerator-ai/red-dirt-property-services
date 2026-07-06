@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TrustStrip from "@/components/TrustStrip";
+import GoogleReviews from "@/components/GoogleReviews";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
@@ -11,6 +13,17 @@ export const metadata: Metadata = {
   title: "Brush Hogging, Bush Hogging & Brush Cutting",
   description:
     "Brush hogging, bush hogging, rough mowing, and brush cutting around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and nearby rural Arkansas communities. Red Dirt Property Services helps clear overgrown fields, brush, trails, fence lines, and rural properties.",
+  keywords: [
+    "brush hogging Amity AR",
+    "bush hogging Glenwood AR",
+    "brush cutting Mount Ida AR",
+    "rough mowing Hot Springs AR",
+    "field mowing Arkadelphia AR",
+    "rural property cleanup Arkansas",
+    "overgrown property cleanup",
+    "brush hogging near me",
+    "Red Dirt Property Services",
+  ],
   alternates: {
     canonical: "/bush-hogging",
   },
@@ -102,6 +115,9 @@ export default function BushHoggingPage() {
           </FadeIn>
         </div>
       </section>
+
+      <TrustStrip />
+      <GoogleReviews />
 
       <section className="section">
         <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">

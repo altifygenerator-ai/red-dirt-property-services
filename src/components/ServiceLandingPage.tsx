@@ -2,9 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TrustStrip from "@/components/TrustStrip";
+import GoogleReviews from "@/components/GoogleReviews";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
-import { organizationSchemaBase, type ServicePageData } from "@/data/seoPages";
+import {
+  aggregateRatingSchema,
+  organizationSchemaBase,
+  reviewSchema,
+  type ServicePageData,
+} from "@/data/seoPages";
 import { siteData } from "@/data/site";
 
 type ServiceLandingPageProps = {
@@ -21,7 +28,21 @@ export default function ServiceLandingPage({ page }: ServiceLandingPageProps) {
     areaServed: page.areaServed,
     serviceType: page.serviceType,
     description: page.schemaDescription,
+    image: `${siteData.siteUrl}${page.heroImage}`,
     url: `${siteData.siteUrl}/${page.slug}`,
+    mainEntityOfPage: `${siteData.siteUrl}/${page.slug}`,
+    aggregateRating: aggregateRatingSchema,
+    review: reviewSchema,
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      areaServed: page.areaServed,
+      itemOffered: {
+        "@type": "Service",
+        name: page.schemaName,
+        serviceType: page.serviceType,
+      },
+    },
   };
 
   const breadcrumbSchema = {
@@ -90,6 +111,9 @@ export default function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           </FadeIn>
         </div>
       </section>
+
+      <TrustStrip />
+      <GoogleReviews />
 
       <section className="section">
         <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">

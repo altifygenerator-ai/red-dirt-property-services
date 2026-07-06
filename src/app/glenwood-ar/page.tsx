@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TrustStrip from "@/components/TrustStrip";
+import GoogleReviews from "@/components/GoogleReviews";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
@@ -13,6 +15,17 @@ export const metadata: Metadata = {
   title: "Property Cleanup & Bush Hogging in Glenwood AR",
   description:
     "Red Dirt Property Services provides property cleanup, bush hogging, brush cutting, hauling, cleanouts, storm cleanup, and light demolition around Glenwood, Amity, Kirby, Norman, Mount Ida, and nearby rural Arkansas communities.",
+  keywords: [
+    "property cleanup Glenwood AR",
+    "bush hogging Glenwood AR",
+    "junk removal Glenwood AR",
+    "hauling Glenwood AR",
+    "cleanouts Glenwood AR",
+    "storm cleanup Glenwood AR",
+    "brush removal Glenwood AR",
+    "light demolition Glenwood AR",
+    "Red Dirt Property Services",
+  ],
   alternates: {
     canonical: "/glenwood-ar",
   },
@@ -106,6 +119,9 @@ export default function GlenwoodPage() {
           </FadeIn>
         </div>
       </section>
+
+      <TrustStrip />
+      <GoogleReviews />
 
       <section className="section">
         <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">

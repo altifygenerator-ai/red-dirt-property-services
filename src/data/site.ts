@@ -109,6 +109,47 @@ export const siteData = {
     "Small Contractors",
   ],
 
+
+  reviewStats: {
+    label: "100% 5-Star Google Reviews",
+    ratingValue: 5,
+    reviewCount: 6,
+    source: "Google",
+  },
+
+  googleReviews: [
+    {
+      name: "Jamie Goree",
+      rating: 5,
+      source: "Google Review",
+      text: "Outstanding experience with Red Dirt Property Services! It is so refreshing to work with a local business that genuinely cares about its customers and takes immense pride in their work. They put in so much extra effort to make sure I was completely happy with the project. I was honestly shocked by how reasonable and fair their pricing was compared to other quotes I received. They deliver premium results without overcharging. Highly, highly recommend!",
+    },
+    {
+      name: "Custom Crafts by Bruce Slaton",
+      rating: 5,
+      source: "Google Review",
+      text: "Every time I need something done that I either can't do or don't have time to do, I get Casey. He does excellent work, and gets it done in a timely manner, saving me money!",
+    },
+    {
+      name: "Katii Marrow",
+      rating: 5,
+      source: "Google Review",
+      text: "Great guys, honest and great at what y'all do. Will call again and send people to y'all as well.",
+    },
+    {
+      name: "Michael Lynch",
+      rating: 5,
+      source: "Google Review",
+      text: "Great guy showed up on time! I 100% recommend this guy.",
+    },
+    {
+      name: "Deven Porter",
+      rating: 5,
+      source: "Google Review",
+      text: "They are good guys and great to work with.",
+    },
+  ],
+
   faqs: [
     {
       question: "Do you give exact prices online?",

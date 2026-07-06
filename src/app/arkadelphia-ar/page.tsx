@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TrustStrip from "@/components/TrustStrip";
+import GoogleReviews from "@/components/GoogleReviews";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
@@ -13,6 +15,18 @@ export const metadata: Metadata = {
   title: "Junk Removal, Cleanouts & Hauling in Arkadelphia AR",
   description:
     "Red Dirt Property Services provides junk removal, hauling, rental cleanouts, estate cleanouts, storm cleanup, brush removal, and light demolition around Arkadelphia, Caddo Valley, Bismarck, Amity, and nearby Arkansas communities.",
+  keywords: [
+    "junk removal Arkadelphia AR",
+    "cleanouts Arkadelphia AR",
+    "hauling Arkadelphia AR",
+    "rental cleanout Arkadelphia AR",
+    "estate cleanout Arkadelphia AR",
+    "storm cleanup Arkadelphia AR",
+    "light demolition Arkadelphia AR",
+    "Caddo Valley junk removal",
+    "Bismarck cleanouts",
+    "Red Dirt Property Services",
+  ],
   alternates: {
     canonical: "/arkadelphia-ar",
   },
@@ -107,6 +121,9 @@ export default function ArkadelphiaPage() {
           </FadeIn>
         </div>
       </section>
+
+      <TrustStrip />
+      <GoogleReviews />
 
       <section className="section">
         <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">

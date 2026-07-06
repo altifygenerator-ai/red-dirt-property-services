@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TrustStrip from "@/components/TrustStrip";
+import GoogleReviews from "@/components/GoogleReviews";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
@@ -11,6 +13,17 @@ export const metadata: Metadata = {
   title: "Light Demolition, Shed Removal & Small Structure Removal",
   description:
     "Light demolition, shed removal, small barn removal, fence removal, deck removal, mobile home cleanup, and debris hauling around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and rural Arkansas.",
+  keywords: [
+    "light demolition Amity AR",
+    "shed removal Glenwood AR",
+    "small structure removal Hot Springs AR",
+    "fence removal Arkadelphia AR",
+    "deck removal Arkansas",
+    "demo debris hauling",
+    "small barn removal Arkansas",
+    "light demolition near me",
+    "Red Dirt Property Services",
+  ],
   alternates: {
     canonical: "/light-demolition",
   },
@@ -99,6 +112,9 @@ export default function LightDemolitionPage() {
           </FadeIn>
         </div>
       </section>
+
+      <TrustStrip />
+      <GoogleReviews />
 
       <section className="section">
         <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">

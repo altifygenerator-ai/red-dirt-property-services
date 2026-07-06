@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TrustStrip from "@/components/TrustStrip";
+import GoogleReviews from "@/components/GoogleReviews";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
 import { siteData } from "@/data/site";
@@ -11,6 +13,16 @@ export const metadata: Metadata = {
   title: "Property Cleanouts & Junk Removal",
   description:
     "Property cleanouts, junk removal, estate cleanouts, rental cleanouts, garage cleanouts, and hauling around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and rural Arkansas.",
+  keywords: [
+    "property cleanouts Amity AR",
+    "estate cleanouts Glenwood AR",
+    "rental cleanouts Hot Springs AR",
+    "garage cleanouts Arkadelphia AR",
+    "junk removal cleanouts Arkansas",
+    "cabin cleanouts Mount Ida AR",
+    "hauling cleanout debris",
+    "Red Dirt Property Services",
+  ],
   alternates: {
     canonical: "/cleanouts",
   },
@@ -98,6 +110,9 @@ export default function CleanoutsPage() {
           </FadeIn>
         </div>
       </section>
+
+      <TrustStrip />
+      <GoogleReviews />
 
       <section className="section">
         <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">

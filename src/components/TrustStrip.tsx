@@ -1,4 +1,5 @@
 const items = [
+  "100% 5-Star Google Reviews",
   "Locally Owned",
   "Free Estimates",
   "Truck & Trailer Ready",
@@ -9,7 +10,7 @@ const items = [
 export default function TrustStrip() {
   return (
     <section className="border-y border-white/10 bg-[#211915]">
-      <div className="container grid gap-3 py-6 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="container grid gap-3 py-6 sm:grid-cols-2 lg:grid-cols-6">
         {items.map((item) => (
           <div
             key={item}

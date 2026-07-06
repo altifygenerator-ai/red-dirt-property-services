@@ -174,12 +174,40 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const aggregateRatingSchema = {
+    "@type": "AggregateRating",
+    ratingValue: siteData.reviewStats.ratingValue,
+    bestRating: 5,
+    worstRating: 1,
+    reviewCount: siteData.reviewStats.reviewCount,
+  };
+
+  const reviewSchema = siteData.googleReviews.map((review) => ({
+    "@type": "Review",
+    author: {
+      "@type": "Person",
+      name: review.name,
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: review.rating,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    reviewBody: review.text,
+    publisher: {
+      "@type": "Organization",
+      name: "Google",
+    },
+  }));
+
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${siteUrl}/#localbusiness`,
     name: "Red Dirt Property Services",
     image: `${siteUrl}/images/logo2.png`,
+    logo: `${siteUrl}/images/logo2.png`,
     url: siteUrl,
     telephone: siteData.phone,
     email: siteData.email,
@@ -211,6 +239,8 @@ export default function RootLayout({
       addressCountry: "US",
     },
     priceRange: "$$",
+    aggregateRating: aggregateRatingSchema,
+    review: reviewSchema,
     makesOffer: [
       {
         "@type": "Offer",

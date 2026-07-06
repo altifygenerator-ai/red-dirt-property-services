@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TrustStrip from "@/components/TrustStrip";
+import GoogleReviews from "@/components/GoogleReviews";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
 import HotSpringsSeoSection from "@/components/HotSpringsSeoSection";
@@ -14,6 +16,18 @@ export const metadata: Metadata = {
   title: "Junk Removal, Brush Hogging & Property Cleanup in Hot Springs AR",
   description:
     "Red Dirt Property Services provides junk removal, brush hogging, bush hogging, property cleanup, hauling, rental cleanouts, estate cleanouts, storm cleanup, brush removal, and light demolition around Hot Springs, Lake Hamilton, Bismarck, Royal, Pearcy, and nearby areas.",
+  keywords: [
+    "junk removal Hot Springs AR",
+    "brush hogging Hot Springs AR",
+    "property cleanup Hot Springs AR",
+    "cleanouts Hot Springs AR",
+    "hauling Hot Springs AR",
+    "storm cleanup Hot Springs AR",
+    "shed removal Hot Springs AR",
+    "light demolition Hot Springs AR",
+    "Lake Hamilton junk removal",
+    "Red Dirt Property Services",
+  ],
   alternates: {
     canonical: "/hot-springs-ar",
   },
@@ -111,6 +125,9 @@ export default function HotSpringsPage() {
           </FadeIn>
         </div>
       </section>
+
+      <TrustStrip />
+      <GoogleReviews />
 
       <section className="section">
         <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">

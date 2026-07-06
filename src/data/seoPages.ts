@@ -1729,11 +1729,50 @@ export const allSeoPageSlugs = [
   "arkadelphia-ar",
 ];
 
+export const aggregateRatingSchema = {
+  "@type": "AggregateRating",
+  ratingValue: siteData.reviewStats.ratingValue,
+  bestRating: 5,
+  worstRating: 1,
+  reviewCount: siteData.reviewStats.reviewCount,
+};
+
+export const reviewSchema = siteData.googleReviews.map((review) => ({
+  "@type": "Review",
+  author: {
+    "@type": "Person",
+    name: review.name,
+  },
+  reviewRating: {
+    "@type": "Rating",
+    ratingValue: review.rating,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  reviewBody: review.text,
+  publisher: {
+    "@type": "Organization",
+    name: "Google",
+  },
+}));
+
 export const organizationSchemaBase = {
   "@type": "LocalBusiness",
   "@id": `${siteData.siteUrl}/#localbusiness`,
   name: siteData.name,
+  image: `${siteData.siteUrl}/images/logo2.png`,
+  logo: `${siteData.siteUrl}/images/logo2.png`,
   telephone: siteData.phone,
   email: siteData.email,
   url: siteData.siteUrl,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Amity",
+    addressRegion: "AR",
+    addressCountry: "US",
+  },
+  areaServed: siteData.serviceAreas.map((area) => `${area}, AR`),
+  priceRange: "$$",
+  aggregateRating: aggregateRatingSchema,
+  review: reviewSchema,
 };
