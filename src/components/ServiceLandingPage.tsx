@@ -7,9 +7,7 @@ import GoogleReviews from "@/components/GoogleReviews";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
 import {
-  aggregateRatingSchema,
   organizationSchemaBase,
-  reviewSchema,
   type ServicePageData,
 } from "@/data/seoPages";
 import { siteData } from "@/data/site";
@@ -31,11 +29,8 @@ export default function ServiceLandingPage({ page }: ServiceLandingPageProps) {
     image: `${siteData.siteUrl}${page.heroImage}`,
     url: `${siteData.siteUrl}/${page.slug}`,
     mainEntityOfPage: `${siteData.siteUrl}/${page.slug}`,
-    aggregateRating: aggregateRatingSchema,
-    review: reviewSchema,
     offers: {
       "@type": "Offer",
-      availability: "https://schema.org/InStock",
       areaServed: page.areaServed,
       itemOffered: {
         "@type": "Service",

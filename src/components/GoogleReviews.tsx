@@ -15,7 +15,6 @@ function Stars({ rating }: { rating: number }) {
 
 export default function GoogleReviews() {
   const reviews = siteData.googleReviews;
-  const marqueeReviews = [...reviews, ...reviews];
 
   return (
     <section className="rd-reviews-section" aria-label="Red Dirt Google reviews">
@@ -30,7 +29,7 @@ export default function GoogleReviews() {
             <span className="rd-reviews-score-stars">★★★★★</span>
             <strong>{siteData.reviewStats.label}</strong>
             <span>
-              {siteData.reviewStats.reviewCount} recent Google reviews and every one shown is 5 stars.
+              {siteData.reviewStats.reviewCount} Google reviews with a 5-star average.
             </span>
           </div>
         </FadeIn>
@@ -38,8 +37,8 @@ export default function GoogleReviews() {
 
       <div className="rd-review-marquee" aria-label="Scrolling customer reviews">
         <div className="rd-review-track">
-          {marqueeReviews.map((review, index) => (
-            <article className="rd-review-card" key={`${review.name}-${index}`}>
+          {reviews.map((review) => (
+            <article className="rd-review-card" key={review.name}>
               <div className="rd-review-card-top">
                 <Stars rating={review.rating} />
                 <span>{review.source}</span>
@@ -47,7 +46,7 @@ export default function GoogleReviews() {
               <p>“{review.text}”</p>
               <footer>
                 <strong>{review.name}</strong>
-                <span>Verified local feedback</span>
+                <span>Google review</span>
               </footer>
             </article>
           ))}

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { allSeoPageSlugs } from "@/data/seoPages";
 import { siteData } from "@/data/site";
 
-const lastModified = new Date("2026-07-03");
+const lastModified = new Date("2026-07-16");
 
 const priorityBySlug: Record<string, number> = {
   "hot-springs-ar": 0.96,
