@@ -1,6 +1,6 @@
-# Red Dirt Property Services
+# Red Dirt Property Services LLC
 
-Next.js site for Red Dirt Property Services.
+Next.js site for Red Dirt Property Services LLC.
 
 ## Local setup
 
@@ -28,7 +28,7 @@ Use `.env.local.example` as the template. Create or edit `.env.local` with the r
 ```env
 RESEND_API_KEY=your_resend_key_here
 QUOTE_TO_EMAIL=reddirtpropertyservicesar@gmail.com
-QUOTE_FROM_EMAIL="Red Dirt Property Services <quotes@hometownwebservicesar.cc>"
+QUOTE_FROM_EMAIL="Red Dirt Property Services LLC <quotes@hometownwebservicesar.cc>"
 QUOTE_REPLY_TO_EMAIL=reddirtpropertyservicesar@gmail.com
 ```
 

@@ -15,7 +15,7 @@ const siteUrl = "https://www.reddirtpropertyservicesar.com";
 export const metadata: Metadata = {
   title: "Junk Removal, Brush Hogging & Property Cleanup in Hot Springs AR",
   description:
-    "Red Dirt Property Services provides junk removal, brush hogging, bush hogging, property cleanup, hauling, rental cleanouts, estate cleanouts, storm cleanup, brush removal, and light demolition around Hot Springs, Lake Hamilton, Bismarck, Royal, Pearcy, and nearby areas.",
+    "Red Dirt Property Services LLC provides junk removal, brush hogging, bush hogging, property cleanup, hauling, rental cleanouts, estate cleanouts, storm cleanup, brush removal, and light demolition around Hot Springs, Lake Hamilton, Bismarck, Royal, Pearcy, and nearby areas.",
   keywords: [
     "junk removal Hot Springs AR",
     "brush hogging Hot Springs AR",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "shed removal Hot Springs AR",
     "light demolition Hot Springs AR",
     "Lake Hamilton junk removal",
-    "Red Dirt Property Services",
+    "Red Dirt Property Services LLC",
   ],
   alternates: {
     canonical: "/hot-springs-ar",
@@ -47,7 +47,7 @@ export default function HotSpringsPage() {
     name: "Junk Removal, Brush Hogging and Property Cleanup in Hot Springs AR",
     provider: {
       "@type": "LocalBusiness",
-      name: "Red Dirt Property Services",
+      name: "Red Dirt Property Services LLC",
       telephone: siteData.phone,
       email: siteData.email,
       url: siteUrl,
@@ -108,7 +108,7 @@ export default function HotSpringsPage() {
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
-              Red Dirt Property Services helps Hot Springs area homeowners,
+              Red Dirt Property Services LLC helps Hot Springs area homeowners,
               landlords, cabin owners, and property owners with junk removal,
               brush hogging, hauling, cleanouts, storm debris, property cleanup,
               and light demo work.

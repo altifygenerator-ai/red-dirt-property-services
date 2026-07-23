@@ -2,7 +2,7 @@ const items = [
   "100% 5-Star Google Reviews",
   "Locally Owned",
   "Free Estimates",
-  "Truck & Trailer Ready",
+  "Licensed & Insured",
   "Serving Rural Arkansas",
   "Straightforward Quotes",
 ];

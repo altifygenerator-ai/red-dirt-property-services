@@ -40,7 +40,7 @@ export default function BeforeAfterSection() {
 
           <p className="text-muted">
             Overgrown yards, brush, junk, and neglected areas can get out of
-            hand fast. Red Dirt Property Services helps cut it back, clean it
+            hand fast. Red Dirt Property Services LLC helps cut it back, clean it
             up, and make the property usable again.
           </p>
         </div>

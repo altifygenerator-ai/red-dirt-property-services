@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="container relative z-10 grid min-h-[calc(100vh-80px)] items-center gap-10 py-16 lg:grid-cols-[1.02fr_0.88fr] lg:py-20">
         <FadeIn>
           <p className="eyebrow mb-5">
-            Based in the Amity & Glenwood Area • Serving Rural Arkansas
+            Licensed & Insured • Based in the Amity & Glenwood Area • Serving Rural Arkansas
           </p>
 
           <h1 className="text-6xl font-bold leading-[0.88] text-white sm:text-7xl lg:text-8xl">
@@ -36,7 +36,7 @@ export default function Hero() {
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
             From overgrown brush and storm debris to rental cleanouts, dirt
             work, tree cleanup, stump grinding, hauling, old sheds, and property
-            messes that have gotten out of hand, Red Dirt Property Services helps
+            messes that have gotten out of hand, Red Dirt Property Services LLC helps
             Arkansas property owners get things cleaned up and moving forward.
           </p>
 

@@ -12,7 +12,7 @@ import { siteData } from "@/data/site";
 export const metadata: Metadata = {
   title: "Brush Hogging, Bush Hogging & Brush Cutting",
   description:
-    "Brush hogging, bush hogging, rough mowing, and brush cutting around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and nearby rural Arkansas communities. Red Dirt Property Services helps clear overgrown fields, brush, trails, fence lines, and rural properties.",
+    "Brush hogging, bush hogging, rough mowing, and brush cutting around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and nearby rural Arkansas communities. Red Dirt Property Services LLC helps clear overgrown fields, brush, trails, fence lines, and rural properties.",
   keywords: [
     "brush hogging Amity AR",
     "bush hogging Glenwood AR",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "rural property cleanup Arkansas",
     "overgrown property cleanup",
     "brush hogging near me",
-    "Red Dirt Property Services",
+    "Red Dirt Property Services LLC",
   ],
   alternates: {
     canonical: "/bush-hogging",
@@ -45,7 +45,7 @@ export default function BushHoggingPage() {
     name: "Brush Hogging, Bush Hogging and Brush Cutting",
     provider: {
       "@type": "LocalBusiness",
-      name: "Red Dirt Property Services",
+      name: "Red Dirt Property Services LLC",
       telephone: siteData.phone,
       email: siteData.email,
       url: siteUrl,
@@ -99,7 +99,7 @@ export default function BushHoggingPage() {
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
-              Red Dirt Property Services helps landowners, homeowners, cabin
+              Red Dirt Property Services LLC helps landowners, homeowners, cabin
               owners, and rural property owners get brush, tall grass, trails,
               and rough areas knocked back before they get too far gone.
             </p>

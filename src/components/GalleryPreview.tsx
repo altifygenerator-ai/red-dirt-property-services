@@ -106,7 +106,7 @@ export default function GalleryPreview() {
               <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 bg-gradient-to-t from-black/85 to-transparent p-5">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-[#d8c2a5]">
-                    Red Dirt Property Services
+                    Red Dirt Property Services LLC
                   </p>
                   <h3 className="mt-1 font-[var(--font-heading)] text-3xl font-bold uppercase text-white">
                     {activeImage.label}

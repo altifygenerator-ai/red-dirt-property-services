@@ -14,7 +14,7 @@ const siteUrl = "https://www.reddirtpropertyservicesar.com";
 export const metadata: Metadata = {
   title: "Junk Removal, Cleanouts & Hauling in Arkadelphia AR",
   description:
-    "Red Dirt Property Services provides junk removal, hauling, rental cleanouts, estate cleanouts, storm cleanup, brush removal, and light demolition around Arkadelphia, Caddo Valley, Bismarck, Amity, and nearby Arkansas communities.",
+    "Red Dirt Property Services LLC provides junk removal, hauling, rental cleanouts, estate cleanouts, storm cleanup, brush removal, and light demolition around Arkadelphia, Caddo Valley, Bismarck, Amity, and nearby Arkansas communities.",
   keywords: [
     "junk removal Arkadelphia AR",
     "cleanouts Arkadelphia AR",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "light demolition Arkadelphia AR",
     "Caddo Valley junk removal",
     "Bismarck cleanouts",
-    "Red Dirt Property Services",
+    "Red Dirt Property Services LLC",
   ],
   alternates: {
     canonical: "/arkadelphia-ar",
@@ -46,7 +46,7 @@ export default function ArkadelphiaPage() {
     name: "Junk Removal and Cleanouts in Arkadelphia AR",
     provider: {
       "@type": "LocalBusiness",
-      name: "Red Dirt Property Services",
+      name: "Red Dirt Property Services LLC",
       telephone: siteData.phone,
       email: siteData.email,
       url: siteUrl,
@@ -104,7 +104,7 @@ export default function ArkadelphiaPage() {
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
-              Red Dirt Property Services helps Arkadelphia and Caddo Valley area
+              Red Dirt Property Services LLC helps Arkadelphia and Caddo Valley area
               homeowners, landlords, families, and property owners clear out
               junk, clean up rentals, haul debris, remove storm mess, and handle
               light demolition cleanup.

@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="flex items-center gap-5">
             <Image
               src="/images/logo2.png"
-              alt="Red Dirt Property Services logo"
+              alt="Red Dirt Property Services LLC logo"
               width={88}
               height={88}
               className="h-20 w-20 rounded-xl object-contain"
@@ -21,7 +21,7 @@ export default function Footer() {
                 Red Dirt
               </p>
               <p className="mt-1 text-xs font-black uppercase tracking-[0.22em] text-[#d8c2a5]">
-                Property Services
+                Property Services LLC
               </p>
               <p className="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-white/48">
                 {siteData.tagline}
@@ -73,6 +73,8 @@ export default function Footer() {
             <Link href={`mailto:${siteData.email}`} className="hover:text-white">
               {siteData.email}
             </Link>
+
+            <p>{siteData.credentials}</p>
 
             <p>Based around Amity & Glenwood, Arkansas</p>
 

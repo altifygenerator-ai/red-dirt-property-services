@@ -4,7 +4,7 @@ const quoteToEmail =
   process.env.QUOTE_TO_EMAIL ?? "reddirtpropertyservicesar@gmail.com";
 const quoteFromEmail =
   process.env.QUOTE_FROM_EMAIL ??
-  "Red Dirt Property Services <quotes@hometownwebservicesar.cc>";
+  "Red Dirt Property Services LLC <quotes@hometownwebservicesar.cc>";
 const replyToEmail = process.env.QUOTE_REPLY_TO_EMAIL ?? quoteToEmail;
 
 function clean(value: FormDataEntryValue | null) {

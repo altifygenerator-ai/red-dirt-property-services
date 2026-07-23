@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Red Dirt Property Services | Property Cleanup, Dirt Work & Hauling in Arkansas",
-    template: "%s | Red Dirt Property Services",
+      "Red Dirt Property Services LLC | Property Cleanup, Dirt Work & Hauling in Arkansas",
+    template: "%s | Red Dirt Property Services LLC",
   },
   description:
-    "Red Dirt Property Services provides property cleanup, dirt work, driveway work, ditches, culverts, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas communities.",
-  authors: [{ name: "Red Dirt Property Services" }],
-  creator: "Red Dirt Property Services",
-  publisher: "Red Dirt Property Services",
-  applicationName: "Red Dirt Property Services",
+    "Licensed and insured Red Dirt Property Services LLC provides property cleanup, dirt work, driveway work, ditches, culverts, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas communities.",
+  authors: [{ name: "Red Dirt Property Services LLC" }],
+  creator: "Red Dirt Property Services LLC",
+  publisher: "Red Dirt Property Services LLC",
+  applicationName: "Red Dirt Property Services LLC",
   category: "Property Services",
   manifest: "/site.webmanifest",
   icons: {
@@ -35,26 +35,26 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Red Dirt Property Services",
+    siteName: "Red Dirt Property Services LLC",
     title:
-      "Red Dirt Property Services | Property Cleanup, Dirt Work & Hauling",
+      "Red Dirt Property Services LLC | Property Cleanup, Dirt Work & Hauling",
     description:
-      "Local property cleanup, dirt work, driveway help, stump grinding, tree cleanup, hauling, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
+      "Licensed and insured local property cleanup, dirt work, driveway help, stump grinding, tree cleanup, hauling, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
     images: [
       {
         url: "/images/cover.png",
         width: 1200,
         height: 630,
-        alt: "Red Dirt Property Services truck and property cleanup work",
+        alt: "Red Dirt Property Services LLC truck and property cleanup work",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Red Dirt Property Services | Property Cleanup, Dirt Work & Hauling",
+      "Red Dirt Property Services LLC | Property Cleanup, Dirt Work & Hauling",
     description:
-      "Local property cleanup, dirt work, hauling, tree cleanup, stump grinding, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
+      "Licensed and insured local property cleanup, dirt work, hauling, tree cleanup, stump grinding, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
     images: ["/images/cover.png"],
   },
   other: {
@@ -91,14 +91,14 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${siteUrl}/#localbusiness`,
-    name: "Red Dirt Property Services",
+    name: "Red Dirt Property Services LLC",
     image: `${siteUrl}/images/logo2.png`,
     logo: `${siteUrl}/images/logo2.png`,
     url: siteUrl,
     telephone: siteData.phone,
     email: siteData.email,
     description:
-      "Property cleanup, dirt work, driveway help, ditches, culverts, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
+      "Licensed and insured property cleanup, dirt work, driveway help, ditches, culverts, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
     areaServed: [
       "Amity AR",
       "Glenwood AR",

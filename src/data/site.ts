@@ -8,8 +8,9 @@ import {
 import type { FAQ, Service, Step } from "@/types/site";
 
 export const siteData = {
-  name: "Red Dirt Property Services",
+  name: "Red Dirt Property Services LLC",
   tagline: "Property Cleanup • Dirt Work • Hauling",
+  credentials: "Licensed & Insured",
   siteUrl: "https://www.reddirtpropertyservicesar.com",
   phone: "870-260-4880",
   phoneHref: "8702604880",
@@ -122,7 +123,7 @@ export const siteData = {
       name: "Jamie Goree",
       rating: 5,
       source: "Google Review",
-      text: "Outstanding experience with Red Dirt Property Services! It is so refreshing to work with a local business that genuinely cares about its customers and takes immense pride in their work. They put in so much extra effort to make sure I was completely happy with the project. I was honestly shocked by how reasonable and fair their pricing was compared to other quotes I received. They deliver premium results without overcharging. Highly, highly recommend!",
+      text: "Outstanding experience with Red Dirt Property Services LLC! It is so refreshing to work with a local business that genuinely cares about its customers and takes immense pride in their work. They put in so much extra effort to make sure I was completely happy with the project. I was honestly shocked by how reasonable and fair their pricing was compared to other quotes I received. They deliver premium results without overcharging. Highly, highly recommend!",
     },
     {
       name: "Custom Crafts by Bruce Slaton",
@@ -151,6 +152,11 @@ export const siteData = {
   ],
 
   faqs: [
+    {
+      question: "Are you licensed and insured?",
+      answer:
+        "Yes. Red Dirt Property Services LLC is licensed and insured for the property services we provide.",
+    },
     {
       question: "Do you give exact prices online?",
       answer:

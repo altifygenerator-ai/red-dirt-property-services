@@ -9,7 +9,7 @@ export default function ServiceArea() {
         <SectionHeading
           eyebrow="Service Area"
           title="Serving the communities we call home."
-          text="Red Dirt Property Services is based around the Amity and Glenwood area and serves nearby communities throughout Montgomery, Pike, Clark, Garland, and surrounding counties."
+          text="Red Dirt Property Services LLC is based around the Amity and Glenwood area and serves nearby communities throughout Montgomery, Pike, Clark, Garland, and surrounding counties."
         />
 
         <FadeIn className="mt-10 rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 md:p-8">

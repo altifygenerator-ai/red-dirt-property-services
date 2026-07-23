@@ -14,7 +14,7 @@ const siteUrl = "https://www.reddirtpropertyservicesar.com";
 export const metadata: Metadata = {
   title: "Property Cleanup & Bush Hogging in Glenwood AR",
   description:
-    "Red Dirt Property Services provides property cleanup, bush hogging, brush cutting, hauling, cleanouts, storm cleanup, and light demolition around Glenwood, Amity, Kirby, Norman, Mount Ida, and nearby rural Arkansas communities.",
+    "Red Dirt Property Services LLC provides property cleanup, bush hogging, brush cutting, hauling, cleanouts, storm cleanup, and light demolition around Glenwood, Amity, Kirby, Norman, Mount Ida, and nearby rural Arkansas communities.",
   keywords: [
     "property cleanup Glenwood AR",
     "bush hogging Glenwood AR",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "storm cleanup Glenwood AR",
     "brush removal Glenwood AR",
     "light demolition Glenwood AR",
-    "Red Dirt Property Services",
+    "Red Dirt Property Services LLC",
   ],
   alternates: {
     canonical: "/glenwood-ar",
@@ -45,7 +45,7 @@ export default function GlenwoodPage() {
     name: "Property Cleanup and Bush Hogging in Glenwood AR",
     provider: {
       "@type": "LocalBusiness",
-      name: "Red Dirt Property Services",
+      name: "Red Dirt Property Services LLC",
       telephone: siteData.phone,
       email: siteData.email,
       url: siteUrl,
@@ -102,7 +102,7 @@ export default function GlenwoodPage() {
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
-              Red Dirt Property Services helps Glenwood area property owners
+              Red Dirt Property Services LLC helps Glenwood area property owners
               clean up rough spots, brush piles, overgrown land, storm debris,
               junk, old sheds, and rural property messes that have gotten out of
               hand.

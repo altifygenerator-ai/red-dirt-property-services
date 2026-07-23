@@ -6,10 +6,10 @@ export default function Header() {
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#171717]/86 backdrop-blur-xl">
       <div className="container flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center gap-3" aria-label="Red Dirt Property Services home">
+        <Link href="/" className="flex items-center gap-3" aria-label="Red Dirt Property Services LLC home">
           <Image
             src="/images/logo2.png"
-            alt="Red Dirt Property Services logo"
+            alt="Red Dirt Property Services LLC logo"
             width={85}
             height={85}
             className="h-14 w-auto"

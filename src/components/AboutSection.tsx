@@ -13,8 +13,9 @@ export default function AboutSection() {
 
         <FadeIn className="space-y-5 text-lg leading-8 text-white/70">
           <p>
-            Red Dirt Property Services was built by two brothers who live, work,
-            and raise family right here in rural Arkansas.
+            Red Dirt Property Services LLC is licensed and insured and was built by
+            two brothers who live, work, and raise family right here in rural
+            Arkansas.
           </p>
 
           <p>

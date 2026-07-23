@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "junk removal cleanouts Arkansas",
     "cabin cleanouts Mount Ida AR",
     "hauling cleanout debris",
-    "Red Dirt Property Services",
+    "Red Dirt Property Services LLC",
   ],
   alternates: {
     canonical: "/cleanouts",
@@ -44,7 +44,7 @@ export default function CleanoutsPage() {
     name: "Property Cleanouts and Junk Removal",
     provider: {
       "@type": "LocalBusiness",
-      name: "Red Dirt Property Services",
+      name: "Red Dirt Property Services LLC",
       telephone: siteData.phone,
       email: siteData.email,
       url: siteUrl,

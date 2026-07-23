@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     "demo debris hauling",
     "small barn removal Arkansas",
     "light demolition near me",
-    "Red Dirt Property Services",
+    "Red Dirt Property Services LLC",
   ],
   alternates: {
     canonical: "/light-demolition",
   },
   openGraph: {
-    title: "Light Demolition & Shed Removal | Red Dirt Property Services",
+    title: "Light Demolition & Shed Removal | Red Dirt Property Services LLC",
     description:
       "Light demolition, shed removal, fence removal, small structure removal, and debris hauling around Amity, Glenwood, Mount Ida, Kirby, Hot Springs, and Arkadelphia.",
     url: "https://www.reddirtpropertyservicesar.com/light-demolition",
@@ -45,7 +45,7 @@ export default function LightDemolitionPage() {
     name: "Light Demolition and Shed Removal",
     provider: {
       "@type": "LocalBusiness",
-      name: "Red Dirt Property Services",
+      name: "Red Dirt Property Services LLC",
       telephone: siteData.phone,
       email: siteData.email,
       url: siteUrl,
