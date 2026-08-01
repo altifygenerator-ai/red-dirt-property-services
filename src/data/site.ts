@@ -12,8 +12,8 @@ export const siteData = {
   tagline: "Property Cleanup • Dirt Work • Hauling",
   credentials: "Licensed & Insured",
   siteUrl: "https://www.reddirtpropertyservicesar.com",
-  phone: "870-260-4880",
-  phoneHref: "8702604880",
+  phone: "870-828-2562",
+  phoneHref: "8708282562",
   email: "reddirtpropertyservicesar@gmail.com",
 
   services: [
