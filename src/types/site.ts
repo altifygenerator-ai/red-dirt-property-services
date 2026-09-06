@@ -15,3 +15,18 @@ export type FAQ = {
   question: string;
   answer: string;
 };
+export type RecentWorkMedia = {
+  eyebrow: string;
+  title: string;
+  text: string;
+  images: {
+    src: string;
+    alt: string;
+    label: string;
+  }[];
+  videos?: {
+    src: string;
+    poster: string;
+    label: string;
+  }[];
+};

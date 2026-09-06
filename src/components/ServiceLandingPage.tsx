@@ -6,6 +6,7 @@ import TrustStrip from "@/components/TrustStrip";
 import GoogleReviews from "@/components/GoogleReviews";
 import FadeIn from "@/components/FadeIn";
 import RelatedLinksSection from "@/components/RelatedLinksSection";
+import RecentWorkMediaSection from "@/components/RecentWorkMediaSection";
 import {
   organizationSchemaBase,
   type ServicePageData,
@@ -169,6 +170,8 @@ export default function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           </FadeIn>
         </div>
       </section>
+
+      {page.recentWork ? <RecentWorkMediaSection media={page.recentWork} /> : null}
 
       <section className="section bg-[#211915]">
         <div className="container text-center">

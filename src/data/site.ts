@@ -24,7 +24,7 @@ export const siteData = {
     },
     {
       title: "Dirt Work",
-      text: "Driveway touch-ups, rough grading, drainage ditches, culvert help, washouts, and small dirt work jobs that need looked at with the property, access, and equipment in mind.",
+      text: "Driveway touch-ups, rough grading, drainage ditches, culvert help, washouts, small excavation, and dirt work jobs that need looked at with the property, access, and equipment in mind.",
       icon: FaTruckPickup,
     },
     {

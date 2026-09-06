@@ -55,6 +55,21 @@ const galleryImages = [
     alt: "Finished property cleanup area",
     label: "Work In Progress",
   },
+  {
+    src: "/images/dirt-work/excavator-digging-1.webp",
+    alt: "Red Dirt mini excavator doing local dirt and excavation work",
+    label: "Mini Excavator Work",
+  },
+  {
+    src: "/images/dirt-work/excavation-hole-2.webp",
+    alt: "Excavation and root removal work on a local property",
+    label: "Excavation & Cleanup",
+  },
+  {
+    src: "/images/dirt-work/mini-excavator-transport.webp",
+    alt: "Red Dirt pickup hauling the mini excavator to a local job",
+    label: "Equipment Hauling",
+  },
 ];
 
 export default function GalleryPreview() {
@@ -163,7 +178,7 @@ export default function GalleryPreview() {
             </div>
           </div>
 
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 md:grid-cols-5">
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
             {galleryImages.slice(5).map((image, index) => {
               const realIndex = index + 5;
 

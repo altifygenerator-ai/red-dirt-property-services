@@ -1,4 +1,5 @@
 import { areaNavLinks, serviceNavLinks, siteData } from "@/data/site";
+import type { RecentWorkMedia } from "@/types/site";
 
 export type RelatedLink = {
   label: string;
@@ -35,6 +36,7 @@ export type ServicePageData = {
   serviceType: string[];
   areaServed: string[];
   related: RelatedLink[];
+  recentWork?: RecentWorkMedia;
 };
 
 export type LocationPageData = {
@@ -365,8 +367,8 @@ export const servicePages: Record<string, ServicePageData> = {
     ogTitle: "Dirt Work, Driveways, Ditches & Culverts | Red Dirt",
     ogDescription:
       "Small dirt work, driveway help, drainage ditches, culverts, washouts, and rough grading for rural Arkansas properties.",
-    heroImage: "/images/equipment-1.jpg",
-    heroAlt: "Equipment for dirt work, driveway repair, and rural property cleanup in Arkansas",
+    heroImage: "/images/dirt-work/dirt-work-hero.webp",
+    heroAlt: "Red Dirt mini excavator doing dirt and excavation work on an Arkansas property",
     eyebrow: "Dirt Work • Driveways • Ditches • Culverts",
     h1: "Driveways, Ditches, Culverts, And Small Dirt Work That Needs Done Right.",
     intro:
@@ -386,15 +388,15 @@ export const servicePages: Record<string, ServicePageData> = {
       "Culvert help",
       "Washout repair",
       "Rough grading",
-      "Rural access cleanup"
+      "Small excavation"
     ],
-    detailImage: "/images/tractor-pov.jpg",
-    detailAlt: "Rural Arkansas equipment work for driveways and property access",
+    detailImage: "/images/dirt-work/dirt-work-equipment-detail.webp",
+    detailAlt: "Red Dirt truck hauling a mini excavator for local dirt work",
     detailEyebrow: "Quoted By The Job",
     detailTitle: "Dirt work depends on access, water, material, and what the ground is doing.",
     detailText: [
       "A short driveway touch-up is not the same job as rebuilding a washed-out entrance, cutting a ditch, or helping with a culvert. Grade, slope, water flow, rock, material, and room to work all change the quote.",
-      "We are a good fit for small rural dirt work and property access jobs that match our equipment and crew. If a job needs engineering, major excavation, or heavy commercial equipment, we will tell you straight.",
+      "We are a good fit for small rural dirt work, mini-excavator work, and property access jobs that match our equipment and crew. If a job needs engineering, major excavation, or heavy commercial equipment, we will tell you straight.",
       "Photos help, but bigger drainage or driveway jobs may need a property look before we give a firm number."
     ],
     areaTitle: "Dirt work around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby rural areas.",
@@ -410,7 +412,8 @@ export const servicePages: Record<string, ServicePageData> = {
       "Drainage ditches",
       "Culvert work",
       "Washout repair",
-      "Rough grading"
+      "Rough grading",
+      "Small excavation"
     ],
     areaServed: coreAreaServed,
     related: [
@@ -421,6 +424,65 @@ export const servicePages: Record<string, ServicePageData> = {
       areaLinks.find((item) => item.href === "/glenwood-ar")!,
       areaLinks.find((item) => item.href === "/mount-ida-ar")!,
     ],
+    recentWork: {
+      eyebrow: "Recent Dirt Work",
+      title: "Our Equipment On The Job.",
+      text: "A recent local job using the mini excavator for digging, root and stump excavation, cleanup, loading, and equipment transport. These are the kinds of practical dirt-work jobs we can look at when the access and scope fit our equipment.",
+      videos: [
+        {
+          src: "/images/dirt-work/excavator-digging.mp4",
+          poster: "/images/dirt-work/excavator-digging-poster.jpg",
+          label: "Mini Excavator At Work",
+        },
+        {
+          src: "/images/dirt-work/excavator-loading.mp4",
+          poster: "/images/dirt-work/excavator-loading-poster.jpg",
+          label: "Loading & Cleanup",
+        },
+      ],
+      images: [
+        {
+          src: "/images/dirt-work/excavator-digging-1.webp",
+          alt: "Red Dirt mini excavator digging and loosening roots during property dirt work",
+          label: "Excavation Work",
+        },
+        {
+          src: "/images/dirt-work/excavator-digging-2.webp",
+          alt: "Mini excavator working a dug-out area on a local Arkansas property",
+          label: "Digging & Grading",
+        },
+        {
+          src: "/images/dirt-work/excavator-loading-trailer.webp",
+          alt: "Mini excavator beside a dump trailer during a local cleanup and dirt-work job",
+          label: "Loading Debris",
+        },
+        {
+          src: "/images/dirt-work/excavation-hole-1.webp",
+          alt: "Excavated area after root and stump removal work",
+          label: "Excavated Area",
+        },
+        {
+          src: "/images/dirt-work/excavation-hole-2.webp",
+          alt: "Deep excavation area being worked with a Red Dirt mini excavator",
+          label: "Site Work",
+        },
+        {
+          src: "/images/dirt-work/stump-root-excavation-1.webp",
+          alt: "Mini excavator removing roots and stump material near a residence",
+          label: "Root & Stump Work",
+        },
+        {
+          src: "/images/dirt-work/stump-root-excavation-2.webp",
+          alt: "Mini excavator working around stump roots during property cleanup",
+          label: "Property Excavation",
+        },
+        {
+          src: "/images/dirt-work/mini-excavator-transport.webp",
+          alt: "Red Dirt pickup hauling a mini excavator on a flatbed trailer",
+          label: "Equipment Transport",
+        },
+      ],
+    },
   },
 
   "tree-work": {
