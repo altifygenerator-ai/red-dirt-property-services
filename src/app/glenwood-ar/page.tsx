@@ -12,27 +12,28 @@ import { siteData } from "@/data/site";
 const siteUrl = "https://www.reddirtpropertyservicesar.com";
 
 export const metadata: Metadata = {
-  title: "Property Cleanup & Bush Hogging in Glenwood AR",
+  title: "Property Cleanup, Dirt Work & Bush Hogging in Glenwood AR",
   description:
-    "Red Dirt Property Services LLC provides property cleanup, bush hogging, brush cutting, hauling, cleanouts, storm cleanup, and light demolition around Glenwood, Amity, Kirby, Norman, Mount Ida, and nearby rural Arkansas communities.",
+    "Red Dirt Property Services LLC provides property cleanup, mini excavator dirt work, driveway help, bush hogging, brush cutting, hauling, cleanouts, storm cleanup, and light demolition around Glenwood, Amity, Kirby, Norman, Mount Ida, and nearby rural Arkansas communities.",
   keywords: [
     "property cleanup Glenwood AR",
+    "dirt work Glenwood AR",
+    "mini excavator Glenwood AR",
+    "driveway grading Glenwood AR",
+    "culvert work Glenwood AR",
     "bush hogging Glenwood AR",
     "junk removal Glenwood AR",
     "hauling Glenwood AR",
     "cleanouts Glenwood AR",
-    "storm cleanup Glenwood AR",
-    "brush removal Glenwood AR",
-    "light demolition Glenwood AR",
     "Red Dirt Property Services LLC",
   ],
   alternates: {
     canonical: "/glenwood-ar",
   },
   openGraph: {
-    title: "Property Cleanup & Bush Hogging in Glenwood AR",
+    title: "Property Cleanup, Dirt Work & Bush Hogging in Glenwood AR",
     description:
-      "Local property cleanup, bush hogging, brush cutting, hauling, storm cleanup, and light demolition around Glenwood, Amity, Kirby, Norman, Mount Ida, and nearby rural Arkansas communities.",
+      "Local property cleanup, mini excavator dirt work, driveway help, bush hogging, hauling, storm cleanup, and light demolition around Glenwood and nearby rural Arkansas communities.",
     url: `${siteUrl}/glenwood-ar`,
     images: ["/images/tractor-bush-hog.jpg"],
   },
@@ -42,7 +43,7 @@ export default function GlenwoodPage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Property Cleanup and Bush Hogging in Glenwood AR",
+    name: "Property Cleanup, Dirt Work and Bush Hogging in Glenwood AR",
     provider: {
       "@type": "LocalBusiness",
       name: "Red Dirt Property Services LLC",
@@ -61,6 +62,10 @@ export default function GlenwoodPage() {
     ],
     serviceType: [
       "Property cleanup",
+      "Mini excavator work",
+      "Dirt work",
+      "Driveway grading",
+      "Drainage work",
       "Bush hogging",
       "Brush cutting",
       "Hauling",
@@ -68,7 +73,7 @@ export default function GlenwoodPage() {
       "Light demolition",
     ],
     description:
-      "Property cleanup, bush hogging, brush cutting, hauling, storm cleanup, cleanouts, and light demolition around Glenwood, Amity, Kirby, Norman, Mount Ida, and surrounding rural Arkansas communities.",
+      "Property cleanup, mini excavator dirt work, driveway help, bush hogging, brush cutting, hauling, storm cleanup, cleanouts, and light demolition around Glenwood and surrounding rural Arkansas communities.",
   };
 
   return (
@@ -98,14 +103,14 @@ export default function GlenwoodPage() {
             </p>
 
             <h1 className="text-6xl font-bold leading-[0.88] text-white sm:text-7xl lg:text-8xl">
-              Property Cleanup And Bush Hogging Around Glenwood.
+              Property Cleanup, Dirt Work And Bush Hogging Around Glenwood.
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
               Red Dirt Property Services LLC helps Glenwood area property owners
-              clean up rough spots, brush piles, overgrown land, storm debris,
-              junk, old sheds, and rural property messes that have gotten out of
-              hand.
+              with rough cleanup, overgrown land, hauling, and practical
+              mini-excavator work for driveways, drainage, washouts, roots, and
+              small dirt projects.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -128,7 +133,7 @@ export default function GlenwoodPage() {
           <FadeIn>
             <p className="eyebrow mb-4">Glenwood Area Property Work</p>
             <h2 className="text-5xl font-bold leading-[0.9] text-white md:text-6xl">
-              Built for rural properties, brush, hauling, and cleanup jobs.
+              Built for rural properties, equipment work, brush, hauling, and cleanup jobs.
             </h2>
           </FadeIn>
 
@@ -137,14 +142,14 @@ export default function GlenwoodPage() {
               Around Glenwood, Amity, Kirby, Norman, and Mount Ida, a lot of
               property work is not fancy. It is brush that needs cut, old junk
               that needs hauled off, storm debris that needs cleaned up, or a
-              rough spot on the property that needs attention.
+              driveway, drainage area, or rough spot that needs equipment on it.
             </p>
 
             <p>
               We focus on the kind of jobs rural homeowners, landowners, cabin
               owners, and families run into around here. If it needs a truck,
-              trailer, tools, tractor work, or a couple local guys willing to get
-              dirty, that is the lane Red Dirt was built for.
+              trailer, tractor, mini excavator, or a couple local guys willing to
+              get dirty, that is the lane Red Dirt was built for.
             </p>
           </FadeIn>
         </div>
@@ -154,12 +159,12 @@ export default function GlenwoodPage() {
         <div className="container">
           <div className="grid gap-5 md:grid-cols-3">
             {[
+              "Mini excavator dirt work",
               "Bush hogging and rough mowing",
+              "Driveway and drainage help",
               "Brush piles and storm cleanup",
               "Rural junk hauling",
               "Old shed and fence removal",
-              "Cabin and lake property cleanup",
-              "General property cleanouts",
             ].map((item) => (
               <FadeIn
                 key={item}
@@ -176,31 +181,39 @@ export default function GlenwoodPage() {
         <div className="container grid gap-10 lg:grid-cols-2 lg:items-center">
           <FadeIn className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-white/10">
             <Image
-              src="/images/truck-trailers.jpg"
-              alt="Red Dirt truck and trailers for Glenwood area hauling and cleanup"
+              src="/images/dirt-work/mini-excavator-transport.webp"
+              alt="Red Dirt truck hauling a mini excavator for Glenwood area property work"
               fill
               className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </FadeIn>
 
           <FadeIn className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-8">
-            <p className="eyebrow mb-4">Pricing</p>
+            <p className="eyebrow mb-4">Local Equipment Work</p>
             <h2 className="text-5xl font-bold leading-[0.9] text-white">
-              Most Glenwood area jobs are quoted by photos and location.
+              Dirt work gets quoted around the ground, water, and access.
             </h2>
 
             <div className="mt-6 space-y-5 text-lg leading-8 text-white/70">
               <p>
-                Bush hogging, cleanups, hauling, and light demo all depend on
-                distance, access, load size, disposal, and how much work the
-                property needs.
+                Driveway work, drainage, roots, culvert areas, and washouts all
+                depend on slope, material, water flow, equipment access, and how
+                much shaping or cleanup the property actually needs.
               </p>
 
               <p>
-                Send us a few photos and tell us where the property is. We will
-                give you a straight answer and let you know if it is something we
-                can handle.
+                Send a few wide photos and the property location. For bigger
+                drainage or driveway jobs, we may need to look at the site before
+                giving a firm quote.
               </p>
+
+              <Link
+                href="/glenwood-dirt-work"
+                className="inline-flex font-black text-[#d8c2a5] underline underline-offset-4"
+              >
+                See Glenwood dirt work & mini excavator services →
+              </Link>
             </div>
           </FadeIn>
         </div>
@@ -208,12 +221,12 @@ export default function GlenwoodPage() {
 
       <RelatedLinksSection
         title="Glenwood services and nearby areas."
-        text="A lot of Glenwood jobs start as one pile and turn into brush work, hauling, cleanouts, or light demo."
+        text="A lot of Glenwood jobs overlap. Dirt work may need brush opened up first, and cleanup jobs can turn into hauling, stump work, or light demo."
         links={[
+          { label: "Glenwood Dirt Work", href: "/glenwood-dirt-work", text: "Mini excavator work, driveways, ditches, culverts, washouts, roots, and small excavation." },
           { label: "Bush Hogging", href: "/bush-hogging", text: "Brush cutting, rough mowing, field edges, trails, and rural property cleanup." },
           { label: "Property Cleanup", href: "/property-cleanup", text: "Brush, junk, storm mess, debris, and rough areas cleaned up." },
-          { label: "Amity Area", href: "/amity-ar", text: "Local cleanup, hauling, brush hogging, and cleanouts around Amity." },
-          { label: "Norman Area", href: "/norman-ar", text: "Cabin cleanouts, hauling, brush work, and rural cleanup around Norman." },
+          { label: "Amity Dirt Work", href: "/amity-dirt-work", text: "Driveways, drainage, culverts, rough grading, roots, and mini excavator work around Amity." },
         ]}
       />
 

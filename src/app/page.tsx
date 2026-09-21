@@ -16,18 +16,24 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import BeforeAfterSection from "@/components/BeforeAfterSection";
 import HotSpringsSeoSection from "@/components/HotSpringsSeoSection";
+
 export const metadata: Metadata = {
   title:
-    "Red Dirt Property Services LLC | Property Cleanup, Dirt Work & Hauling in Southwest Arkansas",
+    "Red Dirt Property Services LLC | Dirt Work, Cleanup & Hauling in Southwest Arkansas",
   description:
-    "Licensed and insured Red Dirt Property Services LLC handles property cleanup, junk removal, brush hogging, bush hogging, dirt work, driveway help, stump grinding, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Hot Springs, Arkadelphia, Mount Ida, Kirby, and nearby Arkansas towns.",
+    "Licensed and insured Red Dirt Property Services LLC handles mini excavator dirt work, driveway grading and drainage help, property cleanup, junk removal, brush hogging, stump grinding, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Hot Springs, Arkadelphia, Mount Ida, Kirby, and nearby Arkansas towns.",
   keywords: [
     "Red Dirt Property Services LLC",
+    "dirt work Amity AR",
+    "dirt work Glenwood AR",
+    "mini excavator Glenwood AR",
+    "mini excavator Amity AR",
+    "driveway grading Glenwood AR",
+    "culvert work Amity AR",
     "property cleanup Amity AR",
     "junk removal Glenwood AR",
     "brush hogging Hot Springs AR",
     "bush hogging Arkadelphia AR",
-    "dirt work Mount Ida AR",
     "cleanouts Southwest Arkansas",
     "hauling near me",
     "storm cleanup Arkansas",
@@ -39,17 +45,17 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Red Dirt Property Services LLC | Property Cleanup, Dirt Work & Hauling",
+      "Red Dirt Property Services LLC | Dirt Work, Cleanup & Hauling",
     description:
-      "Licensed and insured local 5-star property cleanup, junk removal, brush hogging, hauling, dirt work, cleanouts, storm cleanup, and light demolition across Southwest Arkansas.",
+      "Licensed and insured local mini excavator dirt work, driveway help, property cleanup, junk removal, brush hogging, hauling, stump grinding, cleanouts, storm cleanup, and light demolition across Southwest Arkansas.",
     url: "/",
     images: ["/images/cover.png"],
   },
   twitter: {
     title:
-      "Red Dirt Property Services LLC | Property Cleanup, Dirt Work & Hauling",
+      "Red Dirt Property Services LLC | Dirt Work, Cleanup & Hauling",
     description:
-      "Licensed and insured local 5-star property cleanup, junk removal, brush hogging, hauling, dirt work, cleanouts, storm cleanup, and light demolition across Southwest Arkansas.",
+      "Licensed and insured local mini excavator dirt work, driveway help, property cleanup, junk removal, brush hogging, hauling, stump grinding, cleanouts, storm cleanup, and light demolition across Southwest Arkansas.",
     images: ["/images/cover.png"],
   },
 };

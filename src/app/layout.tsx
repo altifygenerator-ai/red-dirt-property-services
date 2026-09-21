@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Red Dirt Property Services LLC | Property Cleanup, Dirt Work & Hauling in Arkansas",
+      "Red Dirt Property Services LLC | Dirt Work, Property Cleanup & Hauling in Arkansas",
     template: "%s | Red Dirt Property Services LLC",
   },
   description:
-    "Licensed and insured Red Dirt Property Services LLC provides property cleanup, dirt work, driveway work, ditches, culverts, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas communities.",
+    "Licensed and insured Red Dirt Property Services LLC provides mini excavator dirt work, driveway grading and drainage help, property cleanup, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas communities.",
   authors: [{ name: "Red Dirt Property Services LLC" }],
   creator: "Red Dirt Property Services LLC",
   publisher: "Red Dirt Property Services LLC",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Red Dirt Property Services LLC",
     title:
-      "Red Dirt Property Services LLC | Property Cleanup, Dirt Work & Hauling",
+      "Red Dirt Property Services LLC | Dirt Work, Property Cleanup & Hauling",
     description:
-      "Licensed and insured local property cleanup, dirt work, driveway help, stump grinding, tree cleanup, hauling, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
+      "Licensed and insured local mini excavator dirt work, driveway help, property cleanup, stump grinding, tree cleanup, hauling, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
     images: [
       {
         url: "/images/cover.png",
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Red Dirt Property Services LLC | Property Cleanup, Dirt Work & Hauling",
+      "Red Dirt Property Services LLC | Dirt Work, Property Cleanup & Hauling",
     description:
-      "Licensed and insured local property cleanup, dirt work, hauling, tree cleanup, stump grinding, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
+      "Licensed and insured local mini excavator dirt work, driveway help, property cleanup, hauling, tree cleanup, stump grinding, junk removal, brush hogging, cleanouts, storm cleanup, and light demolition around Southwest Arkansas.",
     images: ["/images/cover.png"],
   },
   other: {
@@ -86,7 +86,6 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -98,7 +97,7 @@ export default function RootLayout({
     telephone: siteData.phone,
     email: siteData.email,
     description:
-      "Licensed and insured property cleanup, dirt work, driveway help, ditches, culverts, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
+      "Licensed and insured mini excavator dirt work, driveway grading and drainage help, property cleanup, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
     areaServed: [
       "Amity AR",
       "Glenwood AR",
@@ -130,6 +129,34 @@ export default function RootLayout({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
+          name: "Mini Excavator Work",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Dirt Work",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Driveway Grading and Repair",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Drainage Ditch and Culvert Work",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
           name: "Junk Removal",
         },
       },
@@ -145,13 +172,6 @@ export default function RootLayout({
         itemOffered: {
           "@type": "Service",
           name: "Bush Hogging",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Dirt Work",
         },
       },
       {

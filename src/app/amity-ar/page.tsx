@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
 import LocationLandingPage from "@/components/LocationLandingPage";
-import { locationPages } from "@/data/seoPages";
+import { locationPages, type LocationPageData } from "@/data/seoPages";
 
-const page = locationPages["amity-ar"];
+const basePage = locationPages["amity-ar"];
 
+const page: LocationPageData = {
+  ...basePage,
+  related: [
+    {
+      label: "Amity Dirt Work",
+      href: "/amity-dirt-work",
+      text: "Mini excavator work, driveways, drainage, culverts, washouts, rough grading, and small excavation right around Amity."
+    },
+    ...basePage.related,
+  ],
+};
 
 export const metadata: Metadata = {
   title: page.title,
