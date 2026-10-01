@@ -139,6 +139,24 @@ export const servicePages: Record<string, ServicePageData> = {
       "We look at what needs moved, whether there is brush or demolition debris mixed in, how close we can get the trailer, how heavy the material is, and where it needs disposed of.",
       "The goal is to give you a straight answer before we show up, then leave the place better than we found it."
     ],
+    recentWork: {
+      eyebrow: "Recent Property Cleanup",
+      title: "Real Cleanup Work From A Recent Job",
+      text:
+        "This job included old furniture, lumber, household items, and mixed debris around a rural property. We loaded it out and opened the area back up.",
+      images: [
+        {
+          src: "/images/recent/property-cleanup-before.jpg",
+          alt: "Rural property before cleanup with furniture, lumber, and mixed debris",
+          label: "Before Cleanup",
+        },
+        {
+          src: "/images/recent/property-cleanup-after.jpg",
+          alt: "Rural property after cleanup with debris removed and ground opened back up",
+          label: "After Cleanup",
+        },
+      ],
+    },
     areaTitle: "Property cleanup around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby rural areas.",
     areaText:
       "Red Dirt is based around Amity and Glenwood, and we serve nearby rural properties when the job makes sense with travel and disposal. If you are outside town, send the location with your photos and we will tell you straight.",
@@ -525,6 +543,24 @@ export const servicePages: Record<string, ServicePageData> = {
       "For the jobs that fit, we can help cut, drag, load, haul, grind stumps separately, and clean up the mess so the property is more usable again.",
       "For jobs that do not fit, we will tell you straight instead of pretending every tree is the same."
     ],
+    recentWork: {
+      eyebrow: "Recent Tree Work",
+      title: "Tree Work And Cleanup From A Recent Job",
+      text:
+        "A recent tree job where we removed the problem tree, hauled the debris, and left the area opened back up.",
+      images: [
+        {
+          src: "/images/recent/tree-work-before.jpg",
+          alt: "Tree before removal near a residential fence and home",
+          label: "Before Tree Work",
+        },
+        {
+          src: "/images/recent/tree-work-after.jpg",
+          alt: "Fresh stump and cleaned yard area after tree work",
+          label: "After Tree Work",
+        },
+      ],
+    },
     areaTitle: "Tree work and light clearing around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby rural areas.",
     areaText:
       "Red Dirt quotes small tree work, limb cleanup, brush removal, tree debris hauling, and light acreage clearing around the Amity and Glenwood area, with larger rural jobs quoted by photos, access, and safety.",
