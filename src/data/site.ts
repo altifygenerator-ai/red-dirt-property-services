@@ -114,7 +114,7 @@ export const siteData = {
   reviewStats: {
     label: "Real Google Reviews",
     ratingValue: 5,
-    reviewCount: 6,
+    reviewCount: 9,
     source: "Google",
   },
 
