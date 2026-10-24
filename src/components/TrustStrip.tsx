@@ -1,5 +1,5 @@
 const items = [
-  "100% 5-Star Google Reviews",
+  "Real Google Reviews",
   "Locally Owned",
   "Free Estimates",
   "Licensed & Insured",
