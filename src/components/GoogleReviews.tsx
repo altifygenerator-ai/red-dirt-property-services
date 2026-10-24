@@ -25,11 +25,11 @@ export default function GoogleReviews() {
             <h2>Local Folks Back The Work.</h2>
           </div>
 
-          <div className="rd-reviews-score" aria-label="100 percent 5 star Google reviews">
+          <div className="rd-reviews-score" aria-label="Selected customer reviews from Google">
             <span className="rd-reviews-score-stars">★★★★★</span>
             <strong>{siteData.reviewStats.label}</strong>
             <span>
-              {siteData.reviewStats.reviewCount} Google reviews with a 5-star average.
+              A selection of feedback from people we have worked for.
             </span>
           </div>
         </FadeIn>
