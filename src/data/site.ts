@@ -120,6 +120,12 @@ export const siteData = {
 
   googleReviews: [
     {
+      name: "Shane Raley",
+      rating: 5,
+      source: "Google Review",
+      text: "Red Dirt provided great service at a reasonable price. They responded quickly about my job, worked with my schedule, and kept me updated along the way. The gentleman who did the pickup/haul-off was friendly and hardworking, and he did exactly what was promised. I would definitely hire Red Dirt again.",
+    },
+    {
       name: "Eric Rasmussen",
       rating: 5,
       source: "Google Review",
