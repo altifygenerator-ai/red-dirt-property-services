@@ -120,6 +120,12 @@ export const siteData = {
 
   googleReviews: [
     {
+      name: "Eric Rasmussen",
+      rating: 5,
+      source: "Google Review",
+      text: "Red Dirt did a great job, they were easy to work with and up front about everything. They showed up when they said they would and they did what they said they would. We will use their services again in the future.",
+    },
+    {
       name: "Jamie Goree",
       rating: 5,
       source: "Google Review",
