@@ -112,7 +112,7 @@ export const siteData = {
 
 
   reviewStats: {
-    label: "100% 5-Star Google Reviews",
+    label: "Real Google Reviews",
     ratingValue: 5,
     reviewCount: 6,
     source: "Google",
