@@ -112,13 +112,31 @@ export const siteData = {
 
 
   reviewStats: {
-    label: "100% 5-Star Google Reviews",
+    label: "Real Google Reviews",
     ratingValue: 5,
-    reviewCount: 6,
+    reviewCount: 9,
     source: "Google",
   },
 
   googleReviews: [
+    {
+      name: "Valarie Flora",
+      rating: 5,
+      source: "Google Review",
+      text: "Red Dirt Service was prompt, thorough, and customer friendly. I will be using them again for future projects.",
+    },
+    {
+      name: "Shane Raley",
+      rating: 5,
+      source: "Google Review",
+      text: "Red Dirt provided great service at a reasonable price. They responded quickly about my job, worked with my schedule, and kept me updated along the way. The gentleman who did the pickup/haul-off was friendly and hardworking, and he did exactly what was promised. I would definitely hire Red Dirt again.",
+    },
+    {
+      name: "Eric Rasmussen",
+      rating: 5,
+      source: "Google Review",
+      text: "Red Dirt did a great job, they were easy to work with and up front about everything. They showed up when they said they would and they did what they said they would. We will use their services again in the future.",
+    },
     {
       name: "Jamie Goree",
       rating: 5,
