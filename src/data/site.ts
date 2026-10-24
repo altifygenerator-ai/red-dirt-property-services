@@ -120,6 +120,12 @@ export const siteData = {
 
   googleReviews: [
     {
+      name: "Valarie Flora",
+      rating: 5,
+      source: "Google Review",
+      text: "Red Dirt Service was prompt, thorough, and customer friendly. I will be using them again for future projects.",
+    },
+    {
       name: "Shane Raley",
       rating: 5,
       source: "Google Review",
