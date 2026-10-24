@@ -6,70 +6,70 @@ import FadeIn from "@/components/FadeIn";
 
 const galleryImages = [
   {
+    src: "/images/dirt-work/excavator-digging-1.webp",
+    alt: "Red Dirt mini excavator doing dirt work on a local Arkansas property",
+    label: "Mini Excavator Work"
+  },
+  {
+    src: "/images/dirt-work/stump-root-excavation-1.webp",
+    alt: "Roots and stump material exposed during a Red Dirt excavation job",
+    label: "Root & Stump Cleanup"
+  },
+  {
+    src: "/images/dirt-work/excavation-hole-1.webp",
+    alt: "Excavation work on an Arkansas property",
+    label: "Excavation Work"
+  },
+  {
     src: "/images/work-1.jpg",
-    alt: "Red Dirt property cleanup work with equipment",
-    label: "Property Cleanup",
-  },
-  {
-    src: "/images/dump.jpg",
-    alt: "Dump trailer used for hauling and cleanup work",
-    label: "Dump Trailer",
-  },
-  {
-    src: "/images/equipment-1.jpg",
-    alt: "Equipment used for rural Arkansas cleanup work",
-    label: "Equipment On Site",
-  },
-  {
-    src: "/images/flatbed.jpg",
-    alt: "Flatbed trailer for hauling and property work",
-    label: "Flatbed Hauling",
-  },
-  {
-    src: "/images/truck-1.png",
-    alt: "Red Dirt truck and trailer setup",
-    label: "Truck & Trailer",
-  },
-  {
-    src: "/images/truck-2.png",
-    alt: "Truck and trailer ready for property hauling",
-    label: "Hauling Setup",
+    alt: "Red Dirt property cleanup with equipment on site",
+    label: "Property Cleanup"
   },
   {
     src: "/images/tractor-bush-hog.jpg",
-    alt: "Tractor and bush hog for rural property cleanup",
-    label: "Brush Work",
+    alt: "Tractor and brush hog on a rural property",
+    label: "Brush Hogging"
   },
   {
-    src: "/images/work-2.jpg",
-    alt: "Rural Arkansas property cleanup with equipment",
-    label: "Rural Cleanup",
-  },
-  {
-    src: "/images/work-3.jpg",
-    alt: "Equipment clearing brush and property debris",
-    label: "Cleanup Work",
-  },
-  {
-    src: "/images/work-4.jpg",
-    alt: "Finished property cleanup area",
-    label: "Work In Progress",
-  },
-  {
-    src: "/images/dirt-work/excavator-digging-1.webp",
-    alt: "Red Dirt mini excavator doing local dirt and excavation work",
-    label: "Mini Excavator Work",
+    src: "/images/dirt-work/excavator-digging-2.webp",
+    alt: "Mini excavator working a second angle of a real dirt work job",
+    label: "Dirt Work On Site"
   },
   {
     src: "/images/dirt-work/excavation-hole-2.webp",
-    alt: "Excavation and root removal work on a local property",
-    label: "Excavation & Cleanup",
+    alt: "Deep excavation and root removal during a property project",
+    label: "Digging & Root Removal"
+  },
+  {
+    src: "/images/dump.jpg",
+    alt: "Red Dirt dump trailer for junk and debris hauling",
+    label: "Dump Trailer & Hauling"
+  },
+  {
+    src: "/images/work-3.jpg",
+    alt: "Property debris and brush cleanup work",
+    label: "Brush & Debris Cleanup"
+  },
+  {
+    src: "/images/dirt-work/stump-root-excavation-2.webp",
+    alt: "Additional view of stump and root excavation work",
+    label: "Root Removal"
+  },
+  {
+    src: "/images/dirt-work/excavator-loading-trailer.webp",
+    alt: "Mini excavator being loaded onto the trailer after a job",
+    label: "Equipment Loading"
+  },
+  {
+    src: "/images/truck-trailers.jpg",
+    alt: "Red Dirt truck and trailers ready for rural property work",
+    label: "Truck & Trailers"
   },
   {
     src: "/images/dirt-work/mini-excavator-transport.webp",
-    alt: "Red Dirt pickup hauling the mini excavator to a local job",
-    label: "Equipment Hauling",
-  },
+    alt: "Red Dirt mini excavator being hauled to a local job",
+    label: "Equipment Transport"
+  }
 ];
 
 export default function GalleryPreview() {
@@ -101,9 +101,8 @@ export default function GalleryPreview() {
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-black/62">
-            Real trucks, real equipment, and real property work from around our
-            area. As Red Dirt grows, this gallery will keep showing the kind of
-            jobs we handle.
+            Dirt work, excavation, brush cutting, hauling, and cleanup from real
+            jobs around our area. Here is a closer look at the work we do.
           </p>
         </div>
 
@@ -126,6 +125,9 @@ export default function GalleryPreview() {
                   <h3 className="mt-1 font-[var(--font-heading)] text-3xl font-bold uppercase text-white">
                     {activeImage.label}
                   </h3>
+                  <p className="mt-1 text-xs text-white/80" aria-live="polite">
+                    Photo {activeIndex + 1} of {galleryImages.length}
+                  </p>
                 </div>
 
                 <div className="flex gap-2">
