@@ -16,6 +16,7 @@ type Document = {
 };
 type View = "dashboard" | "documents" | "editor";
 const STORE = "red-dirt-office-v1";
+const largestNumber = (documents: Document[]) => documents.reduce((highest,doc)=>Math.max(highest,Number(doc.number.match(/\d+$/)?.[0]||0)),0);
 const currency = (amount: number) => new Intl.NumberFormat("en-US", {style:"currency",currency:"USD"}).format(amount || 0);
 const today = () => {
   const d = new Date();
@@ -67,6 +68,7 @@ function normalizeDocs(input: unknown): Document[] {
 export default function OfficeApp() {
   const [docs,setDocs] = useState<Document[]>([]);
   const [ready,setReady] = useState(false);
+  const [lastNumber,setLastNumber] = useState(0);
   const [view,setView] = useState<View>("dashboard");
   const [editor,setEditor] = useState<Document|null>(null);
   const [printDoc,setPrintDoc] = useState<Document|null>(null);
@@ -81,8 +83,10 @@ export default function OfficeApp() {
     try {
       const saved=localStorage.getItem(STORE);
       if(saved){
-        const parsed=JSON.parse(saved) as {documents?:unknown};
-        setDocs(normalizeDocs(parsed.documents||[]));
+        const parsed=JSON.parse(saved) as {documents?:unknown;lastNumber?:number};
+        const existing=normalizeDocs(parsed.documents||[]);
+        setDocs(existing);
+        setLastNumber(Math.max(largestNumber(existing),Number(parsed.lastNumber)||0));
       }
     } catch { setStorageError("Saved data could not be opened. Do not clear your browser data. You may need to restore a backup."); }
     setReady(true);
@@ -90,9 +94,9 @@ export default function OfficeApp() {
   },[]);
   useEffect(()=>{
     if(!ready || storageError) return;
-    try { localStorage.setItem(STORE,JSON.stringify({version:1,documents:docs})); }
+    try { localStorage.setItem(STORE,JSON.stringify({version:1,lastNumber,documents:docs})); }
     catch { setStorageError("Could not save to this device. Export a backup now and check available browser storage."); }
-  },[docs,ready,storageError]);
+  },[docs,lastNumber,ready,storageError]);
 
   const sorted=useMemo(()=>[...docs].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)),[docs]);
   const shown=useMemo(()=>sorted.filter(d=>(filter==="all"||d.kind===filter) && [d.number,d.customer,d.title,d.jobAddress,d.poNumber].join(" ").toLowerCase().includes(query.toLowerCase())),[sorted,query,filter]);
@@ -109,9 +113,10 @@ export default function OfficeApp() {
     if(!editor.customer.trim() || !editor.title.trim() || !editor.lines.some(l=>l.description.trim())) {
       setAlert("Add the customer's name, job title, and at least one line item.");return;
     }
-    const maxNum=docs.reduce((m,d)=>Math.max(m,Number(d.number.match(/\d+$/)?.[0]||0)),0);
+    const maxNum=Math.max(lastNumber,largestNumber(docs));
     const incoming={...editor,id:editor.id||uuid(),number:editor.number||("RD-"+(editor.kind==="estimate"?"EST":"INV")+"-"+String(maxNum+1).padStart(4,"0")),updatedAt:new Date().toISOString(),lines:editor.lines.filter(l=>l.description.trim()).map(l=>({...l,quantity:Math.max(0,Number(l.quantity)||0),price:Math.max(0,Number(l.price)||0)})),taxRate:Math.max(0,Math.min(100,Number(editor.taxRate)||0))};
     setDocs(prev=>[incoming,...prev.filter(d=>d.id!==incoming.id)]);
+    if(!editor.number)setLastNumber(maxNum+1);
     setEditor(null);setView("documents");setAlert("Saved on this device.");
   }
   function changeStatus(d: Document,status:Status) {
@@ -137,7 +142,7 @@ export default function OfficeApp() {
   }
   function print(d: Document) {setPrintDoc(d);setTimeout(()=>window.print(),180);}
   function exportData() {
-    const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),documents:docs},null,2)],{type:"application/json"});
+    const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),lastNumber,documents:docs},null,2)],{type:"application/json"});
     const url=URL.createObjectURL(blob); const a=document.createElement("a");
     a.href=url; a.download="red-dirt-office-backup-"+today()+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
     setAlert("Backup downloaded. Save it somewhere safe.");
@@ -146,10 +151,10 @@ export default function OfficeApp() {
     const f=event.target.files?.[0];event.target.value="";if(!f)return;
     try {
       if(f.size>8_000_000)throw new Error("Backup is too large.");
-      const parsed=JSON.parse(await f.text()) as {documents?:unknown};
+      const parsed=JSON.parse(await f.text()) as {documents?:unknown;lastNumber?:number};
       const incoming=normalizeDocs(parsed.documents);
       if(!window.confirm("Replace all "+docs.length+" current documents with "+incoming.length+" documents from the backup?"))return;
-      setStorageError("");setDocs(incoming);setView("documents");setAlert("Backup restored.");
+      setStorageError("");setDocs(incoming);setLastNumber(Math.max(lastNumber,largestNumber(incoming),Number(parsed.lastNumber)||0));setView("documents");setAlert("Backup restored.");
     } catch(e) {setAlert(e instanceof Error?e.message:"Could not import backup.");}
   }
   async function copySummary(d:Document) {
