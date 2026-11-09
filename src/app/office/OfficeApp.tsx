@@ -146,7 +146,7 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
     if(!editor.customer.trim() || !editor.title.trim() || !editor.lines.some(l=>l.description.trim())) {
       setAlert("Add the customer's name, job title, and at least one line item.");return;
     }
-    if(sendAfterSave && (!editor.email.trim() || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(editor.email.trim()))) {
+    if(sendAfterSave && (!editor.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(editor.email.trim()))) {
       setAlert("Add a valid customer email before sending the invoice.");return;
     }
     const maxNum=Math.max(lastNumber,largestNumber(docs));
