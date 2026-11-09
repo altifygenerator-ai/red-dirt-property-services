@@ -44,19 +44,20 @@ function saveSession(result: Record<string, unknown>) {
     user,
   } satisfies AuthSession));
 }
-export async function signInToOffice(password: string): Promise<void> {
+export async function signInToOffice(password: string, captchaToken: string): Promise<void> {
   const response = await fetch(RED_DIRT_SUPABASE_URL + "/auth/v1/token?grant_type=password", {
     method: "POST", headers: authHeaders(),
-    body: JSON.stringify({ email: RED_DIRT_ALLOWED_EMAIL, password }),
+    body: JSON.stringify({ email: RED_DIRT_ALLOWED_EMAIL, password, gotrue_meta_security: {captcha_token:captchaToken} }),
   });
   saveSession(await parse(response));
 }
-export async function signUpToOffice(password: string): Promise<boolean> {
+export async function signUpToOffice(password: string, captchaToken: string): Promise<boolean> {
   const response = await fetch(RED_DIRT_SUPABASE_URL + "/auth/v1/signup", {
     method: "POST", headers: authHeaders(),
     body: JSON.stringify({
       email: RED_DIRT_ALLOWED_EMAIL, password,
       data: { office: "red-dirt" },
+      gotrue_meta_security: { captcha_token: captchaToken },
       // May fall back to the Supabase project's existing default redirect until
       // this URL is added to the shared Auth redirect allowlist.
     }),
