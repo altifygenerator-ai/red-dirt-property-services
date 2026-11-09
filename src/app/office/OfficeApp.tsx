@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { deleteCloudDoc, loadCloudDocs, saveCloudDoc, sendOfficeInvoice } from "@/lib/redDirtCloud";
 
 type Kind = "estimate" | "invoice";
 type Status = "draft" | "sent" | "approved" | "declined" | "unpaid" | "partial" | "paid";
@@ -65,7 +66,7 @@ function normalizeDocs(input: unknown): Document[] {
   });
 }
 
-export default function OfficeApp() {
+export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()=>Promise<void>}) {
   const [docs,setDocs] = useState<Document[]>([]);
   const [ready,setReady] = useState(false);
   const [lastNumber,setLastNumber] = useState(0);
@@ -78,25 +79,57 @@ export default function OfficeApp() {
   const [paymentAmount,setPaymentAmount] = useState("");
   const [paymentMethod,setPaymentMethod] = useState("Cash");
   const [storageError,setStorageError] = useState("");
+  const [legacyDocs,setLegacyDocs] = useState<Document[]>([]);
+  const [busy,setBusy] = useState(false);
 
   useEffect(()=>{
-    try {
-      const saved=localStorage.getItem(STORE);
-      if(saved){
-        const parsed=JSON.parse(saved) as {documents?:unknown;lastNumber?:number};
-        const existing=normalizeDocs(parsed.documents||[]);
-        setDocs(existing);
-        setLastNumber(Math.max(largestNumber(existing),Number(parsed.lastNumber)||0));
-      }
-    } catch { setStorageError("Saved data could not be opened. Do not clear your browser data. You may need to restore a backup."); }
-    setReady(true);
+    let mounted=true;
+    async function load() {
+      try {
+        const saved=localStorage.getItem(STORE);
+        if(saved) {
+          const parsed=JSON.parse(saved) as {documents?:unknown;lastNumber?:number};
+          const existing=normalizeDocs(parsed.documents||[]);
+          if(mounted) {setLegacyDocs(existing);setLastNumber(Math.max(largestNumber(existing),Number(parsed.lastNumber)||0));}
+        }
+      } catch {if(mounted)setAlert("Older device records could not be read. Cloud records are unaffected.");}
+      try {
+        const rows=await loadCloudDocs<Document>();
+        if(mounted) {
+          const documents=rows.map(row=>row.document);
+          setDocs(documents);
+          setLastNumber(prev=>Math.max(prev,largestNumber(documents)));
+        }
+      } catch(error) {if(mounted)setStorageError(error instanceof Error?error.message:"Could not load cloud records.");}
+      finally {if(mounted)setReady(true);}
+    }
+    void load();
     if("serviceWorker" in navigator) navigator.serviceWorker.register("/office-sw.js",{scope:"/office"}).catch(()=>{});
-  },[]);
-  useEffect(()=>{
-    if(!ready || storageError) return;
-    try { localStorage.setItem(STORE,JSON.stringify({version:1,lastNumber,documents:docs})); }
-    catch { setStorageError("Could not save to this device. Export a backup now and check available browser storage."); }
-  },[docs,lastNumber,ready,storageError]);
+    return ()=>{mounted=false;};
+  },[userId]);
+
+  async function refreshDocuments() {
+    const rows=await loadCloudDocs<Document>();
+    const documents=rows.map(row=>row.document);
+    setDocs(documents);
+    setLastNumber(prev=>Math.max(prev,largestNumber(documents)));
+  }
+  async function migrateLegacy() {
+    if(!window.confirm("Copy previous device-only documents to secure cloud storage? Cloud records will be kept."))return;
+    setBusy(true);
+    let imported=0;
+    try {
+      for(const original of legacyDocs) {
+        if(docs.some(d=>d.id===original.id))continue;
+        await saveCloudDoc(original,userId);
+        imported++;
+      }
+      await refreshDocuments();
+      setLegacyDocs([]);
+      setAlert(imported+" existing documents imported to Supabase.");
+    } catch(error) {await refreshDocuments().catch(()=>{});setAlert("Imported "+imported+" before an error: "+(error instanceof Error?error.message:"Unknown error"));}
+    finally {setBusy(false);}
+  }
 
   const sorted=useMemo(()=>[...docs].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)),[docs]);
   const shown=useMemo(()=>sorted.filter(d=>(filter==="all"||d.kind===filter) && [d.number,d.customer,d.title,d.jobAddress,d.poNumber].join(" ").toLowerCase().includes(query.toLowerCase())),[sorted,query,filter]);
@@ -108,37 +141,63 @@ export default function OfficeApp() {
   function openNew(kind: Kind) {setEditor(blank(kind));setView("editor");setAlert("");}
   function openEdit(d: Document) {setEditor(JSON.parse(JSON.stringify(d)) as Document);setView("editor");setAlert("");}
   function update<K extends keyof Document>(key:K,value:Document[K]) {setEditor(prev=>prev?{...prev,[key]:value}:null);}
-  function saveDocument() {
-    if(!editor) return;
+  async function saveDocument(sendAfterSave=false) {
+    if(!editor||busy)return;
     if(!editor.customer.trim() || !editor.title.trim() || !editor.lines.some(l=>l.description.trim())) {
       setAlert("Add the customer's name, job title, and at least one line item.");return;
     }
+    if(sendAfterSave && (!editor.email.trim() || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(editor.email.trim()))) {
+      setAlert("Add a valid customer email before sending the invoice.");return;
+    }
     const maxNum=Math.max(lastNumber,largestNumber(docs));
     const incoming={...editor,id:editor.id||uuid(),number:editor.number||("RD-"+(editor.kind==="estimate"?"EST":"INV")+"-"+String(maxNum+1).padStart(4,"0")),updatedAt:new Date().toISOString(),lines:editor.lines.filter(l=>l.description.trim()).map(l=>({...l,quantity:Math.max(0,Number(l.quantity)||0),price:Math.max(0,Number(l.price)||0)})),taxRate:Math.max(0,Math.min(100,Number(editor.taxRate)||0))};
-    setDocs(prev=>[incoming,...prev.filter(d=>d.id!==incoming.id)]);
-    if(!editor.number)setLastNumber(maxNum+1);
-    setEditor(null);setView("documents");setAlert("Saved on this device.");
+    setBusy(true);
+    try {
+      await saveCloudDoc(incoming,userId);
+      setDocs(prev=>[incoming,...prev.filter(d=>d.id!==incoming.id)]);
+      if(!editor.number)setLastNumber(maxNum+1);
+      setEditor(null);setView("documents");
+      if(sendAfterSave && incoming.kind==="invoice") {
+        try {
+          await sendOfficeInvoice(incoming.id);
+          setDocs(prev=>prev.map(d=>d.id===incoming.id?{...d,status:d.status==="paid"?"paid":"sent"}:d));
+          setAlert("Saved in Supabase and invoice emailed to "+incoming.email+".");
+        } catch(error) {setAlert("Invoice saved, but the email was not sent: "+(error instanceof Error?error.message:"Unknown error"));}
+      } else setAlert("Saved securely in Supabase.");
+    } catch(error) {setAlert(error instanceof Error?error.message:"Could not save. Please try again.");}
+    finally {setBusy(false);}
   }
-  function changeStatus(d: Document,status:Status) {
-    setDocs(prev=>prev.map(item=>item.id===d.id?{...item,status,updatedAt:new Date().toISOString()}:item));
+  async function changeStatus(d: Document,status:Status) {
+    try {
+      const next={...d,status,updatedAt:new Date().toISOString()};
+      await saveCloudDoc(next,userId);
+      setDocs(prev=>prev.map(item=>item.id===d.id?next:item));
+    } catch(error) {setAlert(error instanceof Error?error.message:"Status could not be updated.");}
   }
   function convert(d: Document) {
     const copy=JSON.parse(JSON.stringify(d)) as Document;
     setEditor({...copy,id:"",number:"",kind:"invoice",status:"unpaid",sourceEstimate:d.number,payments:[],issueDate:today(),dueDate:plusDays(14),terms:"Payment due by the date shown. Please reference the invoice number with payment.",updatedAt:new Date().toISOString()});
     setView("editor");setAlert("Review the invoice details, then save.");
   }
-  function addPayment(d: Document) {
+  async function addPayment(d: Document) {
     const amount=Number(paymentAmount);
     if(!Number.isFinite(amount)||amount<=0||amount>totals(d).balance+0.01) {setAlert("Enter a payment amount greater than $0 and no more than the remaining balance.");return;}
     const payments=[...d.payments,{id:uuid(),amount:Math.round(amount*100)/100,date:today(),method:paymentMethod}];
     const updated={...d,payments,status:(totals({...d,payments}).balance<0.01?"paid":"partial") as Status,updatedAt:new Date().toISOString()};
-    setDocs(prev=>prev.map(v=>v.id===d.id?updated:v));
-    setPaymentAmount("");setAlert("Payment recorded.");
+    try {await saveCloudDoc(updated,userId);setDocs(prev=>prev.map(v=>v.id===d.id?updated:v));setPaymentAmount("");setAlert("Payment recorded in Supabase.");}
+    catch(error) {setAlert(error instanceof Error?error.message:"Payment could not be recorded.");}
   }
-  function deleteDoc(d: Document) {
-    if(!window.confirm("Delete "+d.number+" from this device? This cannot be undone without a backup.")) return;
-    setDocs(prev=>prev.filter(item=>item.id!==d.id));
-    setAlert("Document deleted.");
+  async function deleteDoc(d: Document) {
+    if(!window.confirm("Permanently delete "+d.number+" from Supabase? Keep a backup if you need to preserve it.")) return;
+    try {await deleteCloudDoc(d.id);setDocs(prev=>prev.filter(item=>item.id!==d.id));setAlert("Document deleted.");}
+    catch(error) {setAlert(error instanceof Error?error.message:"Could not delete document.");}
+  }
+  async function emailInvoice(d:Document) {
+    if(!window.confirm("Email invoice "+d.number+" to "+d.email+" now?"))return;
+    setBusy(true);
+    try {await sendOfficeInvoice(d.id);setDocs(prev=>prev.map(item=>item.id===d.id?{...item,status:item.status==="paid"?"paid":"sent"}:item));setAlert("Invoice sent to "+d.email+".");}
+    catch(error) {setAlert(error instanceof Error?error.message:"Could not send invoice.");}
+    finally {setBusy(false);}
   }
   function print(d: Document) {setPrintDoc(d);setTimeout(()=>window.print(),180);}
   function exportData() {
@@ -153,9 +212,13 @@ export default function OfficeApp() {
       if(f.size>8_000_000)throw new Error("Backup is too large.");
       const parsed=JSON.parse(await f.text()) as {documents?:unknown;lastNumber?:number};
       const incoming=normalizeDocs(parsed.documents);
-      if(!window.confirm("Replace all "+docs.length+" current documents with "+incoming.length+" documents from the backup?"))return;
-      setStorageError("");setDocs(incoming);setLastNumber(Math.max(lastNumber,largestNumber(incoming),Number(parsed.lastNumber)||0));setView("documents");setAlert("Backup restored.");
-    } catch(e) {setAlert(e instanceof Error?e.message:"Could not import backup.");}
+      if(!window.confirm("Merge "+incoming.length+" documents from this backup into your Supabase account? Matching records will be updated."))return;
+      setBusy(true);
+      for(const d of incoming)await saveCloudDoc(d,userId);
+      await refreshDocuments();
+      setAlert("Backup merged into your secure account.");
+    } catch(error) {await refreshDocuments().catch(()=>{});setAlert(error instanceof Error?error.message:"Could not import backup.");}
+    finally {setBusy(false);}
   }
   async function copySummary(d:Document) {
     try {await navigator.clipboard.writeText(summary(d));setAlert("Document summary copied. You can paste it into a text or email.");}
@@ -175,11 +238,12 @@ export default function OfficeApp() {
     <div className="rdo-top"><div className="rdo-top-inner">
       <a href="/" className="rdo-brand" aria-label="Return to Red Dirt website"><img src="/images/logo2.png" alt="" width="44" height="44"/><span>RED DIRT <small>OFFICE</small></span></a>
       <span className="rdo-top-sub">ESTIMATES & INVOICES</span>
-      <a href="/" className="rdo-site">Main website ↗</a>
+      <button className="rdo-site rdo-signout" onClick={()=>void onSignOut()}>Sign out</button>
     </div></div>
     <main className="rdo-wrap">
       <div className="rdo-heading"><div><p className="rdo-kicker">Red Dirt Property Services LLC</p><h1>{view==="editor"?(editor?.number||("New "+editor?.kind)) : view==="documents"?"Documents":"Your office"}</h1><p className="rdo-sub">Simple estimates, invoices and payment tracking, built for jobs on the go.</p></div><div className="rdo-quick"><button className="rdo-btn rdo-btn-outline" onClick={()=>openNew("estimate")}>+ Estimate</button><button className="rdo-btn rdo-btn-primary" onClick={()=>openNew("invoice")}>+ Invoice</button></div></div>
-      <div className="rdo-device-note"><strong>Device-only records.</strong> This version saves to this browser, not a shared online account. It does not sync between your phone and computer. Use Export Backup regularly, especially before changing phones or clearing browser data.</div>
+      <div className="rdo-device-note"><strong>Secure cloud storage active.</strong> Documents now sync through Supabase when you're signed in. You can use the same login on your phone and computer.</div>
+      {legacyDocs.some(d=>!docs.some(c=>c.id===d.id))?<div className="rdo-device-note"><strong>Older documents found on this device.</strong> Import your existing estimates and invoices into Supabase. <button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void migrateLegacy()}>Import old documents</button></div>:null}
       {storageError?<div className="rdo-error" role="alert">{storageError}</div>:null}
       {alert?<div className="rdo-notice" role="status">{alert}<button aria-label="Dismiss" onClick={()=>setAlert("")}>×</button></div>:null}
       <nav className="rdo-nav" aria-label="Office navigation"><button className={view==="dashboard"?"active":""} onClick={()=>{setView("dashboard");setEditor(null);}}>Overview</button><button className={view==="documents"?"active":""} onClick={()=>{setView("documents");setEditor(null);}}>All documents</button><button className={view==="editor"?"active":""} onClick={()=>{if(!editor)setEditor(blank("estimate"));setView("editor");}}>Editor</button></nav>
@@ -196,8 +260,8 @@ export default function OfficeApp() {
         {input("issueDate","Document date",{type:"date"})}
         {input("dueDate",editor.kind==="invoice"?"Payment due date":"Estimate valid until",{type:"date"})}
       </div><div className="rdo-lines"><div className="rdo-section-title"><h3>Work and pricing</h3><button className="rdo-text-btn" onClick={()=>update("lines",[...editor.lines,{id:uuid(),description:"",quantity:1,price:0}])}>+ Add item</button></div>{editor.lines.map((line,index)=><div className="rdo-line" key={line.id}><label className="rdo-field rdo-line-desc"><span>Work / service *</span><input value={line.description} placeholder="Hauling, disposal, labor, gravel..." onChange={e=>update("lines",editor.lines.map(v=>v.id===line.id?{...v,description:e.target.value}:v))}/></label><label className="rdo-field rdo-small"><span>Qty</span><input type="number" min="0" step="0.1" value={line.quantity} onChange={e=>update("lines",editor.lines.map(v=>v.id===line.id?{...v,quantity:Number(e.target.value)}:v))}/></label><label className="rdo-field rdo-small"><span>Unit price ($)</span><input type="number" min="0" step="0.01" value={line.price} onChange={e=>update("lines",editor.lines.map(v=>v.id===line.id?{...v,price:Number(e.target.value)}:v))}/></label><strong className="rdo-line-total">{currency(Number(line.price)*Number(line.quantity))}</strong><button className="rdo-icon-btn" title="Remove item" aria-label={"Remove line "+(index+1)} disabled={editor.lines.length===1} onClick={()=>update("lines",editor.lines.filter(v=>v.id!==line.id))}>×</button></div>)}</div>
-      <div className="rdo-form-bottom"><div><label className="rdo-field"><span>Notes / scope of work</span><textarea rows={4} value={editor.notes} placeholder="What's included, access details, materials, disposal…" onChange={e=>update("notes",e.target.value)}/></label><label className="rdo-field"><span>Terms</span><textarea rows={3} value={editor.terms} onChange={e=>update("terms",e.target.value)}/></label></div><div className="rdo-totalbox"><label className="rdo-field"><span>Sales tax % (only when applicable)</span><input type="number" min="0" max="100" step="0.01" value={editor.taxRate} onChange={e=>update("taxRate",Number(e.target.value))}/></label><div><span>Subtotal</span><strong>{currency(totals(editor).subtotal)}</strong></div><div><span>Tax</span><strong>{currency(totals(editor).tax)}</strong></div><div className="rdo-grand"><span>Total</span><strong>{currency(totals(editor).total)}</strong></div><p>Tax defaults to 0%. Check whether tax applies to this job before sending.</p></div></div><div className="rdo-editor-actions"><button className="rdo-btn rdo-btn-outline" onClick={()=>{setEditor(null);setView("documents");}}>Cancel</button><button className="rdo-btn rdo-btn-primary" onClick={saveDocument}>Save {editor.kind}</button></div></section>}
-      <section className="rdo-tools"><div><h2>Backup your records</h2><p>Keep a copy in Files, Google Drive, or email. Importing replaces documents on this device.</p></div><div className="rdo-tool-actions"><button className="rdo-btn rdo-btn-outline" onClick={exportData}>Export backup</button><label className="rdo-btn rdo-btn-outline rdo-file">Import backup<input type="file" accept=".json,application/json" onChange={importData}/></label></div></section>
+      <div className="rdo-form-bottom"><div><label className="rdo-field"><span>Notes / scope of work</span><textarea rows={4} value={editor.notes} placeholder="What's included, access details, materials, disposal…" onChange={e=>update("notes",e.target.value)}/></label><label className="rdo-field"><span>Terms</span><textarea rows={3} value={editor.terms} onChange={e=>update("terms",e.target.value)}/></label></div><div className="rdo-totalbox"><label className="rdo-field"><span>Sales tax % (only when applicable)</span><input type="number" min="0" max="100" step="0.01" value={editor.taxRate} onChange={e=>update("taxRate",Number(e.target.value))}/></label><div><span>Subtotal</span><strong>{currency(totals(editor).subtotal)}</strong></div><div><span>Tax</span><strong>{currency(totals(editor).tax)}</strong></div><div className="rdo-grand"><span>Total</span><strong>{currency(totals(editor).total)}</strong></div><p>Tax defaults to 0%. Check whether tax applies to this job before sending.</p></div></div><div className="rdo-editor-actions"><button className="rdo-btn rdo-btn-outline" onClick={()=>{setEditor(null);setView("documents");}}>Cancel</button><button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void saveDocument(false)}>{busy?"Saving…":"Save "+editor.kind}</button>{editor.kind==="invoice"?<button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void saveDocument(true)}>Save & email invoice</button>:null}</div></section>}
+      <section className="rdo-tools"><div><h2>Backup your records</h2><p>Export a copy to Files or Drive. Importing a backup merges records into your secure Supabase account.</p></div><div className="rdo-tool-actions"><button className="rdo-btn rdo-btn-outline" onClick={exportData}>Export backup</button><label className="rdo-btn rdo-btn-outline rdo-file">Import backup<input type="file" accept=".json,application/json" onChange={importData}/></label></div></section>
       <footer className="rdo-footer">Red Dirt Property Services LLC · 870-828-2562 · <a href="/">Main website</a><p>To install on your phone: open this page in Safari or Chrome and choose Add to Home Screen / Install App.</p></footer>
     </main>
     {printDoc&&<div className="rdo-print"><header><img src="/images/logo2.png" alt="Red Dirt Property Services LLC" width="88" height="88"/><div><h1>RED DIRT</h1><p>PROPERTY SERVICES LLC</p><small>870-828-2562 · reddirtpropertyservicesar.com<br/>Amity, Arkansas · reddirtpropertyservicesar@gmail.com</small></div></header><div className="rdo-print-title"><h2>{printDoc.kind.toUpperCase()}</h2><strong>{printDoc.number}</strong></div><div className="rdo-print-grid"><div><b>BILL TO</b><p>{printDoc.customer}</p>{printDoc.address?<p>{printDoc.address}</p>:null}{printDoc.phone?<p>{printDoc.phone}</p>:null}{printDoc.email?<p>{printDoc.email}</p>:null}</div><div><b>DOCUMENT DETAILS</b><p>Date: {printDoc.issueDate}</p><p>{printDoc.kind==="estimate"?"Valid until":"Due"}: {printDoc.dueDate}</p>{printDoc.poNumber?<p>PO / Unit: {printDoc.poNumber}</p>:null}{printDoc.sourceEstimate?<p>From estimate: {printDoc.sourceEstimate}</p>:null}</div></div><div className="rdo-print-job"><strong>{printDoc.title}</strong>{printDoc.jobAddress?<p>Job location: {printDoc.jobAddress}</p>:null}</div><table><thead><tr><th>DESCRIPTION</th><th>QTY</th><th>RATE</th><th>AMOUNT</th></tr></thead><tbody>{printDoc.lines.map(line=><tr key={line.id}><td>{line.description}</td><td>{line.quantity}</td><td>{currency(line.price)}</td><td>{currency(Number(line.price)*Number(line.quantity))}</td></tr>)}</tbody></table><div className="rdo-print-totals"><p><span>Subtotal</span><strong>{currency(totals(printDoc).subtotal)}</strong></p>{printDoc.taxRate>0?<p><span>Tax ({printDoc.taxRate}%)</span><strong>{currency(totals(printDoc).tax)}</strong></p>:null}<p className="rdo-print-grand"><span>Total</span><strong>{currency(totals(printDoc).total)}</strong></p>{printDoc.kind==="invoice"&&<><p><span>Paid</span><strong>{currency(totals(printDoc).paid)}</strong></p><p className="rdo-print-grand"><span>Balance due</span><strong>{currency(totals(printDoc).balance)}</strong></p></>}</div>{printDoc.notes?<div className="rdo-print-note"><b>SCOPE / NOTES</b><p>{printDoc.notes}</p></div>:null}{printDoc.terms?<div className="rdo-print-note"><b>TERMS</b><p>{printDoc.terms}</p></div>:null}<div className="rdo-print-thanks">Thank you for giving Red Dirt Property Services the opportunity to earn your business.</div></div>}
@@ -205,6 +269,6 @@ export default function OfficeApp() {
 
   function renderRow(d: Document) {
     const t=totals(d);
-    return <article key={d.id} className="rdo-doc"><div className="rdo-doc-main"><div className="rdo-doc-top"><strong>{d.title||"Untitled job"}</strong><span className={"rdo-pill rdo-"+d.status}>{d.status}</span></div><div className="rdo-doc-meta">{d.customer} · {d.number} · {d.issueDate}{d.poNumber?" · PO "+d.poNumber:""}</div><div className="rdo-doc-value">{currency(t.total)}{d.kind==="invoice"&&t.balance>0.009?<span> · {currency(t.balance)} due</span>:null}</div></div><div className="rdo-doc-actions"><button onClick={()=>openEdit(d)}>Edit</button><button onClick={()=>print(d)}>Print / PDF</button><button onClick={()=>emailSummary(d)}>Email text</button><button onClick={()=>copySummary(d)}>Copy text</button>{d.kind==="estimate"&&<><button onClick={()=>convert(d)}>Make invoice</button>{d.status!=="approved"&&<button onClick={()=>changeStatus(d,"approved")}>Mark approved</button>}{d.status==="draft"&&<button onClick={()=>changeStatus(d,"sent")}>Mark sent</button>}</>}{d.kind==="invoice"&&t.balance>0.009&&<details className="rdo-payment"><summary>Record payment</summary><div><input aria-label="Payment amount" type="number" min="0.01" max={t.balance} step="0.01" placeholder={"Up to "+currency(t.balance)} value={paymentAmount} onChange={e=>setPaymentAmount(e.target.value)}/><select aria-label="Payment method" value={paymentMethod} onChange={e=>setPaymentMethod(e.target.value)}><option>Cash</option><option>Check</option><option>Card</option><option>Bank transfer</option><option>Other</option></select><button onClick={()=>addPayment(d)}>Save payment</button></div></details>}<button className="rdo-danger" onClick={()=>deleteDoc(d)}>Delete</button></div></article>;
+    return <article key={d.id} className="rdo-doc"><div className="rdo-doc-main"><div className="rdo-doc-top"><strong>{d.title||"Untitled job"}</strong><span className={"rdo-pill rdo-"+d.status}>{d.status}</span></div><div className="rdo-doc-meta">{d.customer} · {d.number} · {d.issueDate}{d.poNumber?" · PO "+d.poNumber:""}</div><div className="rdo-doc-value">{currency(t.total)}{d.kind==="invoice"&&t.balance>0.009?<span> · {currency(t.balance)} due</span>:null}</div></div><div className="rdo-doc-actions"><button onClick={()=>openEdit(d)}>Edit</button><button onClick={()=>print(d)}>Print / PDF</button>{d.kind==="invoice"?<button disabled={busy} onClick={()=>void emailInvoice(d)}>Send invoice email</button>:<button onClick={()=>emailSummary(d)}>Email text</button>}<button onClick={()=>copySummary(d)}>Copy text</button>{d.kind==="estimate"&&<><button onClick={()=>convert(d)}>Make invoice</button>{d.status!=="approved"&&<button onClick={()=>changeStatus(d,"approved")}>Mark approved</button>}{d.status==="draft"&&<button onClick={()=>changeStatus(d,"sent")}>Mark sent</button>}</>}{d.kind==="invoice"&&t.balance>0.009&&<details className="rdo-payment"><summary>Record payment</summary><div><input aria-label="Payment amount" type="number" min="0.01" max={t.balance} step="0.01" placeholder={"Up to "+currency(t.balance)} value={paymentAmount} onChange={e=>setPaymentAmount(e.target.value)}/><select aria-label="Payment method" value={paymentMethod} onChange={e=>setPaymentMethod(e.target.value)}><option>Cash</option><option>Check</option><option>Card</option><option>Bank transfer</option><option>Other</option></select><button onClick={()=>addPayment(d)}>Save payment</button></div></details>}<button className="rdo-danger" onClick={()=>deleteDoc(d)}>Delete</button></div></article>;
   }
 }
