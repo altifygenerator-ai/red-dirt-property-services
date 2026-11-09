@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { siteData } from "@/data/site";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
@@ -9,7 +10,7 @@ export default function ServicesSection() {
         <SectionHeading
           eyebrow="What We Do"
           title="Property work for jobs that need more than a pickup bed."
-          text="Red Dirt focuses on practical cleanup, dirt work, hauling, tree cleanup, stump grinding, and rural property work for folks who need the job handled without a bunch of runaround."
+          text="From dirt work and property cleanups to gutters and outside windows, Red Dirt helps local folks keep their places in shape without a bunch of runaround."
         />
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -27,6 +28,11 @@ export default function ServicesSection() {
                 </div>
                 <h3 className="text-3xl font-bold text-white">{service.title}</h3>
                 <p className="mt-4 leading-7 text-white/66">{service.text}</p>
+                {"href" in service && service.href ? (
+                  <Link href={service.href} className="mt-5 inline-flex font-bold text-[#e1b48c] underline-offset-4 hover:underline">
+                    Details &amp; starting prices
+                  </Link>
+                ) : null}
               </FadeIn>
             );
           })}

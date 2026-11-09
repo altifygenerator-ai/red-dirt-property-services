@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title:
     "Red Dirt Property Services LLC | Dirt Work, Cleanup & Hauling in Southwest Arkansas",
   description:
-    "Licensed and insured Red Dirt Property Services LLC handles mini excavator dirt work, driveway grading and drainage help, property cleanup, junk removal, brush hogging, stump grinding, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Hot Springs, Arkadelphia, Mount Ida, Kirby, and nearby Arkansas towns.",
+    "Licensed and insured Red Dirt Property Services LLC handles mini excavator dirt work, driveway grading and drainage help, property cleanup, junk removal, brush hogging, stump grinding, cleanouts, hauling, storm cleanup, light demolition, gutter cleaning, and exterior window cleaning around Amity, Glenwood, Hot Springs, Arkadelphia, Mount Ida, Kirby, and nearby Arkansas towns.",
   keywords: [
     "Red Dirt Property Services LLC",
     "dirt work Amity AR",
@@ -39,6 +39,10 @@ export const metadata: Metadata = {
     "storm cleanup Arkansas",
     "light demolition Arkansas",
     "stump grinding Arkansas",
+    "gutter cleaning Glenwood AR",
+    "gutter cleaning Hot Springs AR",
+    "exterior window cleaning Glenwood AR",
+    "exterior window cleaning Hot Springs AR",
   ],
   alternates: {
     canonical: "/",

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | Red Dirt Property Services LLC",
   },
   description:
-    "Licensed and insured Red Dirt Property Services LLC provides mini excavator dirt work, driveway grading and drainage help, property cleanup, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas communities.",
+    "Licensed and insured Red Dirt Property Services LLC provides mini excavator dirt work, driveway grading and drainage help, property cleanup, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, light demolition, gutter cleaning, and exterior window cleaning around Amity, Glenwood, Mount Ida, Hot Springs, Arkadelphia, and nearby Arkansas communities.",
   authors: [{ name: "Red Dirt Property Services LLC" }],
   creator: "Red Dirt Property Services LLC",
   publisher: "Red Dirt Property Services LLC",
@@ -97,7 +97,7 @@ export default function RootLayout({
     telephone: siteData.phone,
     email: siteData.email,
     description:
-      "Licensed and insured mini excavator dirt work, driveway grading and drainage help, property cleanup, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, and light demolition serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
+      "Licensed and insured mini excavator dirt work, driveway grading and drainage help, property cleanup, stump grinding, small tree work, junk removal, brush hogging, cleanouts, hauling, storm cleanup, light demolition, gutter cleaning, and outside window washing serving Amity, Glenwood, Mount Ida, Kirby, Hot Springs, Arkadelphia, and surrounding Arkansas communities.",
     areaServed: [
       "Amity AR",
       "Glenwood AR",
@@ -229,6 +229,14 @@ export default function RootLayout({
           "@type": "Service",
           name: "Shed Removal",
         },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Residential Gutter Cleaning" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Exterior Window Cleaning" },
       },
     ],
   };

@@ -2,11 +2,13 @@ import type { MetadataRoute } from "next";
 import { allSeoPageSlugs } from "@/data/seoPages";
 import { siteData } from "@/data/site";
 
-const lastModified = new Date("2026-09-20T00:00:00-05:00");
+const lastModified = new Date("2026-11-09T00:00:00-06:00");
 
 const addedSeoSlugs = [
   "amity-dirt-work",
   "glenwood-dirt-work",
+  "gutter-cleaning",
+  "exterior-window-cleaning",
 ];
 
 const priorityBySlug: Record<string, number> = {
@@ -15,6 +17,8 @@ const priorityBySlug: Record<string, number> = {
   "bush-hogging": 0.94,
   "junk-removal": 0.93,
   "stump-grinding": 0.92,
+  "gutter-cleaning": 0.90,
+  "exterior-window-cleaning": 0.89,
 
   "amity-ar": 0.96,
   "glenwood-ar": 0.96,

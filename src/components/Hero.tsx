@@ -35,7 +35,7 @@ export default function Hero() {
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76">
             From overgrown brush and storm debris to rental cleanouts, dirt
-            work, tree cleanup, stump grinding, hauling, old sheds, and property
+            work, tree cleanup, stump grinding, hauling, old sheds, gutter cleaning, exterior windows, and property
             messes that have gotten out of hand, Red Dirt Property Services LLC helps
             Arkansas property owners get things cleaned up and moving forward.
           </p>

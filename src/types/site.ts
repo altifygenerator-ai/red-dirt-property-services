@@ -4,6 +4,7 @@ export type Service = {
   title: string;
   text: string;
   icon: IconType;
+  href?: string;
 };
 
 export type Step = {

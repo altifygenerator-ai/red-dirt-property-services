@@ -1,5 +1,6 @@
 import {
   FaDumpster,
+  FaDroplet,
   FaHammer,
   FaHouseChimney,
   FaTruckPickup,
@@ -56,6 +57,18 @@ export const siteData = {
       title: "Cleanouts",
       text: "Garages, outbuildings, storage spaces, inherited properties, rentals, cabins, and places that need cleared out so the owner can move forward.",
       icon: FaDumpster,
+    },
+    {
+      title: "Gutter Cleaning",
+      text: "Leaves and debris clogging your gutters? We clean accessible residential gutters, check downspouts, and remove the mess. Single-story homes are our starting point.",
+      icon: FaHouseChimney,
+      href: "/gutter-cleaning",
+    },
+    {
+      title: "Exterior Window Cleaning",
+      text: "Outside window washing for homes, rentals, and cabins. Ask about adding it to a gutter cleaning or another Red Dirt job.",
+      icon: FaDroplet,
+      href: "/exterior-window-cleaning",
     },
   ] satisfies Service[],
 
@@ -205,6 +218,11 @@ export const siteData = {
       answer:
         "Yes. Red Dirt is built for rural Arkansas property work. If you are outside town, reach out and we can quote the job with mileage included.",
     },
+    {
+      question: "Do you clean gutters and outside windows?",
+      answer:
+        "Yes. We offer gutter cleaning, exterior-only window washing, and a combined package on suitable homes. Single-story homes with safe access are our starting point. Send photos and your town for a quote.",
+    },
   ] satisfies FAQ[],
 };
 
@@ -258,6 +276,16 @@ export const serviceNavLinks = [
     label: "Light Demolition",
     href: "/light-demolition",
     description: "Fences, small decks, damaged structures, and demo debris",
+  },
+  {
+    label: "Gutter Cleaning",
+    href: "/gutter-cleaning",
+    description: "Residential gutter debris removal and accessible downspout clearing",
+  },
+  {
+    label: "Exterior Window Cleaning",
+    href: "/exterior-window-cleaning",
+    description: "Outside window washing for homes, rentals, and cabins",
   },
 ];
 

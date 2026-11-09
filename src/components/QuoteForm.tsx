@@ -13,6 +13,9 @@ const serviceOptions = [
   "Stump grinding",
   "Shed removal / light demolition",
   "Storm cleanup",
+  "Gutter cleaning",
+  "Exterior window cleaning",
+  "Gutter + exterior window cleaning package",
   "Not sure yet",
 ];
 
@@ -67,7 +70,7 @@ export default function QuoteForm() {
       <div className="mb-5 border-b border-white/10 pb-5">
         <p className="eyebrow mb-3">Free Quote Request</p>
         <h2 className="text-4xl font-bold leading-[0.9] text-white sm:text-5xl">
-          Tell us what needs cleaned up.
+          Tell us what needs done.
         </h2>
         <p className="mt-4 text-sm leading-6 text-white/62">
           Send the basics here. For photos, you can still text them to{" "}
@@ -132,7 +135,7 @@ export default function QuoteForm() {
           <textarea
             name="details"
             rows={5}
-            placeholder="Tell us what needs cut, cleaned out, hauled off, torn down, fixed, or looked at. Include access issues, rough size, and anything heavy or hazardous."
+            placeholder="Tell us about the work, property access, approximate size, or number of windows. Photos of gutters or windows help with a quote."
             required
           />
         </label>
