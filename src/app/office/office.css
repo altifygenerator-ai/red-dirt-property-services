@@ -119,3 +119,16 @@
 .rd-office .rdo-signout:hover{background:#452e26}
 .rd-office .rdo-device-note .rdo-btn{margin:8px 0 0;display:block}
 @media(max-width:460px){.rd-office .rdo-auth-wrap{padding-top:40px}.rd-office .rdo-auth-card{padding:20px}}
+
+/* Login verification, shared Supabase CAPTCHA */
+.rd-office .rdo-captcha-box{display:grid;gap:8px;border:1px solid #e2d6cb;border-radius:12px;background:#f9f5f0;padding:13px;max-width:100%;overflow:hidden}
+.rd-office .rdo-captcha-box>span{font-size:.78rem;font-weight:800;color:#594639}
+.rd-office .rdo-captcha-box>p{margin:2px 0;font-size:.76rem;color:#7e7064}
+.rd-office .rdo-auth-warning{border:1px solid #ddbca9;border-radius:12px;background:#fff5ea;padding:14px;font-size:.8rem;color:#624b39}
+.rd-office .rdo-auth-warning>strong{display:block;margin-bottom:7px}
+.rd-office .rdo-auth-warning p{margin:0;line-height:1.6}
+.rd-office .rdo-auth-setup{display:grid;gap:12px;padding:17px;background:#faf3ea;border:1px solid #e2c7af;border-radius:12px}
+.rd-office .rdo-auth-setup p{font-size:.79rem;line-height:1.6;margin:0;color:#554538}
+.rd-office .rdo-auth-setup a{color:#9f3a2a;text-decoration:underline;font-weight:700}
+.rd-office .rdo-auth-setup code{overflow-wrap:anywhere}
+.rd-office .rdo-auth-setup .rdo-btn{width:100%}
