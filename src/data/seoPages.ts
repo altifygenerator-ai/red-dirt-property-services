@@ -545,10 +545,14 @@ export const servicePages: Record<string, ServicePageData> = {
     ],
     recentWork: {
       eyebrow: "Recent Tree Work",
-      title: "Tree Work And Cleanup From A Recent Job",
+      title: "Recent Tree Work And Debris Cleanup",
       text:
-        "A recent tree job where we removed the problem tree, hauled the debris, and left the area opened back up.",
+        "Photos from recent tree removal and limb cleanup jobs around southwest Arkansas. Trees and sites vary, so we look at safety and access before quoting.",
       images: [
+        { src: "/images/recent/red-dirt-tree-debris-trailer.webp", alt: "Brush and cut tree limbs loaded for removal on a trailer", label: "Tree Debris Haul-Off" },
+        { src: "/images/recent/red-dirt-tree-work-cleared-yard.webp", alt: "Cleared yard area after tree and branch cleanup", label: "Cleared Work Area" },
+        { src: "/images/recent/red-dirt-tree-trunk-job-site.webp", alt: "Tree trunk at a recent job site", label: "Tree Work Site" },
+        { src: "/images/recent/red-dirt-small-tree-yard.webp", alt: "Smaller tree at an Arkansas property", label: "Small Tree Work" },
         {
           src: "/images/recent/tree-work-before.jpg",
           alt: "Tree before removal near a residential fence and home",
