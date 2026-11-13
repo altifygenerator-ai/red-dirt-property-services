@@ -5,6 +5,7 @@ import { siteData } from "@/data/site";
 const lastModified = new Date("2026-11-09T00:00:00-06:00");
 
 const addedSeoSlugs = [
+  "hot-springs-tree-removal",
   "amity-dirt-work",
   "glenwood-dirt-work",
   "gutter-cleaning",
@@ -26,6 +27,7 @@ const priorityBySlug: Record<string, number> = {
   "glenwood-dirt-work": 0.95,
 
   "hot-springs-ar": 0.93,
+  "hot-springs-tree-removal": 0.91,
   "hot-springs-junk-removal": 0.92,
   "hot-springs-property-cleanup": 0.92,
   "hot-springs-brush-hogging": 0.91,
@@ -54,13 +56,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${baseUrl}/`,
-      lastModified,
+      lastModified: new Date("2026-11-12T00:00:00-06:00"),
       changeFrequency: "weekly" as const,
       priority: 1,
     },
     ...uniqueSlugs.map((slug) => ({
       url: `${baseUrl}/${slug}`,
-      lastModified,
+      lastModified: slug === "hot-springs-tree-removal" ? new Date("2026-11-12T00:00:00-06:00") : lastModified,
       changeFrequency: "monthly" as const,
       priority: priorityBySlug[slug] ?? 0.82,
     })),
