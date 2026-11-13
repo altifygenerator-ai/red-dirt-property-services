@@ -758,6 +758,7 @@ export const servicePages: Record<string, ServicePageData> = {
     areaServed: ["Hot Springs AR", "Lake Hamilton AR", "Royal AR", "Pearcy AR", "Bismarck AR", "Mountain Pine AR"],
     serviceType: ["Property cleanup", "Brush cleanup", "Junk removal", "Debris hauling", "Storm cleanup", "Cabin cleanup", "Rental cleanup"],
     related: [
+      { label: "Hot Springs Tree Removal", href: "/hot-springs-tree-removal", text: "Smaller tree removal, downed limbs, and tree debris hauling around Hot Springs." },
       { label: "Hot Springs Junk Removal", href: "/hot-springs-junk-removal", text: "Furniture, appliances, garage junk, rental junk, and trailer load hauling." },
       { label: "Hot Springs Brush Hogging", href: "/hot-springs-brush-hogging", text: "Bush hogging, brush cutting, rough mowing, trails, and overgrown areas." },
       { label: "Hot Springs Storm Cleanup", href: "/hot-springs-storm-cleanup", text: "Downed limbs, storm debris, scattered brush, and yard cleanup after bad weather." },
@@ -990,7 +991,7 @@ export const servicePages: Record<string, ServicePageData> = {
     areaServed: ["Hot Springs AR", "Lake Hamilton AR", "Royal AR", "Pearcy AR", "Mountain Pine AR", "Bismarck AR"],
     serviceType: ["Storm cleanup", "Limb cleanup", "Brush hauling", "Yard debris removal", "Small tree cleanup", "Storm debris hauling"],
     related: [
-      { label: "Hot Springs Tree Work", href: "/tree-work", text: "Small tree work, limb cleanup, brush removal, and light clearing when the job fits." },
+      { label: "Hot Springs Tree Removal", href: "/hot-springs-tree-removal", text: "Small tree removal, limb cleanup, and tree debris hauling when the job fits." },
       { label: "Hot Springs Property Cleanup", href: "/hot-springs-property-cleanup", text: "Larger cleanup help for brush, debris, junk, and rough property areas." },
       { label: "Hot Springs Brush Hogging", href: "/hot-springs-brush-hogging", text: "Brush cutting, rough mowing, field edges, and overgrown areas after cleanup." },
       areaLinks.find((item) => item.href === "/hot-springs-ar")!,
