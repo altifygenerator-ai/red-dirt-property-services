@@ -115,14 +115,48 @@ export default function HotSpringsPage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
-                Call or Text Photos
-              </Link>
+              <a href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
+                Call {siteData.phone}
+              </a>
               <Link href="/#quote-form" className="btn btn-secondary">
                 Get A Free Quote
               </Link>
             </div>
+            <p className="mt-4 text-sm leading-6 text-white/80">
+              Rather text pictures?{" "}
+              <a
+                href={`sms:${siteData.phoneHref}`}
+                className="font-bold text-[#f3d2ae] underline underline-offset-4 hover:text-white"
+              >
+                Text {siteData.phone}
+              </a>
+              {" "}with a few photos and the property location.
+            </p>
           </FadeIn>
+        </div>
+      </section>
+
+      <section className="border-y border-white/10 bg-[#211915] py-8" aria-labelledby="hot-springs-junk-help">
+        <div className="container flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-3xl">
+            <p className="eyebrow mb-2">Need A Junk Hauler In Hot Springs?</p>
+            <h2 id="hot-springs-junk-help" className="text-3xl font-bold text-white md:text-4xl">
+              Old furniture, appliances, debris, or a rental full of junk?
+            </h2>
+            <p className="mt-3 leading-7 text-white/75">
+              We load and haul off unwanted items around Hot Springs, Lake Hamilton,
+              Royal, and Pearcy. Send a few photos of the pile and tell us where
+              it's located so we can quote the work.
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+            <Link href="/hot-springs-junk-removal" className="btn btn-primary">
+              Hot Springs Junk Removal
+            </Link>
+            <a href={`sms:${siteData.phoneHref}`} className="btn btn-secondary">
+              Text Job Photos
+            </a>
+          </div>
         </div>
       </section>
 
