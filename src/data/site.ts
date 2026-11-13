@@ -385,6 +385,11 @@ export const hotSpringsServiceLinks = [
     description: "Brush hogging, bush hogging, rough mowing, field edges, trails, and overgrown areas",
   },
   {
+    label: "Hot Springs Tree Removal",
+    href: "/hot-springs-tree-removal",
+    description: "Small tree removal, fallen limb cleanup, branch hauling, and practical tree work that fits our crew",
+  },
+  {
     label: "Hot Springs Cleanouts",
     href: "/hot-springs-cleanouts",
     description: "Rental, estate, garage, cabin, shed, and outbuilding cleanouts around Hot Springs",
