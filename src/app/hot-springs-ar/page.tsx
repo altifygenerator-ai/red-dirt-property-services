@@ -15,7 +15,7 @@ const siteUrl = "https://www.reddirtpropertyservicesar.com";
 export const metadata: Metadata = {
   title: "Junk Removal, Brush Hogging & Property Cleanup in Hot Springs AR",
   description:
-    "Red Dirt Property Services LLC provides junk removal, brush hogging, bush hogging, property cleanup, hauling, rental cleanouts, estate cleanouts, storm cleanup, brush removal, and light demolition around Hot Springs, Lake Hamilton, Bismarck, Royal, Pearcy, and nearby areas.",
+    "Junk removal, brush hogging, property cleanup and rental cleanouts in Hot Springs, AR. Local Red Dirt crew. Call or text photos for an estimate.",
   keywords: [
     "junk removal Hot Springs AR",
     "brush hogging Hot Springs AR",
@@ -246,6 +246,49 @@ export default function HotSpringsPage() {
               </p>
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      <section className="section bg-[#211915]" aria-labelledby="hot-springs-faq">
+        <div className="container grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="eyebrow mb-4">Questions Before You Book</p>
+            <h2 id="hot-springs-faq" className="text-4xl font-bold leading-tight text-white md:text-5xl">
+              Hot Springs Cleanup FAQs
+            </h2>
+            <p className="mt-5 max-w-md leading-7 text-white/70">
+              We quote each job based on what needs moved, how much there is,
+              where the property sits, and how easily we can get a trailer to it.
+            </p>
+          </div>
+          <div className="space-y-6">
+            {[
+              {
+                question: "Do y'all haul away old furniture, appliances, and garage junk?",
+                answer: "Yes, those are common cleanup and hauling jobs. Send photos of what needs gone, including anything unusually heavy, so we can check the load and disposal needs before quoting.",
+              },
+              {
+                question: "Can you handle rental or cabin cleanouts around Hot Springs?",
+                answer: "Yes. We quote rental, garage, estate, cabin, and outbuilding cleanouts based on the amount of junk, access, labor, and disposal. We can also look at exterior brush or debris while we are there.",
+              },
+              {
+                question: "Do you work outside the Hot Springs city limits?",
+                answer: "We can quote work around Lake Hamilton, Royal, Pearcy, Bismarck, Mountain Pine, and nearby areas. Mileage and access are included when we work out a price.",
+              },
+              {
+                question: "Can I text photos instead of scheduling an estimate first?",
+                answer: "Absolutely. Wide shots of the whole pile, close-ups of heavy items, the property location, and a short explanation are a good start. Some bigger or more complicated jobs will still need an on-site look.",
+              },
+            ].map(({ question, answer }) => (
+              <div key={question} className="border-b border-white/15 pb-5">
+                <h3 className="text-xl font-bold text-white">{question}</h3>
+                <p className="mt-2 leading-7 text-white/70">{answer}</p>
+              </div>
+            ))}
+            <a href={`sms:${siteData.phoneHref}`} className="btn btn-primary">
+              Text Photos for a Quote
+            </a>
+          </div>
         </div>
       </section>
 
