@@ -672,7 +672,8 @@ export const servicePages: Record<string, ServicePageData> = {
     overviewText: [
       "Hot Springs junk jobs can be a single heavy item, a full garage, a rental left behind by a tenant, or a cabin cleanup after a busy season. The load size, access, stairs, weight, and dump fees all matter.",
       "We quote the work from photos when we can, then show up with the trailer and tools needed to get the junk moved without leaving the property worse than it started.",
-      "This page is focused on junk removal and hauling around Hot Springs. If the job is more like a full property cleanup, cleanout, storm cleanup, or light demolition, Red Dirt can still look at it and point the quote the right way."
+      "If you searched for a trash hauler, debris removal, or yard cleanup and hauling around Hot Springs, send a few photos. We can take a look at brush and yard debris, old furniture, unwanted items, and mixed loads, then let you know what fits our equipment and trailer.",
+      "For full-property cleanup, rental cleanouts, storm damage, or light demolition, we can look at those separately so the quote covers the actual work instead of guessing."
     ],
     cards: [
       "Furniture and appliance removal",
@@ -691,6 +692,34 @@ export const servicePages: Record<string, ServicePageData> = {
       "Hot Springs properties can also have tight driveways, hills, lake-area access, decks, stairs, or rental units with limited parking. Those details affect labor and scheduling.",
       "Send the location, a few wide photos, and close shots of anything heavy. We will price the job as fair as we can before anyone wastes a trip."
     ],
+    recentWork: {
+      eyebrow: "Real Red Dirt Cleanup Jobs",
+      title: "This Is The Kind Of Mess We Haul Away.",
+      text:
+        "Photos from actual Red Dirt cleanout and haul-off jobs in Arkansas, showing the debris before pickup and the space after larger items were removed. Jobs shown may be outside Hot Springs. Send us your own photos and location so we can quote your cleanup.",
+      images: [
+        {
+          src: "/images/recent/cleanup-before-debris.webp",
+          alt: "Mixed furniture and debris at a property before Red Dirt hauling and cleanup",
+          label: "Mixed Debris Before Pickup",
+        },
+        {
+          src: "/images/recent/cleanup-after-open-drive.webp",
+          alt: "Driveway area after bulky items and debris were removed from a Red Dirt cleanup job",
+          label: "Driveway After Cleanup",
+        },
+        {
+          src: "/images/recent/cleanup-before-furniture.webp",
+          alt: "Old furniture and discarded items awaiting removal at a local property",
+          label: "Furniture Before Haul-Off",
+        },
+        {
+          src: "/images/recent/cleanup-after-side-yard.webp",
+          alt: "Side yard area opened up after property debris was hauled away",
+          label: "Side Yard After Cleanup",
+        },
+      ],
+    },
     areaTitle: "Junk removal around Hot Springs, Lake Hamilton, Royal, Pearcy, Mountain Pine, Bismarck, and nearby areas.",
     areaText:
       "Red Dirt can quote Hot Springs junk removal, haul-offs, garage cleanouts, rental junk, cabin junk, appliances, furniture, and debris removal when the job fits the route and scope.",
