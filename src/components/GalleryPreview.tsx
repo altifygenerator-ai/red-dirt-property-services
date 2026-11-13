@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 
-type Category = "Recent Cleanout" | "Dirt Work" | "Brush & Hauling";
+type Category = "Recent Cleanout" | "Dirt Work" | "Tree Work" | "Brush & Hauling";
 type Filter = "All Work" | Category;
 type GalleryImage = {
   src: string;
@@ -14,6 +14,14 @@ type GalleryImage = {
 };
 
 const galleryImages: GalleryImage[] = [
+  { src: "/images/recent/red-dirt-tree-work-cleared-yard.webp", alt: "Open yard and treeline after an Arkansas tree cleanup job", label: "Cleared Yard Area", category: "Tree Work" },
+  { src: "/images/recent/red-dirt-tree-debris-trailer.webp", alt: "Trailer loaded with branches and tree debris for haul off", label: "Tree Debris Loaded", category: "Tree Work" },
+  { src: "/images/recent/red-dirt-tree-trunk-job-site.webp", alt: "Large tree trunk at a recent Arkansas tree work site", label: "Tree at Job Site", category: "Tree Work" },
+  { src: "/images/recent/red-dirt-small-tree-yard.webp", alt: "Smaller tree in an Arkansas residential yard", label: "Small Yard Tree", category: "Tree Work" },
+  { src: "/images/recent/red-dirt-tree-limbs-overhead.webp", alt: "Tree limbs and canopy at a recent property work site", label: "Tree Limbs on Site", category: "Tree Work" },
+  { src: "/images/recent/red-dirt-tree-work-wooded-property.webp", alt: "Wooded property during tree and brush cleanup work", label: "Wooded Work Area", category: "Tree Work" },
+  { src: "/images/recent/red-dirt-tree-cleanup-ground.webp", alt: "Tree-lined property with ground debris during cleanup", label: "Job Site Cleanup", category: "Tree Work" },
+  { src: "/images/recent/red-dirt-service-truck-decal.webp", alt: "Red Dirt Property Services branded work truck and door decal", label: "Branded Work Truck", category: "Brush & Hauling" },
   { src: "/images/recent/cleanup-before-mattress.webp", alt: "Old mattresses, discarded furniture and household junk piled near a rural property", label: "Before: Mattresses & Junk", category: "Recent Cleanout" },
   { src: "/images/recent/cleanup-before-debris.webp", alt: "Pile of old furniture, boards, bags and household debris awaiting haul-off", label: "Before: Mixed Debris", category: "Recent Cleanout" },
   { src: "/images/recent/cleanup-before-furniture.webp", alt: "Discarded bed frames and chairs among debris before property haul-off", label: "Before: Furniture Pile", category: "Recent Cleanout" },
@@ -32,7 +40,7 @@ const galleryImages: GalleryImage[] = [
   { src: "/images/dump.jpg", alt: "Dump trailer for debris hauling and property cleanup", label: "Dump Trailer", category: "Brush & Hauling" },
   { src: "/images/truck-trailers.jpg", alt: "Red Dirt truck and trailers used for rural property work", label: "Truck & Trailers", category: "Brush & Hauling" },
 ];
-const filters: Filter[] = ["All Work", "Recent Cleanout", "Dirt Work", "Brush & Hauling"];
+const filters: Filter[] = ["All Work", "Tree Work", "Recent Cleanout", "Dirt Work", "Brush & Hauling"];
 
 export default function GalleryPreview() {
   const [filter, setFilter] = useState<Filter>("All Work");
