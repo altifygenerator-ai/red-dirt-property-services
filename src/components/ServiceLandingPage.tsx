@@ -97,13 +97,23 @@ export default function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
-                {page.primaryCta}
-              </Link>
+              <a href={`tel:${siteData.phoneHref}`} className="btn btn-primary">
+                Call {siteData.phone}
+              </a>
               <Link href="/#quote-form" className="btn btn-secondary">
                 {page.secondaryCta}
               </Link>
             </div>
+            <p className="mt-4 text-sm text-white/80">
+              Rather send pictures?{" "}
+              <a
+                href={`sms:${siteData.phoneHref}`}
+                className="font-bold text-[#f3d2ae] underline underline-offset-4 hover:text-white"
+              >
+                Start a text to {siteData.phone}
+              </a>
+              . Include the job location and a few photos for a quote.
+            </p>
           </FadeIn>
         </div>
       </section>
