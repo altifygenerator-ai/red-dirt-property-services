@@ -75,7 +75,7 @@ export default function OfficeGate() {
   if(checking) return <div className="rd-office"><div className="rdo-loading">Checking secure Red Dirt Office login…</div></div>;
   if(user) return <OfficeApp userId={user.id} onSignOut={async()=>{await signOutOfOffice();setUser(null);}}/>;
   return <div className="rd-office"><div className="rdo-auth-wrap">
-    <div className="rdo-auth-brand"><img src="/images/logo2.png" alt="Red Dirt Property Services" width="80" height="80"/><h1>RED DIRT OFFICE</h1><p>Private estimates & invoices</p></div>
+    <div className="rdo-auth-brand"><img src="/images/logo2.png" alt="Red Dirt Property Services" width="80" height="80"/><h1>RED DIRT OFFICE</h1><p>Private estimates, invoices & receipts</p></div>
     <form className="rdo-auth-card" onSubmit={submit}>
       <h2>{mode==="signin"?"Welcome back":"Set up your office login"}</h2>
       <p>Only the authorized Red Dirt business email can access customer and invoice records.</p>

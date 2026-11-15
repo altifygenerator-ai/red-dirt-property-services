@@ -1,9 +1,9 @@
 "use client";
 
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
-import { deleteCloudDoc, loadCloudDocs, saveCloudDoc, sendOfficeInvoice } from "@/lib/redDirtCloud";
+import { deleteCloudDoc, loadCloudDocs, saveCloudDoc, sendOfficeDocument } from "@/lib/redDirtCloud";
 
-type Kind = "estimate" | "invoice";
+type Kind = "estimate" | "invoice" | "receipt";
 type Status = "draft" | "sent" | "approved" | "declined" | "unpaid" | "partial" | "paid";
 type Line = { id: string; description: string; quantity: number; price: number };
 type Payment = { id: string; amount: number; date: string; method: string };
@@ -13,7 +13,9 @@ type Document = {
   title: string; jobAddress: string; poNumber: string;
   issueDate: string; dueDate: string; notes: string; terms: string;
   lines: Line[]; taxRate: number; payments: Payment[];
-  sourceEstimate?: string; updatedAt: string;
+  sourceEstimate?: string; sourceInvoice?: string; sourcePaymentId?: string;
+  receiptDate?: string; receiptMethod?: string; receiptReference?: string; receiptBalance?: number;
+  updatedAt: string;
 };
 type View = "dashboard" | "documents" | "editor";
 const STORE = "red-dirt-office-v1";
@@ -38,21 +40,31 @@ const totals = (d: Document) => {
 };
 function blank(kind: Kind): Document {
   return {
-    id:"",number:"",kind,status:kind==="estimate"?"draft":"unpaid",
+    id:"",number:"",kind,status:kind==="estimate"?"draft":kind==="receipt"?"paid":"unpaid",
     customer:"",phone:"",email:"",address:"",title:"",jobAddress:"",poNumber:"",
-    issueDate:today(),dueDate:kind==="invoice"?plusDays(14):plusDays(14),
-    notes:"",terms:kind==="estimate"?"Estimate based on the scope described above. Any additional work will be discussed and approved before proceeding.":"Payment is due by the date shown. Please reference the invoice number with your payment.",
-    lines:[{id:uuid(),description:"",quantity:1,price:0}],taxRate:0,payments:[],updatedAt:new Date().toISOString()
+    issueDate:today(),dueDate:kind==="receipt"?today():plusDays(14),
+    notes:"",terms:kind==="estimate"?"Estimate based on the scope described above. Any additional work will be discussed and approved before proceeding.":kind==="receipt"?"Payment received. Thank you for your business.":"Payment is due by the date shown. Please reference the invoice number with your payment.",
+    lines:[{id:uuid(),description:"",quantity:1,price:0}],taxRate:0,payments:[],
+    ...(kind==="receipt"?{receiptDate:today(),receiptMethod:"Cash",receiptReference:""}:{}),updatedAt:new Date().toISOString()
   };
 }
 function summary(d: Document): string {
   const t=totals(d);
+  const label=d.kind==="estimate"?"ESTIMATE":d.kind==="receipt"?"RECEIPT":"INVOICE";
   return [
-    "Red Dirt Property Services LLC", d.kind==="estimate"?"ESTIMATE "+d.number:"INVOICE "+d.number,
+    "Red Dirt Property Services LLC", label+" "+d.number,
     d.title, "For: "+d.customer, "Job: "+(d.jobAddress||d.address||"Not specified"),
     ...d.lines.map(line=>line.description+" • "+line.quantity+" x "+currency(line.price)+" = "+currency(Number(line.quantity)*Number(line.price))),
     "Subtotal: "+currency(t.subtotal), ...(d.taxRate>0?["Tax: "+currency(t.tax)]:[]),
-    "Total: "+currency(t.total), ...(d.kind==="invoice"?["Balance due: "+currency(t.balance),"Due: "+d.dueDate]:[]),
+    d.kind==="receipt"?"AMOUNT RECEIVED: "+currency(t.total):"Total: "+currency(t.total),
+    ...(d.kind==="invoice"?["Balance due: "+currency(t.balance),"Due: "+d.dueDate]:[]),
+    ...(d.kind==="receipt"?[
+      "Paid on: "+(d.receiptDate||d.issueDate),
+      "Payment method: "+(d.receiptMethod||"Not specified"),
+      ...(d.receiptReference?["Payment reference: "+d.receiptReference]:[]),
+      ...(d.sourceInvoice?["For invoice: "+d.sourceInvoice]:[]),
+      ...(typeof d.receiptBalance==="number"?["Invoice balance after payment: "+currency(d.receiptBalance)]:[])
+    ]:[]),
     d.notes, d.terms, "Questions? Call or text 870-828-2562", "reddirtpropertyservicesar.com"
   ].filter(Boolean).join("\n");
 }
@@ -61,7 +73,7 @@ function normalizeDocs(input: unknown): Document[] {
   return input.map((d: unknown) => {
     if (!d || typeof d!=="object") throw new Error("Invalid document.");
     const v=d as Partial<Document>;
-    if (typeof v.id!=="string"||typeof v.number!=="string"||!["estimate","invoice"].includes(v.kind||"")||!Array.isArray(v.lines)||!Array.isArray(v.payments)) throw new Error("Invalid document data.");
+    if (typeof v.id!=="string"||typeof v.number!=="string"||!["estimate","invoice","receipt"].includes(v.kind||"")||!Array.isArray(v.lines)||!Array.isArray(v.payments)) throw new Error("Invalid document data.");
     return v as Document;
   });
 }
@@ -74,7 +86,7 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
   const [editor,setEditor] = useState<Document|null>(null);
   const [printDoc,setPrintDoc] = useState<Document|null>(null);
   const [query,setQuery] = useState("");
-  const [filter,setFilter] = useState<"all"|"estimate"|"invoice">("all");
+  const [filter,setFilter] = useState<"all"|"estimate"|"invoice"|"receipt">("all");
   const [alert,setAlert] = useState("");
   const [paymentAmount,setPaymentAmount] = useState("");
   const [paymentMethod,setPaymentMethod] = useState("Cash");
@@ -136,7 +148,7 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
   const estimates=docs.filter(d=>d.kind==="estimate"&&["draft","sent"].includes(d.status));
   const invoices=docs.filter(d=>d.kind==="invoice"&&totals(d).balance>0.009);
   const outstanding=invoices.reduce((sum,d)=>sum+totals(d).balance,0);
-  const paid=docs.filter(d=>d.kind==="invoice").reduce((sum,d)=>sum+totals(d).paid,0);
+  const paid=docs.reduce((sum,d)=>sum+(d.kind==="invoice"?totals(d).paid:d.kind==="receipt"&&!d.sourceInvoice?totals(d).total:0),0);
 
   function openNew(kind: Kind) {setEditor(blank(kind));setView("editor");setAlert("");}
   function openEdit(d: Document) {setEditor(JSON.parse(JSON.stringify(d)) as Document);setView("editor");setAlert("");}
@@ -147,22 +159,28 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
       setAlert("Add the customer's name, job title, and at least one line item.");return;
     }
     if(sendAfterSave && (!editor.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(editor.email.trim()))) {
-      setAlert("Add a valid customer email before sending the invoice.");return;
+      setAlert("Add a valid customer email before emailing this document.");return;
+    }
+    if(editor.kind==="receipt"&&(!editor.receiptDate||!editor.receiptMethod?.trim())) {
+      setAlert("Choose the payment date and payment method for the receipt.");return;
+    }
+    if(editor.kind==="receipt"&&totals(editor).total<=0) {
+      setAlert("A receipt needs a payment amount greater than $0.");return;
     }
     const maxNum=Math.max(lastNumber,largestNumber(docs));
-    const incoming={...editor,id:editor.id||uuid(),number:editor.number||("RD-"+(editor.kind==="estimate"?"EST":"INV")+"-"+String(maxNum+1).padStart(4,"0")),updatedAt:new Date().toISOString(),lines:editor.lines.filter(l=>l.description.trim()).map(l=>({...l,quantity:Math.max(0,Number(l.quantity)||0),price:Math.max(0,Number(l.price)||0)})),taxRate:Math.max(0,Math.min(100,Number(editor.taxRate)||0))};
+    const incoming={...editor,id:editor.id||uuid(),number:editor.number||("RD-"+(editor.kind==="estimate"?"EST":editor.kind==="receipt"?"REC":"INV")+"-"+String(maxNum+1).padStart(4,"0")),updatedAt:new Date().toISOString(),lines:editor.lines.filter(l=>l.description.trim()).map(l=>({...l,quantity:Math.max(0,Number(l.quantity)||0),price:Math.max(0,Number(l.price)||0)})),taxRate:Math.max(0,Math.min(100,Number(editor.taxRate)||0))};
     setBusy(true);
     try {
       await saveCloudDoc(incoming,userId);
       setDocs(prev=>[incoming,...prev.filter(d=>d.id!==incoming.id)]);
       if(!editor.number)setLastNumber(maxNum+1);
       setEditor(null);setView("documents");
-      if(sendAfterSave && incoming.kind==="invoice") {
+      if(sendAfterSave && (incoming.kind==="invoice"||incoming.kind==="receipt")) {
         try {
-          await sendOfficeInvoice(incoming.id);
-          setDocs(prev=>prev.map(d=>d.id===incoming.id?{...d,status:d.status==="paid"?"paid":"sent"}:d));
-          setAlert("Saved in Supabase and invoice emailed to "+incoming.email+".");
-        } catch(error) {setAlert("Invoice saved, but the email was not sent: "+(error instanceof Error?error.message:"Unknown error"));}
+          await sendOfficeDocument(incoming.id);
+          setDocs(prev=>prev.map(d=>d.id===incoming.id?{...d,status:d.kind==="receipt"||d.status==="paid"?"paid":"sent"}:d));
+          setAlert("Saved in Supabase and "+incoming.kind+" emailed to "+incoming.email+".");
+        } catch(error) {setAlert("Document saved, but the email was not sent: "+(error instanceof Error?error.message:"Unknown error"));}
       } else setAlert("Saved securely in Supabase.");
     } catch(error) {setAlert(error instanceof Error?error.message:"Could not save. Please try again.");}
     finally {setBusy(false);}
@@ -179,6 +197,23 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
     setEditor({...copy,id:"",number:"",kind:"invoice",status:"unpaid",sourceEstimate:d.number,payments:[],issueDate:today(),dueDate:plusDays(14),terms:"Payment due by the date shown. Please reference the invoice number with payment.",updatedAt:new Date().toISOString()});
     setView("editor");setAlert("Review the invoice details, then save.");
   }
+  function makeReceipt(d: Document, payment: Payment, index: number) {
+    const existing=docs.find(v=>v.kind==="receipt"&&v.sourceInvoice===d.number&&v.sourcePaymentId===payment.id);
+    if(existing) {openEdit(existing);return;}
+    const received=Math.round(Number(payment.amount)*100)/100;
+    const paidThrough=d.payments.slice(0,index+1).reduce((sum,p)=>sum+Number(p.amount||0),0);
+    const remaining=Math.max(0,Math.round((totals(d).total-paidThrough)*100)/100);
+    setEditor({
+      ...blank("receipt"),customer:d.customer,phone:d.phone,email:d.email,
+      address:d.address,jobAddress:d.jobAddress,poNumber:d.poNumber,title:d.title,
+      issueDate:payment.date||today(),dueDate:payment.date||today(),
+      receiptDate:payment.date||today(),receiptMethod:payment.method||"Other",
+      sourceInvoice:d.number,sourcePaymentId:payment.id,receiptBalance:remaining,
+      lines:[{id:uuid(),description:"Payment toward "+d.number+" — "+d.title,quantity:1,price:received}],
+      notes:"Payment applied to invoice "+d.number+".",
+    });
+    setView("editor");setAlert("Receipt prepared from the recorded payment. Review and save or email it.");
+  }
   async function addPayment(d: Document) {
     const amount=Number(paymentAmount);
     if(!Number.isFinite(amount)||amount<=0||amount>totals(d).balance+0.01) {setAlert("Enter a payment amount greater than $0 and no more than the remaining balance.");return;}
@@ -192,11 +227,11 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
     try {await deleteCloudDoc(d.id);setDocs(prev=>prev.filter(item=>item.id!==d.id));setAlert("Document deleted.");}
     catch(error) {setAlert(error instanceof Error?error.message:"Could not delete document.");}
   }
-  async function emailInvoice(d:Document) {
-    if(!window.confirm("Email invoice "+d.number+" to "+d.email+" now?"))return;
+  async function emailOfficeDocument(d:Document) {
+    if(!window.confirm("Email "+d.kind+" "+d.number+" to "+d.email+" now?"))return;
     setBusy(true);
-    try {await sendOfficeInvoice(d.id);setDocs(prev=>prev.map(item=>item.id===d.id?{...item,status:item.status==="paid"?"paid":"sent"}:item));setAlert("Invoice sent to "+d.email+".");}
-    catch(error) {setAlert(error instanceof Error?error.message:"Could not send invoice.");}
+    try {await sendOfficeDocument(d.id);setDocs(prev=>prev.map(item=>item.id===d.id?{...item,status:item.kind==="receipt"||item.status==="paid"?"paid":"sent"}:item));setAlert((d.kind==="receipt"?"Receipt":"Invoice")+" sent to "+d.email+".");}
+    catch(error) {setAlert(error instanceof Error?error.message:"Could not send document.");}
     finally {setBusy(false);}
   }
   function print(d: Document) {setPrintDoc(d);setTimeout(()=>window.print(),180);}
@@ -225,7 +260,7 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
     catch {setAlert("Clipboard unavailable. Use Print / Save PDF instead.");}
   }
   function emailSummary(d:Document) {
-    const subject=encodeURIComponent((d.kind==="estimate"?"Estimate ":"Invoice ")+d.number+" — Red Dirt Property Services");
+    const subject=encodeURIComponent((d.kind==="estimate"?"Estimate ":d.kind==="receipt"?"Receipt ":"Invoice ")+d.number+" — Red Dirt Property Services");
     const body=encodeURIComponent(summary(d));
     window.location.href="mailto:"+encodeURIComponent(d.email||"")+"?subject="+subject+"&body="+body;
   }
@@ -237,18 +272,18 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
   return <div className="rd-office">
     <div className="rdo-top"><div className="rdo-top-inner">
       <a href="/" className="rdo-brand" aria-label="Return to Red Dirt website"><img src="/images/logo2.png" alt="" width="44" height="44"/><span>RED DIRT <small>OFFICE</small></span></a>
-      <span className="rdo-top-sub">ESTIMATES & INVOICES</span>
+      <span className="rdo-top-sub">ESTIMATES · INVOICES · RECEIPTS</span>
       <button className="rdo-site rdo-signout" onClick={()=>void onSignOut()}>Sign out</button>
     </div></div>
     <main className="rdo-wrap">
-      <div className="rdo-heading"><div><p className="rdo-kicker">Red Dirt Property Services LLC</p><h1>{view==="editor"?(editor?.number||("New "+editor?.kind)) : view==="documents"?"Documents":"Your office"}</h1><p className="rdo-sub">Simple estimates, invoices and payment tracking, built for jobs on the go.</p></div><div className="rdo-quick"><button className="rdo-btn rdo-btn-outline" onClick={()=>openNew("estimate")}>+ Estimate</button><button className="rdo-btn rdo-btn-primary" onClick={()=>openNew("invoice")}>+ Invoice</button></div></div>
+      <div className="rdo-heading"><div><p className="rdo-kicker">Red Dirt Property Services LLC</p><h1>{view==="editor"?(editor?.number||("New "+editor?.kind)) : view==="documents"?"Documents":"Your office"}</h1><p className="rdo-sub">Simple estimates, invoices, receipts and payment tracking, built for jobs on the go.</p></div><div className="rdo-quick"><button className="rdo-btn rdo-btn-outline" onClick={()=>openNew("estimate")}>+ Estimate</button><button className="rdo-btn rdo-btn-outline" onClick={()=>openNew("invoice")}>+ Invoice</button><button className="rdo-btn rdo-btn-primary" onClick={()=>openNew("receipt")}>+ Receipt</button></div></div>
       <div className="rdo-device-note"><strong>Secure cloud storage active.</strong> Documents now sync through Supabase when you're signed in. You can use the same login on your phone and computer.</div>
-      {legacyDocs.some(d=>!docs.some(c=>c.id===d.id))?<div className="rdo-device-note"><strong>Older documents found on this device.</strong> Import your existing estimates and invoices into Supabase. <button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void migrateLegacy()}>Import old documents</button></div>:null}
+      {legacyDocs.some(d=>!docs.some(c=>c.id===d.id))?<div className="rdo-device-note"><strong>Older documents found on this device.</strong> Import your existing estimates, invoices and receipts into Supabase. <button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void migrateLegacy()}>Import old documents</button></div>:null}
       {storageError?<div className="rdo-error" role="alert">{storageError}</div>:null}
       {alert?<div className="rdo-notice" role="status">{alert}<button aria-label="Dismiss" onClick={()=>setAlert("")}>×</button></div>:null}
       <nav className="rdo-nav" aria-label="Office navigation"><button className={view==="dashboard"?"active":""} onClick={()=>{setView("dashboard");setEditor(null);}}>Overview</button><button className={view==="documents"?"active":""} onClick={()=>{setView("documents");setEditor(null);}}>All documents</button><button className={view==="editor"?"active":""} onClick={()=>{if(!editor)setEditor(blank("estimate"));setView("editor");}}>Editor</button></nav>
       {view==="dashboard"&&<><section className="rdo-stats"><div className="rdo-stat"><span>Open estimates</span><strong>{estimates.length}</strong><small>Draft or waiting on a decision</small></div><div className="rdo-stat"><span>Unpaid invoices</span><strong>{invoices.length}</strong><small>{currency(outstanding)} outstanding</small></div><div className="rdo-stat"><span>Payments recorded</span><strong>{currency(paid)}</strong><small>Across saved invoices</small></div></section><div className="rdo-panel"><div className="rdo-panel-head"><h2>Recent work</h2><button className="rdo-text-btn" onClick={()=>setView("documents")}>See all →</button></div>{sorted.length?sorted.slice(0,6).map(d=>renderRow(d)):<div className="rdo-empty"><h3>Ready for your first estimate?</h3><p>Create a quote, add line items, then print or save a professional PDF for the customer.</p><button className="rdo-btn rdo-btn-primary" onClick={()=>openNew("estimate")}>Create estimate</button></div>}</div></>}
-      {view==="documents"&&<section className="rdo-panel"><div className="rdo-panel-head"><h2>Estimates & invoices</h2><span>{shown.length} found</span></div><div className="rdo-filters"><input type="search" aria-label="Search documents" placeholder="Search customer, job, or number…" value={query} onChange={e=>setQuery(e.target.value)}/><select aria-label="Filter document type" value={filter} onChange={e=>setFilter(e.target.value as typeof filter)}><option value="all">All documents</option><option value="estimate">Estimates</option><option value="invoice">Invoices</option></select></div>{shown.length?shown.map(d=>renderRow(d)):<div className="rdo-empty"><p>No documents match yet.</p></div>}</section>}
+      {view==="documents"&&<section className="rdo-panel"><div className="rdo-panel-head"><h2>Estimates, invoices & receipts</h2><span>{shown.length} found</span></div><div className="rdo-filters"><input type="search" aria-label="Search documents" placeholder="Search customer, job, or number…" value={query} onChange={e=>setQuery(e.target.value)}/><select aria-label="Filter document type" value={filter} onChange={e=>setFilter(e.target.value as typeof filter)}><option value="all">All documents</option><option value="estimate">Estimates</option><option value="invoice">Invoices</option><option value="receipt">Receipts</option></select></div>{shown.length?shown.map(d=>renderRow(d)):<div className="rdo-empty"><p>No documents match yet.</p></div>}</section>}
       {view==="editor"&&editor&&<section className="rdo-editor"><div className="rdo-panel-head"><h2>{editor.number||"New "+editor.kind}</h2><button className="rdo-text-btn" onClick={()=>{setEditor(null);setView("documents");}}>Cancel</button></div><div className="rdo-form-grid">
         {input("customer","Customer / Company *",{required:true,placeholder:"Customer name or apartment manager"})}
         {input("title","Job title *",{required:true,placeholder:"Property cleanup, driveway work..."})}
@@ -258,17 +293,40 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
         {input("jobAddress","Job / property address",{placeholder:"Where the work will be done"})}
         {input("poNumber","PO / unit number",{placeholder:"Optional for property managers"})}
         {input("issueDate","Document date",{type:"date"})}
-        {input("dueDate",editor.kind==="invoice"?"Payment due date":"Estimate valid until",{type:"date"})}
-      </div><div className="rdo-lines"><div className="rdo-section-title"><h3>Work and pricing</h3><button className="rdo-text-btn" onClick={()=>update("lines",[...editor.lines,{id:uuid(),description:"",quantity:1,price:0}])}>+ Add item</button></div>{editor.lines.map((line,index)=><div className="rdo-line" key={line.id}><label className="rdo-field rdo-line-desc"><span>Work / service *</span><input value={line.description} placeholder="Hauling, disposal, labor, gravel..." onChange={e=>update("lines",editor.lines.map(v=>v.id===line.id?{...v,description:e.target.value}:v))}/></label><label className="rdo-field rdo-small"><span>Qty</span><input type="number" min="0" step="0.1" value={line.quantity} onChange={e=>update("lines",editor.lines.map(v=>v.id===line.id?{...v,quantity:Number(e.target.value)}:v))}/></label><label className="rdo-field rdo-small"><span>Unit price ($)</span><input type="number" min="0" step="0.01" value={line.price} onChange={e=>update("lines",editor.lines.map(v=>v.id===line.id?{...v,price:Number(e.target.value)}:v))}/></label><strong className="rdo-line-total">{currency(Number(line.price)*Number(line.quantity))}</strong><button className="rdo-icon-btn" title="Remove item" aria-label={"Remove line "+(index+1)} disabled={editor.lines.length===1} onClick={()=>update("lines",editor.lines.filter(v=>v.id!==line.id))}>×</button></div>)}</div>
-      <div className="rdo-form-bottom"><div><label className="rdo-field"><span>Notes / scope of work</span><textarea rows={4} value={editor.notes} placeholder="What's included, access details, materials, disposal…" onChange={e=>update("notes",e.target.value)}/></label><label className="rdo-field"><span>Terms</span><textarea rows={3} value={editor.terms} onChange={e=>update("terms",e.target.value)}/></label></div><div className="rdo-totalbox"><label className="rdo-field"><span>Sales tax % (only when applicable)</span><input type="number" min="0" max="100" step="0.01" value={editor.taxRate} onChange={e=>update("taxRate",Number(e.target.value))}/></label><div><span>Subtotal</span><strong>{currency(totals(editor).subtotal)}</strong></div><div><span>Tax</span><strong>{currency(totals(editor).tax)}</strong></div><div className="rdo-grand"><span>Total</span><strong>{currency(totals(editor).total)}</strong></div><p>Tax defaults to 0%. Check whether tax applies to this job before sending.</p></div></div><div className="rdo-editor-actions"><button className="rdo-btn rdo-btn-outline" onClick={()=>{setEditor(null);setView("documents");}}>Cancel</button><button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void saveDocument(false)}>{busy?"Saving…":"Save "+editor.kind}</button>{editor.kind==="invoice"?<button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void saveDocument(true)}>Save & email invoice</button>:null}</div></section>}
+        {editor.kind!=="receipt"?input("dueDate",editor.kind==="invoice"?"Payment due date":"Estimate valid until",{type:"date"}):null}
+      </div>{editor.kind==="receipt"&&<div className="rdo-receipt-fields">
+        {editor.sourceInvoice?<p className="rdo-device-note"><strong>Linked invoice: {editor.sourceInvoice}.</strong> This receipt covers the recorded payment, not necessarily the full invoice balance.</p>:null}
+        <div className="rdo-form-grid">
+          {input("receiptDate","Payment received on *",{type:"date",required:true})}
+          <label className="rdo-field"><span>Payment method *</span><select value={editor.receiptMethod||"Cash"} onChange={e=>update("receiptMethod",e.target.value)}>
+            <option>Cash</option><option>Check</option><option>Card</option><option>Bank transfer</option><option>Other</option>
+          </select></label>
+          {input("receiptReference","Check / transaction reference",{placeholder:"Optional check number or reference"})}
+        </div>
+      </div>}<div className="rdo-lines"><div className="rdo-section-title"><h3>Work and pricing</h3><button className="rdo-text-btn" onClick={()=>update("lines",[...editor.lines,{id:uuid(),description:"",quantity:1,price:0}])}>+ Add item</button></div>{editor.lines.map((line,index)=><div className="rdo-line" key={line.id}><label className="rdo-field rdo-line-desc"><span>Work / service *</span><input value={line.description} placeholder="Hauling, disposal, labor, gravel..." onChange={e=>update("lines",editor.lines.map(v=>v.id===line.id?{...v,description:e.target.value}:v))}/></label><label className="rdo-field rdo-small"><span>Qty</span><input type="number" min="0" step="0.1" value={line.quantity} onChange={e=>update("lines",editor.lines.map(v=>v.id===line.id?{...v,quantity:Number(e.target.value)}:v))}/></label><label className="rdo-field rdo-small"><span>Unit price ($)</span><input type="number" min="0" step="0.01" value={line.price} onChange={e=>update("lines",editor.lines.map(v=>v.id===line.id?{...v,price:Number(e.target.value)}:v))}/></label><strong className="rdo-line-total">{currency(Number(line.price)*Number(line.quantity))}</strong><button className="rdo-icon-btn" title="Remove item" aria-label={"Remove line "+(index+1)} disabled={editor.lines.length===1} onClick={()=>update("lines",editor.lines.filter(v=>v.id!==line.id))}>×</button></div>)}</div>
+      <div className="rdo-form-bottom"><div><label className="rdo-field"><span>Notes / scope of work</span><textarea rows={4} value={editor.notes} placeholder="What's included, access details, materials, disposal…" onChange={e=>update("notes",e.target.value)}/></label><label className="rdo-field"><span>Terms</span><textarea rows={3} value={editor.terms} onChange={e=>update("terms",e.target.value)}/></label></div><div className="rdo-totalbox"><label className="rdo-field"><span>Sales tax % (only when applicable)</span><input type="number" min="0" max="100" step="0.01" value={editor.taxRate} onChange={e=>update("taxRate",Number(e.target.value))}/></label><div><span>Subtotal</span><strong>{currency(totals(editor).subtotal)}</strong></div><div><span>Tax</span><strong>{currency(totals(editor).tax)}</strong></div><div className="rdo-grand"><span>{editor.kind==="receipt"?"Amount received":"Total"}</span><strong>{currency(totals(editor).total)}</strong></div><p>{editor.kind==="receipt"?"Only create a receipt for a payment actually received.":"Tax defaults to 0%. Check whether tax applies to this job before sending."}</p></div></div><div className="rdo-editor-actions"><button className="rdo-btn rdo-btn-outline" onClick={()=>{setEditor(null);setView("documents");}}>Cancel</button><button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void saveDocument(false)}>{busy?"Saving…":"Save "+editor.kind}</button>{editor.kind!=="estimate"?<button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void saveDocument(true)}>Save & email {editor.kind}</button>:null}</div></section>}
       <section className="rdo-tools"><div><h2>Backup your records</h2><p>Export a copy to Files or Drive. Importing a backup merges records into your secure Supabase account.</p></div><div className="rdo-tool-actions"><button className="rdo-btn rdo-btn-outline" onClick={exportData}>Export backup</button><label className="rdo-btn rdo-btn-outline rdo-file">Import backup<input type="file" accept=".json,application/json" onChange={importData}/></label></div></section>
       <footer className="rdo-footer">Red Dirt Property Services LLC · 870-828-2562 · <a href="/">Main website</a><p>To install on your phone: open this page in Safari or Chrome and choose Add to Home Screen / Install App.</p></footer>
     </main>
-    {printDoc&&<div className="rdo-print"><header><img src="/images/logo2.png" alt="Red Dirt Property Services LLC" width="88" height="88"/><div><h1>RED DIRT</h1><p>PROPERTY SERVICES LLC</p><small>870-828-2562 · reddirtpropertyservicesar.com<br/>Amity, Arkansas · reddirtpropertyservicesar@gmail.com</small></div></header><div className="rdo-print-title"><h2>{printDoc.kind.toUpperCase()}</h2><strong>{printDoc.number}</strong></div><div className="rdo-print-grid"><div><b>BILL TO</b><p>{printDoc.customer}</p>{printDoc.address?<p>{printDoc.address}</p>:null}{printDoc.phone?<p>{printDoc.phone}</p>:null}{printDoc.email?<p>{printDoc.email}</p>:null}</div><div><b>DOCUMENT DETAILS</b><p>Date: {printDoc.issueDate}</p><p>{printDoc.kind==="estimate"?"Valid until":"Due"}: {printDoc.dueDate}</p>{printDoc.poNumber?<p>PO / Unit: {printDoc.poNumber}</p>:null}{printDoc.sourceEstimate?<p>From estimate: {printDoc.sourceEstimate}</p>:null}</div></div><div className="rdo-print-job"><strong>{printDoc.title}</strong>{printDoc.jobAddress?<p>Job location: {printDoc.jobAddress}</p>:null}</div><table><thead><tr><th>DESCRIPTION</th><th>QTY</th><th>RATE</th><th>AMOUNT</th></tr></thead><tbody>{printDoc.lines.map(line=><tr key={line.id}><td>{line.description}</td><td>{line.quantity}</td><td>{currency(line.price)}</td><td>{currency(Number(line.price)*Number(line.quantity))}</td></tr>)}</tbody></table><div className="rdo-print-totals"><p><span>Subtotal</span><strong>{currency(totals(printDoc).subtotal)}</strong></p>{printDoc.taxRate>0?<p><span>Tax ({printDoc.taxRate}%)</span><strong>{currency(totals(printDoc).tax)}</strong></p>:null}<p className="rdo-print-grand"><span>Total</span><strong>{currency(totals(printDoc).total)}</strong></p>{printDoc.kind==="invoice"&&<><p><span>Paid</span><strong>{currency(totals(printDoc).paid)}</strong></p><p className="rdo-print-grand"><span>Balance due</span><strong>{currency(totals(printDoc).balance)}</strong></p></>}</div>{printDoc.notes?<div className="rdo-print-note"><b>SCOPE / NOTES</b><p>{printDoc.notes}</p></div>:null}{printDoc.terms?<div className="rdo-print-note"><b>TERMS</b><p>{printDoc.terms}</p></div>:null}<div className="rdo-print-thanks">Thank you for giving Red Dirt Property Services the opportunity to earn your business.</div></div>}
+    {printDoc&&<div className="rdo-print"><header><img src="/images/logo2.png" alt="Red Dirt Property Services LLC" width="88" height="88"/><div><h1>RED DIRT</h1><p>PROPERTY SERVICES LLC</p><small>870-828-2562 · reddirtpropertyservicesar.com<br/>Amity, Arkansas · reddirtpropertyservicesar@gmail.com</small></div></header><div className="rdo-print-title"><h2>{printDoc.kind.toUpperCase()}</h2><strong>{printDoc.number}</strong></div>{printDoc.kind==="receipt"?<div className="rdo-print-paid">PAYMENT RECEIVED · {currency(totals(printDoc).total)}</div>:null}<div className="rdo-print-grid"><div><b>{printDoc.kind==="receipt"?"RECEIVED FROM":"BILL TO"}</b><p>{printDoc.customer}</p>{printDoc.address?<p>{printDoc.address}</p>:null}{printDoc.phone?<p>{printDoc.phone}</p>:null}{printDoc.email?<p>{printDoc.email}</p>:null}</div><div><b>{printDoc.kind==="receipt"?"PAYMENT DETAILS":"DOCUMENT DETAILS"}</b><p>Date: {printDoc.issueDate}</p>{printDoc.kind==="receipt"?<><p>Paid on: {printDoc.receiptDate||printDoc.issueDate}</p><p>Method: {printDoc.receiptMethod||"Not specified"}</p>{printDoc.receiptReference?<p>Reference: {printDoc.receiptReference}</p>:null}{printDoc.sourceInvoice?<p>Invoice: {printDoc.sourceInvoice}</p>:null}</>:<p>{printDoc.kind==="estimate"?"Valid until":"Due"}: {printDoc.dueDate}</p>}{printDoc.poNumber?<p>PO / Unit: {printDoc.poNumber}</p>:null}{printDoc.sourceEstimate?<p>From estimate: {printDoc.sourceEstimate}</p>:null}</div></div><div className="rdo-print-job"><strong>{printDoc.title}</strong>{printDoc.jobAddress?<p>Job location: {printDoc.jobAddress}</p>:null}</div><table><thead><tr><th>DESCRIPTION</th><th>QTY</th><th>RATE</th><th>AMOUNT</th></tr></thead><tbody>{printDoc.lines.map(line=><tr key={line.id}><td>{line.description}</td><td>{line.quantity}</td><td>{currency(line.price)}</td><td>{currency(Number(line.price)*Number(line.quantity))}</td></tr>)}</tbody></table><div className="rdo-print-totals"><p><span>Subtotal</span><strong>{currency(totals(printDoc).subtotal)}</strong></p>{printDoc.taxRate>0?<p><span>Tax ({printDoc.taxRate}%)</span><strong>{currency(totals(printDoc).tax)}</strong></p>:null}<p className="rdo-print-grand"><span>{printDoc.kind==="receipt"?"AMOUNT RECEIVED":"Total"}</span><strong>{currency(totals(printDoc).total)}</strong></p>{printDoc.kind==="invoice"&&<><p><span>Paid</span><strong>{currency(totals(printDoc).paid)}</strong></p><p className="rdo-print-grand"><span>Balance due</span><strong>{currency(totals(printDoc).balance)}</strong></p></>}{printDoc.kind==="receipt"&&typeof printDoc.receiptBalance==="number"?<p><span>Invoice balance after payment</span><strong>{currency(printDoc.receiptBalance)}</strong></p>:null}</div>{printDoc.notes?<div className="rdo-print-note"><b>{printDoc.kind==="receipt"?"PAYMENT NOTES":"SCOPE / NOTES"}</b><p>{printDoc.notes}</p></div>:null}{printDoc.terms?<div className="rdo-print-note"><b>TERMS</b><p>{printDoc.terms}</p></div>:null}<div className="rdo-print-thanks">Thank you for choosing Red Dirt Property Services.</div></div>}
   </div>;
 
   function renderRow(d: Document) {
     const t=totals(d);
-    return <article key={d.id} className="rdo-doc"><div className="rdo-doc-main"><div className="rdo-doc-top"><strong>{d.title||"Untitled job"}</strong><span className={"rdo-pill rdo-"+d.status}>{d.status}</span></div><div className="rdo-doc-meta">{d.customer} · {d.number} · {d.issueDate}{d.poNumber?" · PO "+d.poNumber:""}</div><div className="rdo-doc-value">{currency(t.total)}{d.kind==="invoice"&&t.balance>0.009?<span> · {currency(t.balance)} due</span>:null}</div></div><div className="rdo-doc-actions"><button onClick={()=>openEdit(d)}>Edit</button><button onClick={()=>print(d)}>Print / PDF</button>{d.kind==="invoice"?<button disabled={busy} onClick={()=>void emailInvoice(d)}>Send invoice email</button>:<button onClick={()=>emailSummary(d)}>Email text</button>}<button onClick={()=>copySummary(d)}>Copy text</button>{d.kind==="estimate"&&<><button onClick={()=>convert(d)}>Make invoice</button>{d.status!=="approved"&&<button onClick={()=>changeStatus(d,"approved")}>Mark approved</button>}{d.status==="draft"&&<button onClick={()=>changeStatus(d,"sent")}>Mark sent</button>}</>}{d.kind==="invoice"&&t.balance>0.009&&<details className="rdo-payment"><summary>Record payment</summary><div><input aria-label="Payment amount" type="number" min="0.01" max={t.balance} step="0.01" placeholder={"Up to "+currency(t.balance)} value={paymentAmount} onChange={e=>setPaymentAmount(e.target.value)}/><select aria-label="Payment method" value={paymentMethod} onChange={e=>setPaymentMethod(e.target.value)}><option>Cash</option><option>Check</option><option>Card</option><option>Bank transfer</option><option>Other</option></select><button onClick={()=>addPayment(d)}>Save payment</button></div></details>}<button className="rdo-danger" onClick={()=>deleteDoc(d)}>Delete</button></div></article>;
+    return <article key={d.id} className="rdo-doc">
+      <div className="rdo-doc-main"><div className="rdo-doc-top"><strong>{d.title||"Untitled job"}</strong><span className={"rdo-pill rdo-"+d.status}>{d.status}</span><span className="rdo-kind">{d.kind}</span></div><div className="rdo-doc-meta">{d.customer} · {d.number} · {d.issueDate}{d.poNumber?" · PO "+d.poNumber:""}{d.sourceInvoice?" · Invoice "+d.sourceInvoice:""}</div><div className="rdo-doc-value">{currency(t.total)}{d.kind==="invoice"&&t.balance>0.009?<span> · {currency(t.balance)} due</span>:null}</div></div>
+      <div className="rdo-doc-actions">
+        <button onClick={()=>openEdit(d)}>Edit</button><button onClick={()=>print(d)}>Print / PDF</button>
+        {d.kind!=="estimate"?<button disabled={busy} onClick={()=>void emailOfficeDocument(d)}>Email {d.kind}</button>:<button onClick={()=>emailSummary(d)}>Email text</button>}
+        <button onClick={()=>void copySummary(d)}>Copy text</button>
+        {d.kind==="estimate"&&<><button onClick={()=>convert(d)}>Make invoice</button>{d.status!=="approved"&&<button onClick={()=>void changeStatus(d,"approved")}>Mark approved</button>}{d.status==="draft"&&<button onClick={()=>void changeStatus(d,"sent")}>Mark sent</button>}</>}
+        {d.kind==="invoice"&&t.balance>0.009&&<details className="rdo-payment"><summary>Record payment</summary><div><input aria-label="Payment amount" type="number" min="0.01" max={t.balance} step="0.01" placeholder={"Up to "+currency(t.balance)} value={paymentAmount} onChange={e=>setPaymentAmount(e.target.value)}/><select aria-label="Payment method" value={paymentMethod} onChange={e=>setPaymentMethod(e.target.value)}><option>Cash</option><option>Check</option><option>Card</option><option>Bank transfer</option><option>Other</option></select><button onClick={()=>void addPayment(d)}>Save payment</button></div></details>}
+        {d.kind==="invoice"&&d.payments.length>0&&<details className="rdo-payment"><summary>Receipts ({d.payments.length})</summary><div>{d.payments.map((payment,index)=>{
+          const existing=docs.find(doc=>doc.kind==="receipt"&&doc.sourceInvoice===d.number&&doc.sourcePaymentId===payment.id);
+          return <button key={payment.id} onClick={()=>makeReceipt(d,payment,index)}>{existing?"Open receipt: ":"Create receipt: "}{currency(payment.amount)} · {payment.date} · {payment.method}</button>;
+        })}</div></details>}
+        <button className="rdo-danger" onClick={()=>void deleteDoc(d)}>Delete</button>
+      </div>
+    </article>;
   }
 }
