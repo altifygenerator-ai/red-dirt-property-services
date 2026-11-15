@@ -132,3 +132,12 @@
 .rd-office .rdo-auth-setup a{color:#9f3a2a;text-decoration:underline;font-weight:700}
 .rd-office .rdo-auth-setup code{overflow-wrap:anywhere}
 .rd-office .rdo-auth-setup .rdo-btn{width:100%}
+
+/* Payment receipts */
+.rd-office .rdo-kind{font-size:.65rem;font-weight:800;color:#94705a;text-transform:uppercase;letter-spacing:.08em}
+.rd-office .rdo-receipt-fields{padding:18px;margin:18px 0 0;background:#faf5ee;border:1px solid #e8d8cc;border-radius:12px}
+.rd-office .rdo-receipt-fields .rdo-device-note{margin:0 0 15px}
+.rd-office .rdo-receipt-fields .rdo-field select{background:white;border:1px solid #d8ccc1;border-radius:9px;padding:11px 12px;color:#29221f;width:100%;font-size:.85rem}
+.rd-office .rdo-payment>div button{white-space:normal;text-align:left;line-height:1.4}
+.rd-office .rdo-print-paid{background:#f7eee5;border:1px solid #d8bba7;padding:14px 20px;text-align:center;font-size:17px;font-weight:900;letter-spacing:.04em;margin:15px 0}
+@media print{.rd-office .rdo-print-paid{background:#faf4ed!important;border:2px solid #9f3a2a;color:#642619!important;break-inside:avoid}}
