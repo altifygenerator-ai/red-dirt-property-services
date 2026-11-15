@@ -152,7 +152,7 @@ export async function saveCloudDoc<T extends { id: string; number: string; kind:
 export async function deleteCloudDoc(id: string) {
   await dataRequest("red_dirt_office_documents?id=eq." + encodeURIComponent(id), "DELETE");
 }
-export async function sendOfficeInvoice(id: string): Promise<void> {
+export async function sendOfficeDocument(id: string): Promise<void> {
   const token = await getAccessToken();
   const response = await fetch("/api/office/send-invoice", {
     method: "POST",
