@@ -29,6 +29,12 @@ export const siteData = {
       icon: FaTruckPickup,
     },
     {
+      title: "Brush Hogging",
+      text: "Field and acreage mowing starting at $35 per acre with a three-acre minimum ($105 minimum). Rough ground, heavy brush, and travel may affect the final quote.",
+      icon: FaTree,
+      href: "/bush-hogging",
+    },
+    {
       title: "Tree Work",
       text: "Small tree work, limb cleanup, brush removal, and light clearing when the job fits. We look at tree jobs first and avoid dangerous work around power lines, houses, and tight hazards.",
       icon: FaTree,
