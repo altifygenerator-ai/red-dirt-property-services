@@ -186,7 +186,7 @@ export default function BushHoggingPage() {
           <FadeIn className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-8">
             <p className="eyebrow mb-4">Pricing</p>
             <h2 className="text-5xl font-bold leading-[0.9] text-white">
-              Bush hogging is usually quoted by the job.
+              Brush hogging starts at $35 per acre.
             </h2>
 
             <div className="mt-6 space-y-5 text-lg leading-8 text-white/70">
@@ -197,10 +197,7 @@ export default function BushHoggingPage() {
               </p>
 
               <p>
-                As a starting point, hourly bush hogging work commonly begins
-                around $80/hr depending on property conditions, access, travel,
-                and equipment time. Larger jobs may be quoted by the job or by
-                acreage after we see the property.
+                Our starting rate is $35 per acre with a three-acre minimum ($105 minimum). Heavy brush, saplings, difficult terrain, hidden debris, or extra travel may require a custom quote.
               </p>
 
               <p>
