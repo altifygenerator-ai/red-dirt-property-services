@@ -48,7 +48,7 @@ export default function QuoteForm() {
         body: formData,
       });
 
-      const result = (await response.json()) as { message?: string };
+      const result = (await response.json()) as { message?: string;notificationSent?: boolean };
 
       if (!response.ok) {
         throw new Error(result.message ?? "The quote form could not be sent.");
@@ -56,8 +56,9 @@ export default function QuoteForm() {
 
       form.reset();
       setStatus("success");
-      setMessage(
-        "Got it. Your quote request was sent to Red Dirt. They can follow up by call, text, or email."
+      setMessage(result.notificationSent===false
+        ? "Your request is saved in our office. Our email alert may be delayed, so call or text 870-828-2562 if you need a quick response."
+        : "Got it. Your quote request was received. We can follow up by call, text, or email."
       );
     } catch (error) {
       setStatus("error");
