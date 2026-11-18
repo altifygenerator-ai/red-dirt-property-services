@@ -46,7 +46,7 @@ export const siteData = {
     },
     {
       title: "Hauling",
-      text: "Furniture, appliances, debris, old materials, brush, scrap, and trailer loads that need moved, hauled off, or cleaned up without making it a bigger headache.",
+      text: "Junk haul-off starting at $200 per load for eligible small, accessible loads. Furniture, boxes, scrap, brush, and debris can be hauled away; larger or heavy loads, labor, mileage, and disposal fees may increase the quote.",
       icon: FaTruckPickup,
     },
     {
