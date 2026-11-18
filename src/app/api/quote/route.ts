@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { storeLead } from "@/lib/localLeads";
 
 const quoteToEmail =
   process.env.QUOTE_TO_EMAIL ?? "reddirtpropertyservicesar@gmail.com";
@@ -36,6 +37,11 @@ export async function POST(request: Request) {
     const service = clean(formData.get("service"));
     const details = clean(formData.get("details"));
     const sourcePage = clean(formData.get("sourcePage"));
+    const attribution = {
+      source_page: sourcePage, referrer: clean(formData.get("referrer")),
+      utm_source: clean(formData.get("utmSource")), utm_medium: clean(formData.get("utmMedium")),
+      utm_campaign: clean(formData.get("utmCampaign")), landing_page: clean(formData.get("landingPage")),
+    };
 
     if (!name || !phone || !location || !service || !details) {
       return NextResponse.json(
@@ -44,11 +50,15 @@ export async function POST(request: Request) {
       );
     }
 
+    // Store first, so temporary email-delivery failures never erase an inquiry.
+    try {
+      await storeLead("red_dirt", {name,phone,email,service,location,details},attribution);
+    } catch (error) {
+      console.error("Red Dirt lead storage error:",error);
+      return NextResponse.json({message:"Your request could not be saved. Please call or text 870-828-2562."},{status:503});
+    }
     if (!process.env.RESEND_API_KEY) {
-      return NextResponse.json(
-        { message: "The quote form is missing the Resend API key." },
-        { status: 500 }
-      );
+      return NextResponse.json({ok:true,notificationSent:false,message:"Your request was saved, but the email alert was unavailable. Please call or text for the quickest reply."});
     }
 
     const safe = {
@@ -108,13 +118,10 @@ ${details}
     if (!response.ok) {
       const errorText = await response.text();
       console.error("Resend quote form error:", errorText);
-      return NextResponse.json(
-        { message: "The quote form could not send. Please call or text instead." },
-        { status: 502 }
-      );
+      return NextResponse.json({ok:true,notificationSent:false,message:"Your request was saved, but the email alert could not send. Please call or text for the quickest reply."});
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, notificationSent: true });
   } catch (error) {
     console.error("Quote form error:", error);
     return NextResponse.json(
