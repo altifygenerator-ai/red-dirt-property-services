@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { siteData } from "@/data/site";
+import { readAttribution } from "@/components/LeadTracker";
 
 const serviceOptions = [
   "Property cleanup",
@@ -30,7 +31,13 @@ export default function QuoteForm() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    formData.set("sourcePage", window.location.href);
+    const source=readAttribution();
+    formData.set("sourcePage", source.source_page);
+    formData.set("referrer", source.referrer);
+    formData.set("utmSource", source.utm_source);
+    formData.set("utmMedium", source.utm_medium);
+    formData.set("utmCampaign", source.utm_campaign);
+    formData.set("landingPage", source.landing_page);
 
     setStatus("sending");
     setMessage("");
