@@ -3,13 +3,15 @@
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { deleteCloudDoc, loadCloudDocs, saveCloudDoc, sendOfficeDocument } from "@/lib/redDirtCloud";
 import LeadInbox from "./LeadInbox";
+import LynEstimateServices from "./LynEstimateServices";
+import { OFFICE_BRANDS, LYN_SERVICE_CHECKLIST, businessOf, type OfficeBusiness } from "@/lib/officeBrands";
 
 type Kind = "estimate" | "invoice" | "receipt";
 type Status = "draft" | "sent" | "approved" | "declined" | "unpaid" | "partial" | "paid";
 type Line = { id: string; description: string; quantity: number; price: number };
 type Payment = { id: string; amount: number; date: string; method: string };
 type Document = {
-  id: string; number: string; kind: Kind; status: Status;
+  id: string; number: string; kind: Kind; status: Status; businessKey?: OfficeBusiness;
   customer: string; phone: string; email: string; address: string;
   title: string; jobAddress: string; poNumber: string;
   issueDate: string; dueDate: string; notes: string; terms: string;
@@ -39,21 +41,25 @@ const totals = (d: Document) => {
   const paid = d.payments.reduce((sum,p)=>sum+Number(p.amount||0),0);
   return { subtotal, tax, total, paid, balance: Math.max(0,total-paid) };
 };
-function blank(kind: Kind): Document {
+function blank(kind: Kind, businessKey: OfficeBusiness = "red_dirt"): Document {
   return {
-    id:"",number:"",kind,status:kind==="estimate"?"draft":kind==="receipt"?"paid":"unpaid",
-    customer:"",phone:"",email:"",address:"",title:"",jobAddress:"",poNumber:"",
+    id:"",number:"",kind,businessKey,status:kind==="estimate"?"draft":kind==="receipt"?"paid":"unpaid",
+    customer:"",phone:"",email:"",address:"",title:businessKey==="lyn_lilis"?"Cleaning Services":"",jobAddress:"",poNumber:"",
     issueDate:today(),dueDate:kind==="receipt"?today():plusDays(14),
-    notes:"",terms:kind==="estimate"?"Estimate based on the scope described above. Any additional work will be discussed and approved before proceeding.":kind==="receipt"?"Payment received. Thank you for your business.":"Payment is due by the date shown. Please reference the invoice number with your payment.",
-    lines:[{id:uuid(),description:"",quantity:1,price:0}],taxRate:0,payments:[],
+    notes:"",terms:kind==="estimate"
+      ?(businessKey==="lyn_lilis"?"This estimate is based on the selected services and property condition. Any added cleaning will be discussed before work begins.":"Estimate based on the scope described above. Any additional work will be discussed and approved before proceeding.")
+      :kind==="receipt"?"Payment received. Thank you for your business."
+      :(businessKey==="lyn_lilis"?"Payment is due at completion unless agreed otherwise.":"Payment is due by the date shown. Please reference the invoice number with your payment."),
+    lines:businessKey==="lyn_lilis"&&kind==="estimate"?[]:[{id:uuid(),description:"",quantity:1,price:0}],taxRate:0,payments:[],
     ...(kind==="receipt"?{receiptDate:today(),receiptMethod:"Cash",receiptReference:""}:{}),updatedAt:new Date().toISOString()
   };
 }
 function summary(d: Document): string {
   const t=totals(d);
+  const brand=OFFICE_BRANDS[businessOf(d)];
   const label=d.kind==="estimate"?"ESTIMATE":d.kind==="receipt"?"RECEIPT":"INVOICE";
   return [
-    "Red Dirt Property Services LLC", label+" "+d.number,
+    brand.name, label+" "+d.number,
     d.title, "For: "+d.customer, "Job: "+(d.jobAddress||d.address||"Not specified"),
     ...d.lines.map(line=>line.description+" • "+line.quantity+" x "+currency(line.price)+" = "+currency(Number(line.quantity)*Number(line.price))),
     "Subtotal: "+currency(t.subtotal), ...(d.taxRate>0?["Tax: "+currency(t.tax)]:[]),
@@ -66,7 +72,7 @@ function summary(d: Document): string {
       ...(d.sourceInvoice?["For invoice: "+d.sourceInvoice]:[]),
       ...(typeof d.receiptBalance==="number"?["Invoice balance after payment: "+currency(d.receiptBalance)]:[])
     ]:[]),
-    d.notes, d.terms, "Questions? Call or text 870-828-2562", "reddirtpropertyservicesar.com"
+    d.notes, d.terms, "Questions? Call or text "+brand.phone, brand.websiteLabel
   ].filter(Boolean).join("\n");
 }
 function normalizeDocs(input: unknown): Document[] {
@@ -74,7 +80,7 @@ function normalizeDocs(input: unknown): Document[] {
   return input.map((d: unknown) => {
     if (!d || typeof d!=="object") throw new Error("Invalid document.");
     const v=d as Partial<Document>;
-    if (typeof v.id!=="string"||typeof v.number!=="string"||!["estimate","invoice","receipt"].includes(v.kind||"")||!Array.isArray(v.lines)||!Array.isArray(v.payments)) throw new Error("Invalid document data.");
+    if (typeof v.id!=="string"||typeof v.number!=="string"||!["estimate","invoice","receipt"].includes(v.kind||"")||!Array.isArray(v.lines)||!Array.isArray(v.payments)|| (v.businessKey!==undefined&&!["red_dirt","lyn_lilis"].includes(v.businessKey))) throw new Error("Invalid document data.");
     return v as Document;
   });
 }
@@ -84,6 +90,7 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
   const [ready,setReady] = useState(false);
   const [lastNumber,setLastNumber] = useState(0);
   const [view,setView] = useState<View>("dashboard");
+  const [business,setBusiness] = useState<OfficeBusiness>("red_dirt");
   const [editor,setEditor] = useState<Document|null>(null);
   const [printDoc,setPrintDoc] = useState<Document|null>(null);
   const [query,setQuery] = useState("");
@@ -144,15 +151,22 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
     finally {setBusy(false);}
   }
 
-  const sorted=useMemo(()=>[...docs].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)),[docs]);
+  const businessDocs=useMemo(()=>docs.filter(d=>businessOf(d)===business),[docs,business]);
+  const brand=OFFICE_BRANDS[business];
+  const sorted=useMemo(()=>[...businessDocs].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)),[businessDocs]);
   const shown=useMemo(()=>sorted.filter(d=>(filter==="all"||d.kind===filter) && [d.number,d.customer,d.title,d.jobAddress,d.poNumber].join(" ").toLowerCase().includes(query.toLowerCase())),[sorted,query,filter]);
-  const estimates=docs.filter(d=>d.kind==="estimate"&&["draft","sent"].includes(d.status));
-  const invoices=docs.filter(d=>d.kind==="invoice"&&totals(d).balance>0.009);
+  const estimates=businessDocs.filter(d=>d.kind==="estimate"&&["draft","sent"].includes(d.status));
+  const invoices=businessDocs.filter(d=>d.kind==="invoice"&&totals(d).balance>0.009);
   const outstanding=invoices.reduce((sum,d)=>sum+totals(d).balance,0);
-  const paid=docs.reduce((sum,d)=>sum+(d.kind==="invoice"?totals(d).paid:d.kind==="receipt"&&!d.sourceInvoice?totals(d).total:0),0);
+  const paid=businessDocs.reduce((sum,d)=>sum+(d.kind==="invoice"?totals(d).paid:d.kind==="receipt"&&!d.sourceInvoice?totals(d).total:0),0);
 
-  function openNew(kind: Kind) {setEditor(blank(kind));setView("editor");setAlert("");}
-  function openEdit(d: Document) {setEditor(JSON.parse(JSON.stringify(d)) as Document);setView("editor");setAlert("");}
+  function switchBusiness(next:OfficeBusiness) {
+    if(next===business)return;
+    if(editor&&!window.confirm("Switch businesses? Any unsaved changes in the editor will be lost."))return;
+    setBusiness(next);setEditor(null);setPrintDoc(null);setView("dashboard");setFilter("all");setQuery("");setAlert("");
+  }
+  function openNew(kind: Kind) {setEditor(blank(kind,business));setView("editor");setAlert("");}
+  function openEdit(d: Document) {setBusiness(businessOf(d));setEditor(JSON.parse(JSON.stringify(d)) as Document);setView("editor");setAlert("");}
   function update<K extends keyof Document>(key:K,value:Document[K]) {setEditor(prev=>prev?{...prev,[key]:value}:null);}
   async function saveDocument(sendAfterSave=false) {
     if(!editor||busy)return;
@@ -168,15 +182,18 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
     if(editor.kind==="receipt"&&totals(editor).total<=0) {
       setAlert("A receipt needs a payment amount greater than $0.");return;
     }
-    const maxNum=Math.max(lastNumber,largestNumber(docs));
-    const incoming={...editor,id:editor.id||uuid(),number:editor.number||("RD-"+(editor.kind==="estimate"?"EST":editor.kind==="receipt"?"REC":"INV")+"-"+String(maxNum+1).padStart(4,"0")),updatedAt:new Date().toISOString(),lines:editor.lines.filter(l=>l.description.trim()).map(l=>({...l,quantity:Math.max(0,Number(l.quantity)||0),price:Math.max(0,Number(l.price)||0)})),taxRate:Math.max(0,Math.min(100,Number(editor.taxRate)||0))};
+    if(editor.kind==="estimate"&&businessOf(editor)==="lyn_lilis"&&editor.lines.some(line=>LYN_SERVICE_CHECKLIST.some(name=>name===line.description)&&(!(Number(line.price)>0)||!(Number(line.quantity)>0)))) {
+      setAlert("Enter a price and quantity greater than zero for every selected cleaning service.");return;
+    }
+    const maxNum=Math.max(business==="red_dirt"?lastNumber:0,largestNumber(businessDocs));
+    const incoming={...editor,businessKey:businessOf(editor),id:editor.id||uuid(),number:editor.number||(OFFICE_BRANDS[businessOf(editor)].numberPrefix+"-"+(editor.kind==="estimate"?"EST":editor.kind==="receipt"?"REC":"INV")+"-"+String(maxNum+1).padStart(4,"0")),updatedAt:new Date().toISOString(),lines:editor.lines.filter(l=>l.description.trim()).map(l=>({...l,quantity:Math.max(0,Number(l.quantity)||0),price:Math.max(0,Number(l.price)||0)})),taxRate:Math.max(0,Math.min(100,Number(editor.taxRate)||0))};
     setBusy(true);
     try {
       await saveCloudDoc(incoming,userId);
       setDocs(prev=>[incoming,...prev.filter(d=>d.id!==incoming.id)]);
-      if(!editor.number)setLastNumber(maxNum+1);
+      if(!editor.number&&business==="red_dirt")setLastNumber(maxNum+1);
       setEditor(null);setView("documents");
-      if(sendAfterSave && (incoming.kind==="invoice"||incoming.kind==="receipt")) {
+      if(sendAfterSave) {
         try {
           await sendOfficeDocument(incoming.id);
           setDocs(prev=>prev.map(d=>d.id===incoming.id?{...d,status:d.kind==="receipt"||d.status==="paid"?"paid":"sent"}:d));
@@ -195,17 +212,17 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
   }
   function convert(d: Document) {
     const copy=JSON.parse(JSON.stringify(d)) as Document;
-    setEditor({...copy,id:"",number:"",kind:"invoice",status:"unpaid",sourceEstimate:d.number,payments:[],issueDate:today(),dueDate:plusDays(14),terms:"Payment due by the date shown. Please reference the invoice number with payment.",updatedAt:new Date().toISOString()});
+    setEditor({...copy,businessKey:businessOf(d),id:"",number:"",kind:"invoice",status:"unpaid",sourceEstimate:d.number,payments:[],issueDate:today(),dueDate:plusDays(14),terms:businessOf(d)==="lyn_lilis"?"Payment due upon completion unless agreed otherwise.":"Payment due by the date shown. Please reference the invoice number with payment.",updatedAt:new Date().toISOString()});
     setView("editor");setAlert("Review the invoice details, then save.");
   }
   function makeReceipt(d: Document, payment: Payment, index: number) {
-    const existing=docs.find(v=>v.kind==="receipt"&&v.sourceInvoice===d.number&&v.sourcePaymentId===payment.id);
+    const existing=docs.find(v=>businessOf(v)===businessOf(d)&&v.kind==="receipt"&&v.sourceInvoice===d.number&&v.sourcePaymentId===payment.id);
     if(existing) {openEdit(existing);return;}
     const received=Math.round(Number(payment.amount)*100)/100;
     const paidThrough=d.payments.slice(0,index+1).reduce((sum,p)=>sum+Number(p.amount||0),0);
     const remaining=Math.max(0,Math.round((totals(d).total-paidThrough)*100)/100);
     setEditor({
-      ...blank("receipt"),customer:d.customer,phone:d.phone,email:d.email,
+      ...blank("receipt",businessOf(d)),customer:d.customer,phone:d.phone,email:d.email,
       address:d.address,jobAddress:d.jobAddress,poNumber:d.poNumber,title:d.title,
       issueDate:payment.date||today(),dueDate:payment.date||today(),
       receiptDate:payment.date||today(),receiptMethod:payment.method||"Other",
@@ -231,15 +248,15 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
   async function emailOfficeDocument(d:Document) {
     if(!window.confirm("Email "+d.kind+" "+d.number+" to "+d.email+" now?"))return;
     setBusy(true);
-    try {await sendOfficeDocument(d.id);setDocs(prev=>prev.map(item=>item.id===d.id?{...item,status:item.kind==="receipt"||item.status==="paid"?"paid":"sent"}:item));setAlert((d.kind==="receipt"?"Receipt":"Invoice")+" sent to "+d.email+".");}
+    try {await sendOfficeDocument(d.id);setDocs(prev=>prev.map(item=>item.id===d.id?{...item,status:item.kind==="receipt"||item.status==="paid"?"paid":"sent"}:item));setAlert((d.kind==="receipt"?"Receipt":d.kind==="estimate"?"Estimate":"Invoice")+" sent to "+d.email+".");}
     catch(error) {setAlert(error instanceof Error?error.message:"Could not send document.");}
     finally {setBusy(false);}
   }
   function print(d: Document) {setPrintDoc(d);setTimeout(()=>window.print(),180);}
   function exportData() {
-    const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),lastNumber,documents:docs},null,2)],{type:"application/json"});
+    const blob=new Blob([JSON.stringify({version:2,businessKey:business,exportedAt:new Date().toISOString(),lastNumber:largestNumber(businessDocs),documents:businessDocs},null,2)],{type:"application/json"});
     const url=URL.createObjectURL(blob); const a=document.createElement("a");
-    a.href=url; a.download="red-dirt-office-backup-"+today()+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    a.href=url; a.download=business.replace("_","-")+"-office-backup-"+today()+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
     setAlert("Backup downloaded. Save it somewhere safe.");
   }
   async function importData(event:ChangeEvent<HTMLInputElement>) {
@@ -261,7 +278,7 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
     catch {setAlert("Clipboard unavailable. Use Print / Save PDF instead.");}
   }
   function emailSummary(d:Document) {
-    const subject=encodeURIComponent((d.kind==="estimate"?"Estimate ":d.kind==="receipt"?"Receipt ":"Invoice ")+d.number+" — Red Dirt Property Services");
+    const subject=encodeURIComponent((d.kind==="estimate"?"Estimate ":d.kind==="receipt"?"Receipt ":"Invoice ")+d.number+" — "+OFFICE_BRANDS[businessOf(d)].name);
     const body=encodeURIComponent(summary(d));
     window.location.href="mailto:"+encodeURIComponent(d.email||"")+"?subject="+subject+"&body="+body;
   }
