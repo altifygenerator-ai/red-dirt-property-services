@@ -4,7 +4,7 @@ import "./office.css";
 
 export const metadata: Metadata = {
   title: "Red Dirt Office",
-  description: "Private estimates, invoices, receipts and payment tracking for Red Dirt Property Services LLC.",
+  description: "Private estimates, invoices, receipts and payment tracking for Red Dirt Property Services LLC and Lyn & Lili’s Tidy House.",
   robots: { index: false, follow: false },
   manifest: "/office.webmanifest",
   appleWebApp: { capable: true, title: "Red Dirt Office", statusBarStyle: "black-translucent" },

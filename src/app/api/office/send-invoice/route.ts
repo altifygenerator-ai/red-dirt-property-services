@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { RED_DIRT_ALLOWED_EMAIL, RED_DIRT_PUBLISHABLE_KEY, RED_DIRT_SUPABASE_URL } from "@/lib/redDirtCloud";
-import { siteData } from "@/data/site";
+import { OFFICE_BRANDS, businessOf, type OfficeBusiness } from "@/lib/officeBrands";
 
 export const runtime = "nodejs";
 const apiHeaders = (token: string) => ({
@@ -12,7 +12,7 @@ const money = (n: number) => new Intl.NumberFormat("en-US",{style:"currency",cur
 
 type Item = { description?:string; quantity?:number; price?:number };
 type Invoice = {
-  id: string; number:string; kind:string; status:string; customer:string; email:string;
+  id: string; number:string; kind:string; status:string; customer:string; email:string; businessKey?:OfficeBusiness;
   title:string; address?:string; jobAddress?:string; phone?:string; issueDate?:string;
   dueDate?:string; poNumber?:string; terms?:string; notes?:string; taxRate:number;
   sourceInvoice?:string; receiptDate?:string; receiptMethod?:string; receiptReference?:string; receiptBalance?:number;
@@ -41,13 +41,19 @@ export async function POST(request: Request) {
     if(!read.ok) return NextResponse.json({message:"Could not retrieve document."},{status:502});
     const rows=await read.json() as {id:string;document:Invoice;emailed_at:string|null}[];
     const row=rows[0];
-    if(!row||!["invoice","receipt"].includes(row.document.kind)) return NextResponse.json({message:"Document not found."},{status:404});
+    if(!row||!["estimate","invoice","receipt"].includes(row.document.kind)) return NextResponse.json({message:"Document not found."},{status:404});
     if(row.emailed_at && Date.now()-new Date(row.emailed_at).getTime()<60_000) {
       return NextResponse.json({message:"This document was already emailed recently. Please wait before sending it again."},{status:429});
     }
     const d=row.document;
     const isReceipt=d.kind==="receipt";
-    const label=isReceipt?"Receipt":"Invoice";
+    const isEstimate=d.kind==="estimate";
+    const label=isReceipt?"Receipt":isEstimate?"Estimate":"Invoice";
+    const selectedBusiness=businessOf(d);
+    const brand=OFFICE_BRANDS[selectedBusiness];
+    const accent=selectedBusiness==="lyn_lilis"?"#b75b78":"#9f3a2a";
+    const headerBackground=selectedBusiness==="lyn_lilis"?"#49283c":"#211d1b";
+    const headerSubtitle=selectedBusiness==="lyn_lilis"?"#ffe1eb":"#d8c2a5";
     const email=String(d.email||"").trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||email.length>254) {
       return NextResponse.json({message:"Add a valid customer email first."},{status:400});
@@ -66,9 +72,9 @@ export async function POST(request: Request) {
     const balance=Math.max(0,total-paid);
     const rowHtml=d.lines.map(item=>'<tr><td style="padding:12px 8px;border-bottom:1px solid #eadfd4">'+escape(item.description)+'</td><td style="padding:12px 8px;border-bottom:1px solid #eadfd4;text-align:right">'+escape(item.quantity)+'</td><td style="padding:12px 8px;border-bottom:1px solid #eadfd4;text-align:right">'+money(Number(item.price)||0)+'</td><td style="padding:12px 8px;border-bottom:1px solid #eadfd4;text-align:right">'+money((Number(item.quantity)||0)*(Number(item.price)||0))+'</td></tr>').join("");
     const html='<div style="max-width:690px;margin:0 auto;font-family:Arial,sans-serif;color:#29231f;line-height:1.5">'+
-      '<div style="padding:22px;background:#211d1b;color:white"><h1 style="margin:0;font-size:25px">RED DIRT</h1><div style="color:#d8c2a5;letter-spacing:2px;font-size:12px;font-weight:700">PROPERTY SERVICES LLC</div></div>'+
+      '<div style="padding:22px;background:'+headerBackground+';color:white"><h1 style="margin:0;font-size:25px">'+escape(brand.label)+'</h1><div style="color:'+headerSubtitle+';letter-spacing:1px;font-size:12px;font-weight:700">'+escape(brand.subLabel)+'</div></div>'+
       '<div style="padding:25px;border:1px solid #eadfd4"><h2 style="margin:0">'+label+' '+escape(d.number)+'</h2>'+
-      '<p style="color:#6d5e51">Date: '+escape(d.issueDate)+(isReceipt?' · Paid on: '+escape(d.receiptDate):' · Due: '+escape(d.dueDate))+'</p>'+
+      '<p style="color:#6d5e51">Date: '+escape(d.issueDate)+(isReceipt?' · Paid on: '+escape(d.receiptDate):isEstimate?' · Estimate valid until: '+escape(d.dueDate):' · Due: '+escape(d.dueDate))+'</p>'+
       '<p><strong>'+(isReceipt?'Received from':'Bill to')+':</strong> '+escape(d.customer)+(d.address?'<br>'+escape(d.address):'')+'</p>'+
       (d.jobAddress?'<p><strong>Job location:</strong> '+escape(d.jobAddress)+'</p>':'')+
       (d.poNumber?'<p><strong>PO / Unit:</strong> '+escape(d.poNumber)+'</p>':'')+
@@ -79,22 +85,24 @@ export async function POST(request: Request) {
       '<table style="border-collapse:collapse;width:100%;font-size:13px"><thead><tr style="background:#f7f1ec"><th style="text-align:left;padding:10px 8px">Work / Service</th><th style="text-align:right">Qty</th><th style="text-align:right">Rate</th><th style="text-align:right">Amount</th></tr></thead><tbody>'+rowHtml+'</tbody></table>'+
       '<div style="margin:20px 0 0 auto;max-width:260px;text-align:right">'+
       '<p>Subtotal: <strong>'+money(subtotal)+'</strong></p>'+(tax>0?'<p>Sales tax: <strong>'+money(tax)+'</strong></p>':'')+
-      '<h2 style="border-top:2px solid #9f3a2a;padding-top:12px">'+(isReceipt?'Amount received: ':'Total: ')+money(total)+'</h2>'+
-      (!isReceipt&&paid>0?'<p>Paid: '+money(paid)+'</p>':'')+
-      (isReceipt?(typeof d.receiptBalance==='number'?'<p>Invoice balance after payment: '+money(d.receiptBalance)+'</p>':''):'<h2 style="color:#9f3a2a">Balance due: '+money(balance)+'</h2>')+'</div>'+
+      '<h2 style="border-top:2px solid '+accent+';padding-top:12px">'+(isReceipt?'Amount received: ':isEstimate?'Estimated total: ':'Total: ')+money(total)+'</h2>'+
+      (!isReceipt&&!isEstimate&&paid>0?'<p>Paid: '+money(paid)+'</p>':'')+
+      (isReceipt?(typeof d.receiptBalance==='number'?'<p>Invoice balance after payment: '+money(d.receiptBalance)+'</p>':''):isEstimate?'<p>This is an estimate, not a payment request.</p>':'<h2 style="color:'+accent+'">Balance due: '+money(balance)+'</h2>')+'</div>'+
       (d.notes?'<p><strong>Notes:</strong><br>'+escape(d.notes).replaceAll("\n","<br>")+'</p>':'')+
       (d.terms?'<p><strong>Terms:</strong><br>'+escape(d.terms).replaceAll("\n","<br>")+'</p>':'')+
-      '<hr style="border:0;border-top:1px solid #eadfd4"><p>Questions? Call or text <a href="tel:8708282562">870-828-2562</a> or reply to this email.</p>'+
-      '<p>Thank you for your business!<br><a href="https://www.reddirtpropertyservicesar.com">reddirtpropertyservicesar.com</a></p></div></div>';
-    const from=process.env.QUOTE_FROM_EMAIL||"Red Dirt Property Services LLC <quotes@hometownwebservicesar.cc>";
+      '<hr style="border:0;border-top:1px solid #eadfd4"><p>Questions? Call or text <a href="tel:'+escape(brand.phoneHref)+'">'+escape(brand.phone)+'</a>'+(brand.secondaryPhone?' or '+escape(brand.secondaryPhone):'')+' or reply to this email.</p>'+
+      '<p>Thank you for your business!<br><a href="'+escape(brand.website)+'">'+escape(brand.websiteLabel)+'</a></p></div></div>';
+    const from=selectedBusiness==="lyn_lilis"
+      ?(process.env.LYN_LILIS_OFFICE_FROM_EMAIL||"Lyn & Lili's Tidy House <quotes@hometownwebservicesar.cc>")
+      :(process.env.QUOTE_FROM_EMAIL||"Red Dirt Property Services LLC <quotes@hometownwebservicesar.cc>");
     const sent=await fetch("https://api.resend.com/emails",{
       method:"POST",
       headers:{Authorization:"Bearer "+process.env.RESEND_API_KEY,"Content-Type":"application/json"},
       body:JSON.stringify({
-        from, to:[email], reply_to:siteData.email,
-        subject:label+" "+d.number+" from Red Dirt Property Services",
+        from, to:[email], reply_to:brand.email,
+        subject:label+" "+d.number+" from "+brand.name,
         html,
-        text:label+" "+d.number+"\n"+d.title+"\n"+(isReceipt?"Amount received: "+money(total)+"\nPaid on: "+d.receiptDate+"\nMethod: "+d.receiptMethod+(d.sourceInvoice?"\nInvoice: "+d.sourceInvoice:""):"Total: "+money(total)+"\nBalance due: "+money(balance)+"\nDue: "+d.dueDate)+"\n\nQuestions? "+siteData.phone+"\n"+siteData.siteUrl,
+        text:label+" "+d.number+"\n"+brand.name+"\n"+d.title+"\n"+(isReceipt?"Amount received: "+money(total)+"\nPaid on: "+d.receiptDate+"\nMethod: "+d.receiptMethod+(d.sourceInvoice?"\nInvoice: "+d.sourceInvoice:""):isEstimate?"Estimated total: "+money(total)+"\nValid until: "+d.dueDate:"Total: "+money(total)+"\nBalance due: "+money(balance)+"\nDue: "+d.dueDate)+"\n\nQuestions? "+brand.phone+(brand.secondaryPhone?" / "+brand.secondaryPhone:"")+"\n"+brand.website,
       })
     });
     if(!sent.ok) {

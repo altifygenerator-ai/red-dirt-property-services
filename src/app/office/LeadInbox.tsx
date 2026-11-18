@@ -28,10 +28,10 @@ async function request<T>(path:string,options?:RequestInit):Promise<T> {
  if(response.status===204)return null as T;
  return response.json() as Promise<T>;
 }
-export default function LeadInbox() {
+export default function LeadInbox({business}:{business:Business}) {
  const [leads,setLeads]=useState<Lead[]>([]);
  const [events,setEvents]=useState<Event[]>([]);
- const [filter,setFilter]=useState<"all"|Business>("all");
+
  const [query,setQuery]=useState("");
  const [loading,setLoading]=useState(true);
  const [error,setError]=useState("");
@@ -51,9 +51,9 @@ export default function LeadInbox() {
   finally{setLoading(false);}
  },[]);
  useEffect(()=>{void refresh();},[refresh]);
- const visible=useMemo(()=>leads.filter(l=>(filter==="all"||l.business_key===filter)&&
-   [l.name,l.service,l.location,l.phone,l.email,l.channel].join(" ").toLowerCase().includes(query.toLowerCase())),[filter,leads,query]);
- const relevantEvents=events.filter(e=>filter==="all"||e.business_key===filter);
+ const visible=useMemo(()=>leads.filter(l=>l.business_key===business&&
+   [l.name,l.service,l.location,l.phone,l.email,l.channel].join(" ").toLowerCase().includes(query.toLowerCase())),[business,leads,query]);
+ const relevantEvents=events.filter(e=>e.business_key===business);
  const newCount=visible.filter(l=>l.status==="new").length;
  const bookedCount=visible.filter(l=>l.status==="booked").length;
  async function patch(lead:Lead,updates:Partial<Pick<Lead,"status"|"staff_notes">>) {
@@ -70,9 +70,7 @@ export default function LeadInbox() {
   <div className="rdo-panel-head"><div><h2>Customer inquiries</h2><p className="rdo-sub">Quotes received through your websites. Contact clicks are counted separately; they are not confirmed leads.</p></div><button className="rdo-btn rdo-btn-outline" disabled={loading} onClick={()=>void refresh()}>Refresh</button></div>
   {error?<div className="rdo-error" role="alert">{error}</div>:null}
   {message?<div className="rdo-notice" role="status">{message}</div>:null}
-  <div className="rdo-filters"><select aria-label="Business filter" value={filter} onChange={e=>setFilter(e.target.value as typeof filter)}>
-   <option value="all">Both businesses</option><option value="red_dirt">Red Dirt</option><option value="lyn_lilis">Lyn & Lili's</option>
-  </select><input type="search" placeholder="Search leads..." aria-label="Search leads" value={query} onChange={e=>setQuery(e.target.value)}/></div>
+  <div className="rdo-filters"><span className="rdo-leads-business-name">{names[business]} inquiries</span><input type="search" placeholder="Search leads..." aria-label="Search leads" value={query} onChange={e=>setQuery(e.target.value)}/></div>
   <div className="rdo-lead-summary"><div><strong>{visible.length}</strong><span>Stored inquiries</span></div><div><strong>{newCount}</strong><span>New</span></div><div><strong>{bookedCount}</strong><span>Booked</span></div><div><strong>{relevantEvents.filter(e=>e.event_type==="call_click").length}</strong><span>Call-button clicks*</span></div><div><strong>{relevantEvents.filter(e=>e.event_type==="text_click").length}</strong><span>Text-button clicks*</span></div></div>
   <p className="rdo-lead-hint">*Click counts are from the most recent 1,000 recorded interactions, not verified calls or texts. Sources marked “AI search” are based on detectable referrals, not guaranteed AI citations.</p>
   {loading?<div className="rdo-loading">Loading secure lead records…</div>:visible.length===0?<div className="rdo-empty"><h3>No matching inquiries yet</h3><p>New website quote requests will appear here after the updated sites are deployed.</p></div>:visible.map(lead=><article className="rdo-lead-card" key={lead.id}>

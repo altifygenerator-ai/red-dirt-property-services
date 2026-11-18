@@ -163,3 +163,37 @@
 .rd-office .rdo-lead-card textarea{max-width:100%}
 .rd-office .rdo-lead-card>.rdo-btn{justify-self:start}
 @media(max-width:780px){.rd-office .rdo-lead-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.rd-office .rdo-lead-summary>div:first-child{grid-column:span 2}}
+
+/* Two-business Office: compact, practical switcher and cleaning estimate checklist */
+.rd-office .rdo-business-switch{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:24px;padding:16px 20px;border:1px solid #dfd3c8;background:#fffdfa;border-radius:14px}
+.rd-office .rdo-business-switch>div:first-child{display:grid;gap:4px}
+.rd-office .rdo-switch-kicker{font-size:.69rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#8b7769}
+.rd-office .rdo-business-switch strong{font-size:1rem;color:#312824}
+.rd-office .rdo-business-buttons{display:flex;padding:4px;border:1px solid #e3d6cb;border-radius:10px;background:#f5f0ea;gap:3px}
+.rd-office .rdo-business-buttons button{padding:10px 15px;border:0;background:transparent;color:#695c54;border-radius:7px;font-size:.83rem;font-weight:900;min-height:42px}
+.rd-office .rdo-business-buttons button.active{background:#9f3a2a;color:#fff;box-shadow:0 2px 6px #38251d21}
+.rd-office .rdo-business-buttons button:focus-visible{outline:3px solid #c98c77;outline-offset:2px}
+.rd-office .rdo-lyn-services{margin-top:25px;padding:18px;border:1px solid #e9c8d4;background:#fff9fb;border-radius:14px}
+.rd-office .rdo-lyn-services .rdo-section-title{margin-bottom:3px}
+.rd-office .rdo-lyn-services .rdo-section-title span{font-size:.75rem;font-weight:850;color:#985a71}
+.rd-office .rdo-service-help,.rd-office .rdo-service-hint{margin:8px 0 15px;color:#6f6167;line-height:1.55;font-size:.81rem}
+.rd-office .rdo-service-list{display:grid;gap:7px}
+.rd-office .rdo-service-row{border:1px solid #e6d9dd;border-radius:10px;padding:12px 14px;background:white}
+.rd-office .rdo-service-row.selected{border-color:#c17f97;background:#fff7fa}
+.rd-office .rdo-service-check{display:flex;align-items:center;gap:11px;cursor:pointer;font-weight:800;color:#352a32;font-size:.88rem}
+.rd-office .rdo-service-check input{width:19px;height:19px;accent-color:#ab5474;flex-shrink:0}
+.rd-office .rdo-service-price{display:flex;align-items:end;gap:11px;flex-wrap:wrap;padding:10px 0 0 30px}
+.rd-office .rdo-service-price label{display:grid;gap:5px;color:#77616f;font-size:.72rem;font-weight:800}
+.rd-office .rdo-service-price input{border:1px solid #dbcbd2;border-radius:7px;background:#fff;color:#282126;padding:9px 10px;font-size:.85rem;width:116px;max-width:100%}
+.rd-office .rdo-service-price label:nth-child(2) input{width:170px}
+.rd-office .rdo-service-price strong{margin-left:auto;color:#713b54;font-size:.9rem;padding-bottom:10px}
+.rd-office .rdo-leads-business-name{display:flex;align-items:center;color:#715347;font-size:.85rem;font-weight:900}
+@media(max-width:620px){.rd-office .rdo-business-switch{padding:14px;gap:13px}.rd-office .rdo-business-buttons{width:100%}.rd-office .rdo-business-buttons button{flex:1;white-space:nowrap}.rd-office .rdo-service-row{padding:11px}.rd-office .rdo-service-price{padding-left:0;gap:8px}.rd-office .rdo-service-price label:nth-child(2) input{width:140px}.rd-office .rdo-service-price strong{width:100%;text-align:right;margin-top:0;padding:0}}
+@media print{
+ .rd-office .rdo-print-lyn header{border-color:#b75b78!important}
+ .rd-office .rdo-print-lyn .rdo-print-grid b,.rd-office .rdo-print-lyn .rdo-print-note b{color:#9a4765!important}
+ .rd-office .rdo-print-lyn th{border-color:#b75b78!important}
+ .rd-office .rdo-print-lyn .rdo-print-grand{border-color:#b75b78!important}
+ .rd-office .rdo-print-lyn .rdo-print-paid{border-color:#b75b78!important}
+ .rd-office .rdo-print-lyn header h1{font-size:26px!important;letter-spacing:0!important}
+}
