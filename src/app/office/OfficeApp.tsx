@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { deleteCloudDoc, loadCloudDocs, saveCloudDoc, sendOfficeDocument } from "@/lib/redDirtCloud";
+import LeadInbox from "./LeadInbox";
 
 type Kind = "estimate" | "invoice" | "receipt";
 type Status = "draft" | "sent" | "approved" | "declined" | "unpaid" | "partial" | "paid";
@@ -17,7 +18,7 @@ type Document = {
   receiptDate?: string; receiptMethod?: string; receiptReference?: string; receiptBalance?: number;
   updatedAt: string;
 };
-type View = "dashboard" | "documents" | "editor";
+type View = "dashboard" | "documents" | "editor" | "leads";
 const STORE = "red-dirt-office-v1";
 const largestNumber = (documents: Document[]) => documents.reduce((highest,doc)=>Math.max(highest,Number(doc.number.match(/\d+$/)?.[0]||0)),0);
 const currency = (amount: number) => new Intl.NumberFormat("en-US", {style:"currency",currency:"USD"}).format(amount || 0);
@@ -281,7 +282,8 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
       {legacyDocs.some(d=>!docs.some(c=>c.id===d.id))?<div className="rdo-device-note"><strong>Older documents found on this device.</strong> Import your existing estimates, invoices and receipts into Supabase. <button className="rdo-btn rdo-btn-primary" disabled={busy} onClick={()=>void migrateLegacy()}>Import old documents</button></div>:null}
       {storageError?<div className="rdo-error" role="alert">{storageError}</div>:null}
       {alert?<div className="rdo-notice" role="status">{alert}<button aria-label="Dismiss" onClick={()=>setAlert("")}>×</button></div>:null}
-      <nav className="rdo-nav" aria-label="Office navigation"><button className={view==="dashboard"?"active":""} onClick={()=>{setView("dashboard");setEditor(null);}}>Overview</button><button className={view==="documents"?"active":""} onClick={()=>{setView("documents");setEditor(null);}}>All documents</button><button className={view==="editor"?"active":""} onClick={()=>{if(!editor)setEditor(blank("estimate"));setView("editor");}}>Editor</button></nav>
+      <nav className="rdo-nav" aria-label="Office navigation"><button className={view==="dashboard"?"active":""} onClick={()=>{setView("dashboard");setEditor(null);}}>Overview</button><button className={view==="documents"?"active":""} onClick={()=>{setView("documents");setEditor(null);}}>All documents</button><button className={view==="editor"?"active":""} onClick={()=>{if(!editor)setEditor(blank("estimate"));setView("editor");}}>Editor</button><button className={view==="leads"?"active":""} onClick={()=>{setEditor(null);setView("leads");}}>Leads</button></nav>
+      {view==="leads"&&<LeadInbox />}
       {view==="dashboard"&&<><section className="rdo-stats"><div className="rdo-stat"><span>Open estimates</span><strong>{estimates.length}</strong><small>Draft or waiting on a decision</small></div><div className="rdo-stat"><span>Unpaid invoices</span><strong>{invoices.length}</strong><small>{currency(outstanding)} outstanding</small></div><div className="rdo-stat"><span>Payments recorded</span><strong>{currency(paid)}</strong><small>Across saved invoices</small></div></section><div className="rdo-panel"><div className="rdo-panel-head"><h2>Recent work</h2><button className="rdo-text-btn" onClick={()=>setView("documents")}>See all →</button></div>{sorted.length?sorted.slice(0,6).map(d=>renderRow(d)):<div className="rdo-empty"><h3>Ready for your first estimate?</h3><p>Create a quote, add line items, then print or save a professional PDF for the customer.</p><button className="rdo-btn rdo-btn-primary" onClick={()=>openNew("estimate")}>Create estimate</button></div>}</div></>}
       {view==="documents"&&<section className="rdo-panel"><div className="rdo-panel-head"><h2>Estimates, invoices & receipts</h2><span>{shown.length} found</span></div><div className="rdo-filters"><input type="search" aria-label="Search documents" placeholder="Search customer, job, or number…" value={query} onChange={e=>setQuery(e.target.value)}/><select aria-label="Filter document type" value={filter} onChange={e=>setFilter(e.target.value as typeof filter)}><option value="all">All documents</option><option value="estimate">Estimates</option><option value="invoice">Invoices</option><option value="receipt">Receipts</option></select></div>{shown.length?shown.map(d=>renderRow(d)):<div className="rdo-empty"><p>No documents match yet.</p></div>}</section>}
       {view==="editor"&&editor&&<section className="rdo-editor"><div className="rdo-panel-head"><h2>{editor.number||"New "+editor.kind}</h2><button className="rdo-text-btn" onClick={()=>{setEditor(null);setView("documents");}}>Cancel</button></div><div className="rdo-form-grid">

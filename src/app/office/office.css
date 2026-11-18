@@ -141,3 +141,25 @@
 .rd-office .rdo-payment>div button{white-space:normal;text-align:left;line-height:1.4}
 .rd-office .rdo-print-paid{background:#f7eee5;border:1px solid #d8bba7;padding:14px 20px;text-align:center;font-size:17px;font-weight:900;letter-spacing:.04em;margin:15px 0}
 @media print{.rd-office .rdo-print-paid{background:#faf4ed!important;border:2px solid #9f3a2a;color:#642619!important;break-inside:avoid}}
+
+/* Private lead inbox */
+.rd-office .rdo-nav{flex-wrap:wrap}
+.rd-office .rdo-lead-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:20px 0}
+.rd-office .rdo-lead-summary>div{background:#f8f2eb;border:1px solid #e5d9ce;border-radius:10px;padding:13px;display:flex;flex-direction:column;gap:4px}
+.rd-office .rdo-lead-summary strong{font-size:1.5rem;font-weight:900;color:#763426}
+.rd-office .rdo-lead-summary span,.rd-office .rdo-lead-hint{font-size:.74rem;color:#786b60}
+.rd-office .rdo-lead-card{border-top:1px solid #ded6ce;padding:20px 0;display:grid;gap:11px;overflow-wrap:anywhere}
+.rd-office .rdo-lead-card>p{margin:0;font-size:.83rem;line-height:1.55}
+.rd-office .rdo-lead-head{display:flex;gap:16px;justify-content:space-between;align-items:start}
+.rd-office .rdo-lead-head>div{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.rd-office .rdo-lead-head strong{font-size:1rem}
+.rd-office .rdo-lead-head small{color:#83796f}
+.rd-office .rdo-lead-head select{border:1px solid #ddd0c6;border-radius:8px;padding:7px;background:white}
+.rd-office .rdo-lead-details{white-space:pre-wrap;background:#f9f5ef;border-radius:8px;padding:12px}
+.rd-office .rdo-lead-contact{display:flex;flex-wrap:wrap;gap:8px}
+.rd-office .rdo-lead-contact a{color:#743224;font-size:.79rem;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.rd-office .rdo-lead-source{color:#72665d;overflow-wrap:anywhere}
+.rd-office .rdo-lead-source a{color:#743224;text-decoration:underline}
+.rd-office .rdo-lead-card textarea{max-width:100%}
+.rd-office .rdo-lead-card>.rdo-btn{justify-self:start}
+@media(max-width:780px){.rd-office .rdo-lead-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.rd-office .rdo-lead-summary>div:first-child{grid-column:span 2}}

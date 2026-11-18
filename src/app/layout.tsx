@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { siteData } from "@/data/site";
+import LeadTracker from "@/components/LeadTracker";
 import "./globals.css";
 
 const siteUrl = siteData.siteUrl;
@@ -251,6 +252,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <LeadTracker business="red_dirt" />
         <Analytics />
       </body>
     </html>
