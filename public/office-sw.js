@@ -1,5 +1,5 @@
 // Offline app shell only. Customer records are never stored in Cache Storage.
-const CACHE = "red-dirt-office-shell-v1";
+const CACHE = "red-dirt-office-shell-v2";
 const SHELL = ["/office", "/office.webmanifest", "/icon-192.png", "/icon-512.png"];
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()).catch(() => self.skipWaiting()));
