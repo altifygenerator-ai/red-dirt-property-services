@@ -75,10 +75,10 @@ export default function OfficeGate() {
   if(checking) return <div className="rd-office"><div className="rdo-loading">Checking secure Red Dirt Office login…</div></div>;
   if(user) return <OfficeApp userId={user.id} onSignOut={async()=>{await signOutOfOffice();setUser(null);}}/>;
   return <div className="rd-office"><div className="rdo-auth-wrap">
-    <div className="rdo-auth-brand"><img src="/images/logo2.png" alt="Red Dirt Property Services" width="80" height="80"/><h1>RED DIRT OFFICE</h1><p>Private estimates, invoices & receipts</p></div>
+    <div className="rdo-auth-brand"><img src="/images/logo2.png" alt="Red Dirt Property Services" width="80" height="80"/><h1>RED DIRT OFFICE</h1><p>Private estimates, invoices & receipts for both businesses</p></div>
     <form className="rdo-auth-card" onSubmit={submit}>
       <h2>{mode==="signin"?"Welcome back":"Set up your office login"}</h2>
-      <p>Only the authorized Red Dirt business email can access customer and invoice records.</p>
+      <p>Use your existing Red Dirt Office login. Once signed in, switch between Red Dirt and Lyn & Lili’s for separate customer records.</p>
       <label className="rdo-field"><span>Authorized email</span><input value={RED_DIRT_ALLOWED_EMAIL} type="email" disabled /></label>
       <label className="rdo-field"><span>Password</span><input type="password" autoComplete={mode==="signup"?"new-password":"current-password"} value={password} onChange={e=>setPassword(e.target.value)} required minLength={8}/></label>
       {siteKey?<OfficeCaptcha key={siteKey+"-"+challenge} siteKey={siteKey} onToken={setCaptchaToken} onError={setMessage}/>:<div className="rdo-auth-warning"><strong>Security check needs setup.</strong><p>This site shares Supabase's CAPTCHA protection with Find A Place Booking. Add the existing CAPTCHA public site key; do not turn off protection.</p></div>}
