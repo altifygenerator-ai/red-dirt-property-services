@@ -45,7 +45,7 @@ function blank(kind: Kind, businessKey: OfficeBusiness = "red_dirt"): Document {
   return {
     id:"",number:"",kind,businessKey,status:kind==="estimate"?"draft":kind==="receipt"?"paid":"unpaid",
     customer:"",phone:"",email:"",address:"",title:businessKey==="lyn_lilis"?"Cleaning Services":"",jobAddress:"",poNumber:"",
-    issueDate:today(),dueDate:kind==="receipt"?today():plusDays(14),
+    issueDate:today(),dueDate:kind==="receipt"||(kind==="invoice"&&businessKey==="lyn_lilis")?today():plusDays(14),
     notes:"",terms:kind==="estimate"
       ?(businessKey==="lyn_lilis"?"This estimate is based on the selected services and property condition. Any added cleaning will be discussed before work begins.":"Estimate based on the scope described above. Any additional work will be discussed and approved before proceeding.")
       :kind==="receipt"?"Payment received. Thank you for your business."
@@ -212,7 +212,7 @@ export default function OfficeApp({userId,onSignOut}:{userId:string;onSignOut:()
   }
   function convert(d: Document) {
     const copy=JSON.parse(JSON.stringify(d)) as Document;
-    setEditor({...copy,businessKey:businessOf(d),id:"",number:"",kind:"invoice",status:"unpaid",sourceEstimate:d.number,payments:[],issueDate:today(),dueDate:plusDays(14),terms:businessOf(d)==="lyn_lilis"?"Payment due upon completion unless agreed otherwise.":"Payment due by the date shown. Please reference the invoice number with payment.",updatedAt:new Date().toISOString()});
+    setEditor({...copy,businessKey:businessOf(d),id:"",number:"",kind:"invoice",status:"unpaid",sourceEstimate:d.number,payments:[],issueDate:today(),dueDate:businessOf(d)==="lyn_lilis"?today():plusDays(14),terms:businessOf(d)==="lyn_lilis"?"Payment due upon completion unless agreed otherwise.":"Payment due by the date shown. Please reference the invoice number with payment.",updatedAt:new Date().toISOString()});
     setView("editor");setAlert("Review the invoice details, then save.");
   }
   function makeReceipt(d: Document, payment: Payment, index: number) {
