@@ -675,6 +675,7 @@ export const servicePages: Record<string, ServicePageData> = {
     overviewTitle: "For the stuff that will not fit in a trash can or the back of a car.",
     overviewText: [
       "Hot Springs junk jobs can be a single heavy item, a full garage, a rental left behind by a tenant, or a cabin cleanup after a busy season. The load size, access, stairs, weight, and dump fees all matter.",
+      "Junk haul-off starts at $200 per load for eligible small, straightforward pickups. Heavier items, larger loads, stairs, long carries, distance, disposal charges, and extra labor may cost more. We confirm a fair price before starting.",
       "We quote the work from photos when we can, then show up with the trailer and tools needed to get the junk moved without leaving the property worse than it started.",
       "If you searched for a trash hauler, debris removal, or yard cleanup and hauling around Hot Springs, send a few photos. We can take a look at brush and yard debris, old furniture, unwanted items, and mixed loads, then let you know what fits our equipment and trailer.",
       "For full-property cleanup, rental cleanouts, storm damage, or light demolition, we can look at those separately so the quote covers the actual work instead of guessing."
